@@ -1,11 +1,13 @@
 package com.cmu.cs.cmucats
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.CardView
 import android.view.MenuItem
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.Toast
+import com.cmu.cs.cmucats.Assignment.AssignmentActivity
 
 class FeatureActivity : NavigationActivity(), View.OnClickListener {
 
@@ -56,6 +58,8 @@ class FeatureActivity : NavigationActivity(), View.OnClickListener {
         when (v!!.id){
             R.id.assignment_card -> {
                 Toast.makeText(this, "Assignment", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, AssignmentActivity::class.java)
+                startActivity(intent)
             }
             R.id.attendance_card -> {
                 Toast.makeText(this, "Attendance",Toast.LENGTH_SHORT).show()
@@ -67,5 +71,6 @@ class FeatureActivity : NavigationActivity(), View.OnClickListener {
                 Toast.makeText(this, "Student",Toast.LENGTH_SHORT).show()
             }
         }
+        this.overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
     }
 }

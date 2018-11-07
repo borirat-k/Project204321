@@ -21,7 +21,7 @@ open class NavigationActivity : AppCompatActivity(), NavigationView.OnNavigation
 
     lateinit var navigationView: NavigationView
     private lateinit var mDrawerlayout: DrawerLayout
-    lateinit var mToggle: ActionBarDrawerToggle
+    private lateinit var mToggle: ActionBarDrawerToggle
 
     private var containt: FrameLayout? = null
 //    private var homeFragment: HomeFragment = null

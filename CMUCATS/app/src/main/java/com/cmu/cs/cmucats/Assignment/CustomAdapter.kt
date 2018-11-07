@@ -1,4 +1,4 @@
-package com.cmu.cs.cmucats.Course
+package com.cmu.cs.cmucats.Assignment
 
 import android.app.Activity
 import android.content.Context
@@ -15,54 +15,48 @@ import android.widget.Toast
 
 
 
-class CustomAdapter(val courseList: ArrayList<Course>, context: Context): RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
+class CustomAdapter(val assignList: ArrayList<Assignment>, context: Context): RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 
     private var mContext: Context = context
     private var activity = mContext as Activity
 
     //มีหน้าที่เพื่อให้เราสร้าง view ต่างๆแล้วเก็บไว้ใน ViewHolder อีกที
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.list_course, parent, false)
+        val v = LayoutInflater.from(parent.context).inflate(R.layout.list_assign, parent, false)
         return ViewHolder(v)
     }
 
     //มีหน้าที่บอกว่าเรามีข้อมูลที่ต้องการจะแสดงผลทั้งหมดกี่ชุด
     override fun getItemCount(): Int {
-        return courseList.size
+        return assignList.size
     }
 
     //มีหน้าที่จัดการข้อมูลที่ใส่เข้าไป เพื่อนำไปแสดงผล บน view ตามที่ต้องการ
     //เช่น ใส่ค่า String เข้าไป เพื่อนำไปแสดงผลบน textView หรือตอนที่มีการ scroll ข้อมูลใหม่เข้ามาแสดงผลบนหน้าจอ
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val course: Course = courseList[position]
-        holder.textCourseID.text = course.id
-        holder.textCourseName.text = course.name
+        val assignment: Assignment = assignList[position]
+        holder.textAssignID.text = assignment.id.toString()
 
         //set Click option menu
 //        holder.textCourseOption
 
-        holder.course_layout.setOnClickListener(object :View.OnClickListener {
-            override fun onClick(p0: View?) {
-                Toast.makeText(mContext, "onClick: clicked on: ", Toast.LENGTH_SHORT).show()
-
-                val intent = Intent(mContext, FeatureActivity::class.java)
-                println(holder.textCourseID.text)
-                intent.putExtra("course", holder.textCourseID.text)
-                mContext.startActivity(intent)
-                activity.overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
-            }
-        })
+//        holder.course_layout.setOnClickListener(object :View.OnClickListener {
+//            override fun onClick(p0: View?) {
+//                Toast.makeText(mContext, "onClick: clicked on: ", Toast.LENGTH_SHORT).show()
+//
+//                val intent = Intent(mContext, FeatureActivity::class.java)
+//                println(holder.textCourseID.text)
+//                intent.putExtra("course", holder.textCourseID.text)
+//                mContext.startActivity(intent)
+//                activity.overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
+//            }
+//        })
 
     }
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){//, View.OnClickListener{
 
-//        private var view: View = itemView
-
-        val textCourseID = itemView.findViewById(R.id.textCourseID) as TextView
-        val textCourseName = itemView.findViewById(R.id.textCourseName) as TextView
-        val textCourseOption = itemView.findViewById(R.id.textCourseOption) as TextView
-        val course_layout = itemView.findViewById(R.id.course_layout) as ConstraintLayout
+        val textAssignID = itemView.findViewById(R.id.textAssignID) as TextView
 //        var itemClickListener: ItemClickListener? = null
 //
 //        init{
