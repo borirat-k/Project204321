@@ -20,6 +20,7 @@ import javax.net.ssl.HttpsURLConnection
 class MainActivity : AppCompatActivity() {
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -29,6 +30,7 @@ class MainActivity : AppCompatActivity() {
         passBtn.setOnClickListener {
 
             intent = Intent(this, CameraJava::class.java)
+//            intent.putExtra("count_file",count_file)
             startActivity(intent)
         }
 

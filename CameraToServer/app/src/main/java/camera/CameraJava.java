@@ -6,7 +6,9 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.ImageFormat;
+import android.graphics.PixelFormat;
 import android.graphics.SurfaceTexture;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraCaptureSession;
@@ -40,6 +42,7 @@ import android.widget.Toast;
 
 import com.deknerdvariety.prayat.cameratoserver.R;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -66,6 +69,8 @@ public class CameraJava extends AppCompatActivity {
     private ImageButton btnCapture;
     private TextureView textureView;
 
+    private static final String name_file = "192.168.0.102/picture/";
+
     private String cameraId;
     private CameraDevice cameraDevice;
     private CameraCaptureSession cameraCaptureSessions;
@@ -81,16 +86,15 @@ public class CameraJava extends AppCompatActivity {
     private HandlerThread mBackgroundThread;
 
 
-    public static final String UPLOAD_URL = "http://localhost/upload.php";
+    public static final String UPLOAD_URL = "192.168.0.102/upload.php";
     public static final String UPLOAD_KEY = "image";
-    public static final String TAG = "MY MESSAGE";
+
+
+    int width;
+    int height;
 
 
 
-
-    private Bitmap bitmap;
-
-    private Uri filePath;
 
     CameraDevice.StateCallback stateCallback = new CameraDevice.StateCallback() {
         @Override
@@ -177,7 +181,6 @@ public class CameraJava extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-
     private void takePicture() {
         if(cameraDevice == null)
             return;
@@ -190,14 +193,14 @@ public class CameraJava extends AppCompatActivity {
                         .getOutputSizes(ImageFormat.JPEG);
 
             //Capture image with custom size
-            int width = 640;
-            int height = 480;
+            width = 640;
+            height = 480;
             if(jpegSizes != null && jpegSizes.length > 0)
             {
                 width = jpegSizes[0].getWidth();
                 height = jpegSizes[0].getHeight();
             }
-            final ImageReader reader = ImageReader.newInstance(width,height,ImageFormat.JPEG,1);
+            final ImageReader reader = ImageReader.newInstance(width,height, PixelFormat.JPEG,1);
             List<Surface> outputSurface = new ArrayList<>(2);
             outputSurface.add(reader.getSurface());
             outputSurface.add(new Surface(textureView.getSurfaceTexture()));
@@ -210,7 +213,8 @@ public class CameraJava extends AppCompatActivity {
             int rotation = getWindowManager().getDefaultDisplay().getRotation();
             captureBuilder.set(CaptureRequest.JPEG_ORIENTATION,ORIENTATIONS.get(rotation));
 
-            file = new File(Environment.getExternalStorageDirectory()+"/"+"OriginImage"+".jpg");
+            file = new File(name_file+"");
+
 
             //Toast.makeText(this,Environment.getExternalStorageDirectory().toString(),Toast.LENGTH_LONG).show();
 
@@ -219,12 +223,14 @@ public class CameraJava extends AppCompatActivity {
                 public void onImageAvailable(ImageReader imageReader) {
                     Image image = null;
                     try{
+                        Toast.makeText(CameraJava.this, width+" " +height , Toast.LENGTH_SHORT).show();
                         image = reader.acquireLatestImage();
                         ByteBuffer buffer = image.getPlanes()[0].getBuffer();
                         byte[] bytes = new byte[buffer.capacity()];
+//                        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0,bytes.length);
+
                         buffer.get(bytes);
                         save(bytes);
-
                     }
                     catch (FileNotFoundException e)
                     {
@@ -246,11 +252,16 @@ public class CameraJava extends AppCompatActivity {
                     try{
                         outputStream = new FileOutputStream(file);
                         outputStream.write(bytes);
+
                     }finally {
                         if(outputStream != null)
                             outputStream.close();
                     }
                 }
+
+
+
+
             };
 
             reader.setOnImageAvailableListener(readerListener,mBackgroundHandler);
@@ -284,6 +295,7 @@ public class CameraJava extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
 
     private void openCamera() {
         CameraManager manager = (CameraManager)getSystemService(Context.CAMERA_SERVICE);

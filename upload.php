@@ -1,38 +1,21 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password="";
-$dbname ="university";
-
-//create connection
-$conn = new mysqli($servername,$username,$password,$dbname);
-
-//check connection
-if($conn->connect_error)
-    die("connection failed:".$conn->connect_error);
+// require "ConnectDatabase.php";
+//
+// $count = 0;
+// $sql = "insert into image(pathtoimage) values ('192.168.0.102/picture/$count')";
+//
+// $result = $conn->query($sql);
 
 
-if($_SERVER['REQUEST_METHOD']=='POST'){
+   $name = $_POST['name']#&#91;'name'&#93;; //image name
+   $image = $_POST['image']#&#91;'image'&#93;; //image in string format
 
-    $image = $_POST['image'];
 
-    $sql = "INSERT INTO images (image) VALUES (?)";
 
-    $stmt = mysqli_prepare($con,$sql);
+   // decode the image
+   $decodedImage = base64_decode($image);
 
-    mysqli_stmt_bind_param($stmt,"s",$image);
-    mysqli_stmt_execute($stmt);
+   // upload the image
+   file_put_contents("pic/".$name.".jpg", $decodedImage);
 
-    $check = mysqli_stmt_affected_rows($stmt);
-
-    if($check == 1){
-        echo "Image Uploaded Successfully";
-    }else{
-        echo "Error Uploading Image";
-    }
-    mysqli_close($con);
-}
-else{
- echo "Error";
-}
  ?>
