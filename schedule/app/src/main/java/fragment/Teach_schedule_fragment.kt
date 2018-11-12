@@ -13,8 +13,11 @@ import android.widget.EditText
 import android.widget.Toast
 import com.deknerdvariety.prayat.schedule.R
 import adapter.TeachHeadingAdapter
+import android.content.Intent
 import android.widget.AutoCompleteTextView
 import com.deknerdvariety.prayat.schedule.MainActivity
+import com.deknerdvariety.prayat.schedule.inputFrom
+import com.deknerdvariety.prayat.schedule.timetable
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.teach_input_from.*
 import kotlinx.android.synthetic.main.teach_schedule_fragment.*
@@ -35,8 +38,10 @@ class Teach_schedule_fragment:Fragment() {
 
     var str_semester = ""
     var str_idCourse = ""
-    var str_timeteach = ""
-    var str_dateteach = ""
+    var str_starttime = ""
+    var str_stoptime = ""
+    var str_startdate = ""
+    var str_stopdate = ""
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -76,9 +81,8 @@ class Teach_schedule_fragment:Fragment() {
                 count_add_course = count_edt.text.toString().toInt()
                 customDialog.dismiss()
 
-                for (i in 1..count_add_course) {
-
-                }
+                var intent = Intent(context,inputFrom::class.java)
+                startActivity(intent)
             }
 
             //when clik negative button of alert dialog
@@ -95,8 +99,10 @@ class Teach_schedule_fragment:Fragment() {
 //        val view = layoutInflater.inflate(R.layout.teach_input_from,null)
 //        val et_semester = view.findViewById<EditText>(R.id.et_semester)
 //        val et_idCourse = view.findViewById<EditText>(R.id.et_idCourse)
-//        val et_timeteach = view.findViewById<EditText>(R.id.et_timeteach)
-//        val et_dateteach = view.findViewById<EditText>(R.id.et_dateTeach)
+//        val et_starttime = view.findViewById<EditText>(R.id.et_startTime)
+//        val et_stoptime = view.findViewById<EditText>(R.id.et_stopTime)
+//        val et_startDate = view.findViewById<EditText>(R.id.et_startDate)
+//        val et_stopDate = view.findViewById<EditText>(R.id.et_stopDate)
 //
 //        builder.setView(view)
 //        builder.setTitle("Create schedule")
@@ -110,17 +116,19 @@ class Teach_schedule_fragment:Fragment() {
 //        customDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
 //            str_semester = et_semester.text.toString()
 //            str_idCourse = et_idCourse.text.toString()
-//            str_timeteach = et_timeteach.text.toString()
-//            str_dateteach = et_dateteach.text.toString()
+//            str_starttime = et_starttime.text.toString()
+//            str_stoptime = et_stoptime.text.toString()
+//            str_startdate = et_startDate.text.toString()
+//            str_stopdate = et_stopDate.text.toString()
 //
-//            addTeachSchedule(str_semester)
+////            addTeachSchedule(str_semester)
 //            customDialog.dismiss()
 //
-//            MainActivity()
 //        }
 //
 //        customDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setOnClickListener {
 //            Toast.makeText(context,"cancel",Toast.LENGTH_SHORT).show()
+//            customDialog.dismiss()
 //        }
 //    }
 

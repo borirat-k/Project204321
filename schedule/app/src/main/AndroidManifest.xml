@@ -16,6 +16,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".timetable"
+            android:launchMode="singleTop">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+        </activity>
+        <activity android:name=".inputFrom"/>
     </application>
 
 </manifest>
