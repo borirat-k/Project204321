@@ -28,7 +28,7 @@
         <activity
             android:name=".FeatureActivity"
             android:label="000000"></activity>
-        <!-- <fragment android:name=".CourseActivity"> -->
+        <!-- <fragment android:name=".CourseFragment"> -->
         <!-- <intent-filter> -->
         <!-- <action android:name="android.intent.action.MAIN" /> -->
 
@@ -38,8 +38,9 @@
         <!-- </fragment> -->
         <activity
             android:name=".Assignment.AssignmentActivity"
-            android:label="@string/title_activity_assignment"
-            android:theme="@style/AppTheme"></activity>
+            android:label="@string/title_activity_assignment"></activity>
+        <activity
+            android:name=".Assignment.AssignmentStudentActivity" />
     </application>
 
 </manifest>

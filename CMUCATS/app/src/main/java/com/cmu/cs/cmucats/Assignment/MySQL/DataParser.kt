@@ -11,7 +11,7 @@ import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 
-class DataParser(private var c: Context, private var jsonData: String, private var rv: RecyclerView): AsyncTask<Void, Void, Boolean>() {
+class DataParser(private var c: Context, private var jsonData: String, private var rv: RecyclerView, private var course: String): AsyncTask<Void, Void, Boolean>() {
 
     private lateinit var pd: ProgressDialog
     private var assignments = ArrayList<Assignment>()
@@ -36,7 +36,7 @@ class DataParser(private var c: Context, private var jsonData: String, private v
 
         if (parsed!!){
             //BIND
-            val adapter = CustomAdapter(assignments, c)
+            val adapter = CustomAdapter(assignments, c, course)
             rv.adapter = adapter
         }
         else{
@@ -47,7 +47,9 @@ class DataParser(private var c: Context, private var jsonData: String, private v
     private fun parseData(): Boolean{
         try {
             var ja: JSONArray = JSONArray(jsonData)
-            var jo: JSONObject
+            var jo: JSONObject? = null
+
+//            jo.put("Cid", course)
 
             assignments.clear()
             var assignment: Assignment
@@ -56,9 +58,9 @@ class DataParser(private var c: Context, private var jsonData: String, private v
                 jo=ja.getJSONObject(i)
 
 //                var stu_id=jo.getInt("stu_id")
-                var stu_id=jo.getString("Fname")
+                var Aid=jo.getString("Aid")
 
-                assignment = Assignment(stu_id)
+                assignment = Assignment(Aid)
 
                 assignments.add(assignment)
 

@@ -6,8 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
-    android:id="@+id/course_layout"
-    tools:context=".CourseActivity">
+    android:id="@+id/assignment_layout"
+    tools:context=".Assignment.AssignmentActivity">
     <!--tools:showIn="@layout/activity_navigation">-->
     <!--app:layout_behavior="@string/appbar_scrolling_view_behavior">-->
 

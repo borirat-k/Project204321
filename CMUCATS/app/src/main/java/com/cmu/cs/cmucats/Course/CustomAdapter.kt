@@ -49,6 +49,7 @@ class CustomAdapter(val courseList: ArrayList<Course>, context: Context): Recycl
                 println(holder.textCourseID.text)
                 intent.putExtra("course", holder.textCourseID.text)
                 mContext.startActivity(intent)
+                activity.finish()
                 activity.overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
             }
         })

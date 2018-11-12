@@ -15,7 +15,7 @@ class MainActivity : NavigationActivity() {
         //คำสั่งเพิ่ม Fragment ลงบน ViewGroup
         supportFragmentManager
                 .beginTransaction()
-                .replace(R.id.content_frame, CourseActivity(), TAG_COURSE_FRAGMENT)
+                .replace(R.id.content_frame, CourseFragment(), TAG_COURSE_FRAGMENT)
                 .commit()
         navigationView.setCheckedItem(R.id.my_course)
 

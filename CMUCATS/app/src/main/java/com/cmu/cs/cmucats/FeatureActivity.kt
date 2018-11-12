@@ -45,7 +45,7 @@ class FeatureActivity : NavigationActivity(), View.OnClickListener {
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        finish()
+//        finish()
         return super.onNavigationItemSelected(item)
     }
 
@@ -59,7 +59,9 @@ class FeatureActivity : NavigationActivity(), View.OnClickListener {
             R.id.assignment_card -> {
                 Toast.makeText(this, "Assignment", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, AssignmentActivity::class.java)
+                intent.putExtra("course", course)
                 startActivity(intent)
+                finish()
             }
             R.id.attendance_card -> {
                 Toast.makeText(this, "Attendance",Toast.LENGTH_SHORT).show()
@@ -72,5 +74,12 @@ class FeatureActivity : NavigationActivity(), View.OnClickListener {
             }
         }
         this.overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
+    }
+
+    override fun onBackPressed() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
+        overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right)
     }
 }

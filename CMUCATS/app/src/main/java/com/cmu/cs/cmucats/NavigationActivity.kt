@@ -23,7 +23,7 @@ open class NavigationActivity : AppCompatActivity(), NavigationView.OnNavigation
     private lateinit var mDrawerlayout: DrawerLayout
     private lateinit var mToggle: ActionBarDrawerToggle
 
-    private var containt: FrameLayout? = null
+//    private var containt: FrameLayout? = null
 //    private var homeFragment: HomeFragment = null
 
 
@@ -47,7 +47,7 @@ open class NavigationActivity : AppCompatActivity(), NavigationView.OnNavigation
         // คำสั่งเพิ่ม Fragment ลงบน ViewGroup
 //        supportFragmentManager
 //                .beginTransaction()
-//                .replace(R.id.content_frame, CourseActivity().newInstance(), TAG_COURSE_FRAGMENT)
+//                .replace(R.id.content_frame, CourseFragment().newInstance(), TAG_COURSE_FRAGMENT)
 //                .commit()
 //        navigationView.setCheckedItem(R.id.my_course)
 
@@ -75,18 +75,21 @@ open class NavigationActivity : AppCompatActivity(), NavigationView.OnNavigation
             R.id.my_course -> {
                 navigationView.setCheckedItem(R.id.my_course)
                 displayMessage("my course")
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                finish()
                 // คำสั่งเพิ่ม Fragment ลงบน ViewGroup
-                supportFragmentManager
-                        .beginTransaction()
-                        .replace(R.id.content_frame, CourseActivity(), TAG_COURSE_FRAGMENT)
-                        .commit()
+//                supportFragmentManager
+//                        .beginTransaction()
+//                        .replace(R.id.content_frame, CourseFragment(), TAG_COURSE_FRAGMENT)
+//                        .commit()
 //                mDrawerlayout.closeDrawer(GravityCompat.START)
 //                supportFragmentManager.beginTransaction().replace(R.id.content_frame,
-//                        CourseActivity()).commit()
+//                        CourseFragment()).commit()
 //                finish()
 //                if (item.itemId != R.id.my_course) {
 //                    this.finish()
-//                    val intent = Intent(this, CourseActivity::class.java)
+//                    val intent = Intent(this, CourseFragment::class.java)
 //                    this.startActivity(intent)
 //                }
 //                overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right)
@@ -98,6 +101,7 @@ open class NavigationActivity : AppCompatActivity(), NavigationView.OnNavigation
                 val intent = Intent(this, FeatureActivity::class.java)
                 intent.putExtra("course", "555555")
                 startActivity(intent)
+                finish()
             }
             R.id.logout -> {
                 navigationView.setCheckedItem(R.id.logout)

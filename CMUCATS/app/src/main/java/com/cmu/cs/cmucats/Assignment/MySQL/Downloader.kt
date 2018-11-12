@@ -7,8 +7,9 @@ import android.support.v7.widget.RecyclerView
 import android.widget.Toast
 import java.io.*
 import java.net.HttpURLConnection
+import java.net.URLEncoder
 
-class Downloader(private var c: Context, private var urlAdress: String, private var rv: RecyclerView): AsyncTask<Void, Void, String>() {
+class Downloader(private var c: Context, private var urlAdress: String, private var rv: RecyclerView, private var course: String): AsyncTask<Void, Void, String>() {
 
     private lateinit var pd: ProgressDialog
 
@@ -42,7 +43,7 @@ class Downloader(private var c: Context, private var urlAdress: String, private 
         }
         else{
             //PARSE
-            DataParser(c, jsonData, rv).execute()
+            DataParser(c, jsonData, rv, course).execute()
         }
     }
 
@@ -53,9 +54,22 @@ class Downloader(private var c: Context, private var urlAdress: String, private 
         }
 
         try {
+            println(course)
+            val ops: OutputStream = con.outputStream
+            val writer: BufferedWriter = BufferedWriter(OutputStreamWriter(ops, "UTF-8"))
+//            val writer: OutputStreamWriter = OutputStreamWriter(con.outputStream)
+            var data: String = URLEncoder.encode("Cid", "UTF-8") + "=" + URLEncoder.encode(this.course, "UTF-8")
+            writer.write(data)
+
+            writer.flush()
+
+            writer.close()
+//            ops.close()
             if (con.responseCode == 200) {
                 var inputstream: InputStream = BufferedInputStream(con.inputStream)
                 var br: BufferedReader = BufferedReader(InputStreamReader(inputstream))
+
+//                println("BRRRRRRRR = " + br.readLine())
 
                 var line: String?
                 var jsonData: StringBuffer = StringBuffer()
@@ -73,7 +87,7 @@ class Downloader(private var c: Context, private var urlAdress: String, private 
                 br.close()
                 inputstream.close()
 
-                println(jsonData.toString())
+                println("JSONNNNNNNN = " + jsonData.toString())
                 return jsonData.toString()
             }
             else{

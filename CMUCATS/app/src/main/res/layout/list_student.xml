@@ -6,8 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
-    android:id="@+id/course_layout"
-    tools:context=".CourseFragment">
+    android:id="@+id/student_layout"
+    tools:context=".Assignment.AssignmentStudentActivity">
     <!--tools:showIn="@layout/activity_navigation">-->
     <!--app:layout_behavior="@string/appbar_scrolling_view_behavior">-->
 
@@ -22,30 +22,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:padding="10dp"
             android:orientation="vertical">
+
             <TextView
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:id="@+id/textCourseID"
+                android:id="@+id/textAssignID"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="204111"/>
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:text="HW01"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
             <TextView
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:id="@+id/textCourseName"
+                android:id="@+id/textAssignOption"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/textCourseID"
-                android:text="Fundamentals of Programming"/>
-            <TextView
-                android:id="@+id/textCourseOption"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="&#8942;"
-                android:textAppearance="?android:textAppearanceLarge"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
-                android:padding="20dp"/>
+                android:padding="20dp"
+                android:text="&#8942;"
+                android:textAppearance="?android:textAppearanceLarge" />
         </RelativeLayout>
 
     </android.support.v7.widget.CardView>

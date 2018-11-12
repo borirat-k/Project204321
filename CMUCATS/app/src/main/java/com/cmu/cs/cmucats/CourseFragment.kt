@@ -7,12 +7,11 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
 import android.widget.LinearLayout
 import com.cmu.cs.cmucats.Course.Course
 import com.cmu.cs.cmucats.Course.CustomAdapter
 
-class CourseActivity : Fragment(){
+class CourseFragment : Fragment(){
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var view: View = inflater.inflate(R.layout.activity_course, container, false)
@@ -26,10 +25,10 @@ class CourseActivity : Fragment(){
         val course = ArrayList<Course>()
 
         //add course from database mySQL
-        course.add(Course("204321", "DATABASE SYSTEM 1"))
+        course.add(Course("204100", "IT AND MODERN LIFE"))
         course.add(Course("204361", "SOFTWARE ENGINEERING"))
         course.add(Course("204451", "ALGO DESIGN & ANALYSIS3"))
-        course.add(Course("204321", "DATABASE SYSTEM 1"))
+        course.add(Course("204111", "FUNDAMENTALS OF PROGRAMMING"))
         course.add(Course("204321", "DATABASE SYSTEM 1"))
         course.add(Course("204321", "DATABASE SYSTEM 1"))
         course.add(Course("204321", "DATABASE SYSTEM 1"))
