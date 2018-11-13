@@ -7,7 +7,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.Toast
-import com.cmu.cs.cmucats.Assignment.AssignmentActivity
+import com.cmu.cs.cmucats.FeatureAssignment.Assignment.AssignmentActivity
 
 class FeatureActivity : NavigationActivity(), View.OnClickListener {
 
@@ -57,7 +57,7 @@ class FeatureActivity : NavigationActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v!!.id){
             R.id.assignment_card -> {
-                Toast.makeText(this, "Assignment", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "FeatureAssignment", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, AssignmentActivity::class.java)
                 intent.putExtra("course", course)
                 startActivity(intent)

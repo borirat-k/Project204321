@@ -37,10 +37,16 @@
         <!-- </intent-filter> -->
         <!-- </fragment> -->
         <activity
-            android:name=".Assignment.AssignmentActivity"
+            android:name=".FeatureAssignment.Assignment.AssignmentActivity"
             android:label="@string/title_activity_assignment"></activity>
         <activity
-            android:name=".Assignment.AssignmentStudentActivity" />
+            android:name=".FeatureAssignment.Student.AssignmentStudentActivity" />
+        <activity
+            android:name=".FeatureAssignment.Student.AssignStuDetailActivity"
+            android:excludeFromRecents="true"
+            android:taskAffinity=""
+            android:theme="@style/Theme.Sliding.Light"
+            />
     </application>
 
 </manifest>

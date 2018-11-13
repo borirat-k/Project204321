@@ -1,8 +1,8 @@
 package com.cmu.cs.cmucats
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.FrameLayout
+import com.cmu.cs.cmucats.FeatureCourse.CourseFragment
 
 class MainActivity : NavigationActivity() {
 
