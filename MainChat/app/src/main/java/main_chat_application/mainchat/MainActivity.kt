@@ -17,7 +17,19 @@ class MainActivity : AppCompatActivity() {
 
         supportActionBar?.title = "Group Chat"
         val adapter = GroupAdapter<ViewHolder>()
-        adapter.add(UserItem())
+        adapter.add(ChatOtherItem())
+        adapter.add(ChatSelfItem())
+        adapter.add(ChatOtherItem())
+        adapter.add(ChatSelfItem())
+        adapter.add(ChatOtherItem())
+        adapter.add(ChatSelfItem())
+        adapter.add(ChatOtherItem())
+        adapter.add(ChatSelfItem())
+        adapter.add(ChatOtherItem())
+        adapter.add(ChatSelfItem())
+
+
+
 
         recycler_message.adapter = adapter
 
@@ -25,13 +37,24 @@ class MainActivity : AppCompatActivity() {
 }
 
 
-class UserItem: Item<ViewHolder>(){
+class ChatOtherItem: Item<ViewHolder>(){
     override fun bind(viewHolder: ViewHolder, position: Int) {
 
     }
 
     override fun getLayout(): Int {
         return R.layout.other_message
+    }
+
+}
+
+class ChatSelfItem: Item<ViewHolder>(){
+    override fun bind(viewHolder: ViewHolder, position: Int) {
+
+    }
+
+    override fun getLayout(): Int {
+        return R.layout.self_message
     }
 
 }
