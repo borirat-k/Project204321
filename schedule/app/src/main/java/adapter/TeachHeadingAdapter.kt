@@ -20,11 +20,11 @@ class TeachHeadingAdapter(val items : ArrayList<String>, val context:Context) : 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 //        holder?.teach_heading?.text = items.get(position)
-        holder.teach_heading.text = items.get(items.size-position-1)
+        holder.view.teach_heading.text = items.get(items.size-position-1)
     }
 }
 
-class ViewHolder (view: View) : RecyclerView.ViewHolder(view) {
+class ViewHolder (val view: View) : RecyclerView.ViewHolder(view) {
     // Holds the TextView that will add each animal to
-    val teach_heading = view.teach_heading
+
 }

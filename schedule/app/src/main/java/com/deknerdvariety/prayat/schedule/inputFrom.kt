@@ -1,68 +1,103 @@
 package com.deknerdvariety.prayat.schedule
 
 
-import android.content.Context
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import kotlinx.android.synthetic.main.teach_input_from.*
 
-class inputFrom :AppCompatActivity(){
 
-    lateinit var et_semester:EditText
-    lateinit var et_idCourse:EditText
-    lateinit var et_starttime:EditText
-    lateinit var et_stoptime:EditText
-    lateinit var et_startDate:EditText
-    lateinit var et_stopDate:EditText
-    lateinit var btn_ok: Button
+class inputFrom : AppCompatActivity() {
 
-    lateinit var str_semester:String
-    lateinit var str_idCourse:String
-    lateinit var str_startTime:String
-    lateinit var str_stopTime:String
-    lateinit var str_startDate:String
-    lateinit var str_stopDate:String
 
+    var all_form_course: Int = 0
+    var current_from: Int = 1
+
+    var str_semester = ""
+    var str_idCourse = ""
+    var str_startTime = ""
+    var str_stopTime = ""
+    var str_startDate = ""
+    var str_stopDate = ""
+
+    val course_ary: ArrayList<CourseSchedule> = ArrayList()
+
+    var AlertDialogShow = -1 // first time show Alertdialog
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.teach_input_from)
-        bindData()
-
-        btn_ok.setOnClickListener {
-            var intent = Intent(this,timetable::class.java)
-
-            intent.putExtra("semester",str_semester)
-            intent.putExtra("idCourse",str_idCourse)
-            intent.putExtra("startTime",str_startTime)
-            intent.putExtra("stopTime",str_stopTime)
-            intent.putExtra("startDate",str_startDate)
-            intent.putExtra("stopDate",str_stopDate)
-            startActivity(intent)
-            finish()
-        }
+//        setContentView(R.layout.teach_input_from)
 
 
+//        //create custom dialog with alert_dialog.xml
+//        val view = layoutInflater.inflate(R.layout.alert_dialog, null)
+//        //show at activity context
+//        val builder = AlertDialog.Builder(this)
+//        //setting alert dialog
+//        builder.setView(view)
+//        builder.setTitle("add schdule")
+//        //set positive button
+//        builder.setPositiveButton("Create", { dialog: DialogInterface, i: Int -> })
+//        //set negative button
+//        builder.setNegativeButton("Cancel", { dialog: DialogInterface, i: Int -> })
+//        // create and show alert dialog
+//        val customDialog = builder.create()
+//        customDialog.show()
+//
+//        val count_edt = view.findViewById<EditText>(R.id.count_edt)
+//
+//
+//        //when clik positive button of alert dialog
+//        customDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener { it ->
+//            all_form_course = count_edt.text.toString().toInt()
+//            customDialog.dismiss()
+//            Toast.makeText(this, "$all_form_course", Toast.LENGTH_SHORT).show()
+//            tv_countForm.setText("$current_from/$all_form_course")
+//            //update current form
+//
+//        }
+//
+//        //when clik negative button of alert dialog
+//        customDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setOnClickListener { it ->
+//            intent = Intent(this, MainActivity::class.java)
+//            startActivity(intent)
+//            finish()
+//
+//        }
     }
 
-    fun bindData(){
-        et_semester = findViewById(R.id.et_semester)
-        et_idCourse = findViewById(R.id.et_idCourse)
-        et_starttime = findViewById(R.id.et_startTime)
-        et_stoptime = findViewById(R.id.et_stopTime)
-        et_startDate = findViewById(R.id.et_startDate)
-        et_stopDate = findViewById(R.id.et_stopDate)
-        btn_ok = findViewById(R.id.ok_btn)
+    override fun onResume() {
+        super.onResume()
 
-        str_semester = et_semester.text.toString()
-        str_idCourse = et_idCourse.text.toString()
-        str_startTime = et_starttime.text.toString()
-        str_stopTime = et_stoptime.text.toString()
-        str_startDate = et_startDate.text.toString()
-        str_stopDate = et_stopDate.text.toString()
+//        ok_btn.setOnClickListener {
+//
+//            str_semester = et_semester.text.toString()
+//            str_idCourse = et_idCourse.text.toString()
+//            str_startTime = et_startTime.text.toString()
+//            str_stopTime = et_stopTime.text.toString()
+//            str_startDate = et_startDate.text.toString()
+//            str_startDate = et_stopDate.text.toString()
+//
+//            current_from++
+//            course_ary.add(CourseSchedule(str_semester, str_idCourse, str_startTime, str_stopTime, str_startDate, str_stopDate))
+//
+//
+//            current_from++
+//            intent = Intent(this, inputFrom::class.java)
+//            intent.putExtra("current_form", current_from)
+//            intent.putExtra("all_form", all_form_course)
+//            startActivity(intent)
+//
+//        }
+//
+//        Toast.makeText(this, "current_form -> $current_from", Toast.LENGTH_SHORT).show()
     }
+
 }
+
+class CourseSchedule(val semester: String, val idCourse: String, val startTime: String, val stopTime: String, val startDate: String, val stopDate: String) {}
