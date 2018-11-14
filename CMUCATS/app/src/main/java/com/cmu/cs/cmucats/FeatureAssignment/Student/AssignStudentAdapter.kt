@@ -14,7 +14,8 @@ import android.widget.Toast
 import com.cmu.cs.cmucats.FeatureAssignment.Assignment.AssignmentStudent
 
 
-class AssignStudentAdapter(val assignList: ArrayList<AssignmentStudent>, context: Context, private var course: String): RecyclerView.Adapter<AssignStudentAdapter.ViewHolder>() {
+class AssignStudentAdapter(val assignList: ArrayList<AssignmentStudent>, context: Context,
+                           private var courseID: String, private var assignmentID: String): RecyclerView.Adapter<AssignStudentAdapter.ViewHolder>() {
 
     private var mContext: Context = context
     private var activity = mContext as Activity
@@ -43,8 +44,9 @@ class AssignStudentAdapter(val assignList: ArrayList<AssignmentStudent>, context
                 Toast.makeText(mContext, "onClick: clicked on: ", Toast.LENGTH_SHORT).show()
 
                 val intent = Intent(mContext, AssignStuDetailActivity::class.java)
-                intent.putExtra("course", course)
-                intent.putExtra("stuID", holder.textAssignStuID.text)
+                intent.putExtra("course", courseID)
+                intent.putExtra("assign", assignmentID)
+                intent.putExtra("studetail", holder.textAssignStuID.text)
                 mContext.startActivity(intent)
 //                activity.finish()
             }

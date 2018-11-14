@@ -11,7 +11,7 @@ import com.cmu.cs.cmucats.FeatureAssignment.Assignment.AssignmentActivity
 
 class FeatureActivity : NavigationActivity(), View.OnClickListener {
 
-    private var course:String? = null
+    private var courseID: String? = null
 
     private var assignmentCard: CardView? = null
     private var attendanceCard: CardView? = null
@@ -22,7 +22,7 @@ class FeatureActivity : NavigationActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val bundle: Bundle = intent.extras
-        course = bundle.getString("course")!!
+        courseID = bundle.getString("course")!!
 //        setContentView(R.layout.activity_feature)
 //        setSupportActionBar(toolbar)
 
@@ -51,7 +51,7 @@ class FeatureActivity : NavigationActivity(), View.OnClickListener {
 
     override fun onResume() {
         super.onResume()
-        supportActionBar?.setTitle(course)
+        supportActionBar?.setTitle(courseID)
     }
 
     override fun onClick(v: View?) {
@@ -59,7 +59,7 @@ class FeatureActivity : NavigationActivity(), View.OnClickListener {
             R.id.assignment_card -> {
                 Toast.makeText(this, "FeatureAssignment", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, AssignmentActivity::class.java)
-                intent.putExtra("course", course)
+                intent.putExtra("course", courseID)
                 startActivity(intent)
                 finish()
             }

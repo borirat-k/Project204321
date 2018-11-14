@@ -15,16 +15,13 @@ import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 
-class DataParserAssignment(private var c: Context, private var jsonData: String, private var rv: RecyclerView, private var course: String, private var flag: String): AsyncTask<Void, Void, Boolean>() {
+class DataParserAssignment(private var c: Context, private var jsonData: String, private var rv: RecyclerView,
+                           private var courseID: String, private var flag: String, private var assignmentID: String): AsyncTask<Void, Void, Boolean>() {
 
     private lateinit var pd: ProgressDialog
     private var assignments = ArrayList<Assignment>()
     private var assignStu = ArrayList<AssignmentStudent>()
     var mView: CatLoadingView? = null
-
-    override fun doInBackground(vararg p0: Void?): Boolean? {
-        return parseData()
-    }
 
     override fun onPreExecute() {
         super.onPreExecute()
@@ -38,6 +35,10 @@ class DataParserAssignment(private var c: Context, private var jsonData: String,
 //        pd.show()
     }
 
+    override fun doInBackground(vararg p0: Void?): Boolean? {
+        return parseData()
+    }
+
     override fun onPostExecute(parsed: Boolean?) {
         super.onPostExecute(parsed)
 
@@ -47,11 +48,11 @@ class DataParserAssignment(private var c: Context, private var jsonData: String,
         if (parsed!!){
             //BIND
             if (flag == "assign") {
-                val adapter = AssignmentAdapter(assignments, c, course)
+                val adapter = AssignmentAdapter(assignments, c, courseID)
                 rv.adapter = adapter
             }
             else if (flag == "student"){
-                val adapter = AssignStudentAdapter(assignStu, c, course)
+                val adapter = AssignStudentAdapter(assignStu, c, courseID, assignmentID)
                 rv.adapter = adapter
             }
         }

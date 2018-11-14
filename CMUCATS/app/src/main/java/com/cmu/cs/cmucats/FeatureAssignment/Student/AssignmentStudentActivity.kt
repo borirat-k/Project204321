@@ -14,8 +14,8 @@ import com.cmu.cs.cmucats.NavigationActivity
 import com.cmu.cs.cmucats.R
 import kotlinx.android.synthetic.main.content_assignment_student.*
 
-private var course: String? = null
-private var assignment: String? = null
+private var courseID: String? = null
+private var assignmentID: String? = null
 
 class AssignmentStudentActivity : NavigationActivity() {
 
@@ -26,8 +26,8 @@ class AssignmentStudentActivity : NavigationActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val bundle: Bundle = intent.extras
-        course = bundle.getString("course")
-        assignment = bundle.getString("assign")!!
+        courseID = bundle.getString("course")
+        assignmentID = bundle.getString("assign")!!
 
         val contentFrameLayout: FrameLayout = findViewById<FrameLayout>(R.id.content_frame)
         layoutInflater.inflate(R.layout.activity_assignment, contentFrameLayout)
@@ -42,7 +42,7 @@ class AssignmentStudentActivity : NavigationActivity() {
                     .setAction("Action", null).show()
         }
 
-        DownloaderAssignment(this@AssignmentStudentActivity, urlAdress, recyclerView, course!!, FLAG_ASSIGNMENT).execute()
+        DownloaderAssignment(this@AssignmentStudentActivity, urlAdress, recyclerView, courseID!!, FLAG_ASSIGNMENT, assignmentID!!).execute()
 
 //        val assignmentStuID = ArrayList<AssignmentStudent>()
 
@@ -65,7 +65,7 @@ class AssignmentStudentActivity : NavigationActivity() {
 
     override fun onBackPressed() {
         val intent = Intent(this, AssignmentActivity::class.java)
-        intent.putExtra("course", course)
+        intent.putExtra("course", courseID)
         startActivity(intent)
         finish()
         overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right)
@@ -73,7 +73,7 @@ class AssignmentStudentActivity : NavigationActivity() {
 
     override fun onResume() {
         super.onResume()
-        supportActionBar?.setTitle(course)
-        supportActionBar?.setSubtitle(assignment)
+        supportActionBar?.setTitle(courseID)
+        supportActionBar?.setSubtitle(assignmentID)
     }
 }

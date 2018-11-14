@@ -20,7 +20,7 @@ import com.cmu.cs.cmucats.R
 import kotlinx.android.synthetic.main.activity_assignment.*
 import kotlinx.android.synthetic.main.content_assignment.*
 
-private var course:String? = null
+private var courseID:String? = null
 
 class AssignmentActivity : NavigationActivity() {
 
@@ -35,7 +35,7 @@ class AssignmentActivity : NavigationActivity() {
         super.onCreate(savedInstanceState)
 //        setContentView(R.layout.activity_assignment)
         val bundle: Bundle = intent.extras
-        course = bundle.getString("course")!!
+        courseID = bundle.getString("course")!!
 
         val contentFrameLayout: FrameLayout = findViewById<FrameLayout>(R.id.content_frame)
         layoutInflater.inflate(R.layout.activity_assignment, contentFrameLayout)
@@ -50,7 +50,7 @@ class AssignmentActivity : NavigationActivity() {
                     .setAction("Action", null).show()
         }
 
-        DownloaderAssignment(this@AssignmentActivity, urlAdress, recyclerView, course!!, FLAG_ASSIGNMENT).execute()
+        DownloaderAssignment(this@AssignmentActivity, urlAdress, recyclerView, courseID!!, FLAG_ASSIGNMENT, "").execute()
 
 //        supportFragmentManager
 //                .beginTransaction()
@@ -66,7 +66,7 @@ class AssignmentActivity : NavigationActivity() {
     override fun onBackPressed() {
 //        if (supportFragmentManager.findFragmentByTag(TAG_ASSIGNMENT_FRAGMENT)) {
             val intent = Intent(this, FeatureActivity::class.java)
-            intent.putExtra("course", course)
+            intent.putExtra("course", courseID)
             startActivity(intent)
             finish()
             overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right)
@@ -81,7 +81,7 @@ class AssignmentActivity : NavigationActivity() {
 
     override fun onResume() {
         super.onResume()
-        supportActionBar?.setTitle(course)
+        supportActionBar?.setTitle(courseID)
         supportActionBar?.setSubtitle("Assignment")
     }
 
@@ -105,7 +105,7 @@ class AssignmentFragment : Fragment(){
                     .setAction("Action", null).show()
         }
 
-        DownloaderAssignment(view.context, urlAdress, recyclerView, course!!, FLAG_ASSIGNMENT).execute()
+        DownloaderAssignment(view.context, urlAdress, recyclerView, courseID!!, FLAG_ASSIGNMENT, "").execute()
         return view
     }
 
