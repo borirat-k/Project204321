@@ -2,6 +2,7 @@ package main_chat_application.mainchat
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Item
@@ -15,14 +16,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         supportActionBar?.title = "Group Chat"
-        val adapter = GroupAdapter<RecyclerView.ViewHolder>()
-
+        val adapter = GroupAdapter<ViewHolder>()
         adapter.add(UserItem())
 
-        recyclerview_message.adapter = adapter
+        recycler_message.adapter = adapter
 
     }
 }
+
 
 class UserItem: Item<ViewHolder>(){
     override fun bind(viewHolder: ViewHolder, position: Int) {
