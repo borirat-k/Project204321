@@ -47,6 +47,8 @@
             android:taskAffinity=""
             android:theme="@style/Theme.Sliding.Light"
             />
+        <activity
+            android:name=".FeatureSchedule.ScheduleActivity" />
     </application>
 
 </manifest>

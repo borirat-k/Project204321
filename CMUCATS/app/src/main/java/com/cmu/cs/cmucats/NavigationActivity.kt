@@ -10,6 +10,7 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.view.MenuItem
 import android.widget.FrameLayout
 import android.widget.Toast
+import com.cmu.cs.cmucats.FeatureSchedule.ScheduleActivity
 //import com.mikepenz.materialdrawer.Drawer
 import kotlinx.android.synthetic.main.activity_navigation.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
@@ -98,8 +99,8 @@ open class NavigationActivity : AppCompatActivity(), NavigationView.OnNavigation
             }
             R.id.schedule -> {
                 navigationView.setCheckedItem(R.id.schedule)
-                val intent = Intent(this, FeatureActivity::class.java)
-                intent.putExtra("course", "555555")
+                val intent = Intent(this, ScheduleActivity::class.java)
+//                intent.putExtra("course", "555555")
                 startActivity(intent)
                 finish()
             }
