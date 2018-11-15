@@ -16,7 +16,7 @@ import adapter.TeachHeadingAdapter
 import android.content.Intent
 import android.util.Log
 import com.deknerdvariety.prayat.schedule.MainActivity
-import com.deknerdvariety.prayat.schedule.inputFrom
+import com.deknerdvariety.prayat.schedule.PromptRunnable
 import com.deknerdvariety.prayat.schedule.timetable
 import kotlinx.android.synthetic.main.teach_input_from.*
 import kotlinx.android.synthetic.main.teach_input_from.view.*
@@ -43,8 +43,8 @@ class Teach_schedule_fragment : Fragment() {
 
     lateinit var count_edt: EditText
 
-    var changeAc = 0;
-    var all_form = 0
+    var changeAc = 0
+
 
 
 
@@ -89,10 +89,9 @@ class Teach_schedule_fragment : Fragment() {
             customDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener { it ->
                 val all_form_course = count_edt.text.toString().toInt()
                 customDialog.dismiss()
-                all_form = all_form_course
                 Toast.makeText(context, "$all_form_course", Toast.LENGTH_SHORT).show()
                 for(i in 1..all_form_course){
-                    input_dialog()
+                    input_dialog(all_form_course, PromptRunnable())
                 }
                 //update current form
             }
@@ -113,7 +112,7 @@ class Teach_schedule_fragment : Fragment() {
 //        }
     }
 
-    fun input_dialog(){
+    fun input_dialog(all_form_course:Int,posturn:PromptRunnable){
 
         val view = layoutInflater.inflate(R.layout.teach_input_from, null)
         //show at activity context
@@ -146,8 +145,16 @@ class Teach_schedule_fragment : Fragment() {
             //update current form
 
             changeAc++
-
             customDialog.dismiss()
+            posturn.run(){
+                if(changeAc == all_form_course){
+                    val intent = Intent(context,timetable::class.java)
+                    startActivity(intent)
+                    changeAc = 0
+                }
+            }
+
+
         }
 
         //when clik negative button of alert dialog
