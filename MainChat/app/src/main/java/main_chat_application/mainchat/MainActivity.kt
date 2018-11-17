@@ -21,14 +21,17 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val adapter = GroupAdapter<ViewHolder>()
 
         supportActionBar?.title = "Group Chat"
 
-        setupDummyData()
 
         Send_button.setOnClickListener{
-            Log.d(TAG,"Attempt to send message....")
-
+            val text = edittext_main.text.toString()
+            adapter.add(ChatSelfItem(text))
+            recycler_message.adapter = adapter
+            //Log.d(TAG,"Attempt to send message....")
+            edittext_main.setText("")
         }
     }
     //class ChatMessage(val text: String)
@@ -42,12 +45,11 @@ class MainActivity : AppCompatActivity() {
             //    Log.d(TAG,"Save our chat message: ${reference.key}")
             //}
     //}
-    private fun setupDummyData(){
-        val adapter = GroupAdapter<ViewHolder>()
-        adapter.add(ChatOtherItem("From Hum"))
-        adapter.add(ChatSelfItem("To Ea"))
-        recycler_message.adapter = adapter
-    }
+//    private fun setupDummyData(text: String){
+//        val adapter = GroupAdapter<ViewHolder>()
+//        adapter.add(ChatSelfItem(text))
+//        recycler_message.adapter = adapter
+//    }
 }
 
 
