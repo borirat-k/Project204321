@@ -10,9 +10,9 @@ import java.io.*
 import java.net.HttpURLConnection
 import java.net.URLEncoder
 
-class InsertUpdateAssignment(private var c: Context, private var urlAdress: String,
-                             private var courseID: String, private var assignmentID: String,
-                             private var startDate: String, private var deadLine: String, private var maxScore: String): AsyncTask<Void, Void, String>() {
+class EditUpdateAssignment(private var c: Context, private var urlAdress: String,
+                           private var courseID: String, private var assignmentID_old: String,
+                           private var assignmentID_new: String, private var deadLine: String, private var maxScore: String): AsyncTask<Void, Void, Boolean>() {
 
     var mView: CatLoadingView? = null
 
@@ -22,24 +22,18 @@ class InsertUpdateAssignment(private var c: Context, private var urlAdress: Stri
         mView = CatLoadingView()
         mView!!.show((c as FragmentActivity).supportFragmentManager, "")
         println(courseID)
-        println(assignmentID)
-        println(startDate)
-        println(deadLine)
-        println(maxScore)
     }
 
-    override fun doInBackground(vararg p0: Void?): String? {
+    override fun doInBackground(vararg p0: Void?): Boolean? {
         return downloadData()
     }
 
-    override fun onPostExecute(status: String?) {
+    override fun onPostExecute(status: Boolean?) {
         super.onPostExecute(status)
 
         mView!!.dismiss()
 
-        println("statussssssss" + status)
-
-        if(status==null){
+        if(status!!){
             Toast.makeText(c, "successful", Toast.LENGTH_SHORT).show()
         }
         else{
@@ -48,7 +42,7 @@ class InsertUpdateAssignment(private var c: Context, private var urlAdress: Stri
         }
     }
 
-    private fun downloadData(): String? {
+    private fun downloadData(): Boolean? {
         val con: HttpURLConnection? = Connector().connect(urlAdress)
         if(con==null){
             return null
@@ -58,8 +52,8 @@ class InsertUpdateAssignment(private var c: Context, private var urlAdress: Stri
             val ops: OutputStream = con.outputStream
             val writer: BufferedWriter = BufferedWriter(OutputStreamWriter(ops, "UTF-8"))
             var data: String = URLEncoder.encode("Cid", "UTF-8") + "=" + URLEncoder.encode(courseID, "UTF-8")
-            data += "&" + URLEncoder.encode("Aid", "UTF-8") + "=" + URLEncoder.encode(assignmentID, "UTF-8")
-            data += "&" + URLEncoder.encode("start_date", "UTF-8") + "=" + URLEncoder.encode(startDate, "UTF-8")
+            data += "&" + URLEncoder.encode("Aid_old", "UTF-8") + "=" + URLEncoder.encode(assignmentID_old, "UTF-8")
+            data += "&" + URLEncoder.encode("Aid_new", "UTF-8") + "=" + URLEncoder.encode(assignmentID_new, "UTF-8")
             data += "&" + URLEncoder.encode("Dead_line", "UTF-8") + "=" + URLEncoder.encode(deadLine, "UTF-8")
             data += "&" + URLEncoder.encode("max_score", "UTF-8") + "=" + URLEncoder.encode(maxScore, "UTF-8")
             writer.write(data)
@@ -70,31 +64,19 @@ class InsertUpdateAssignment(private var c: Context, private var urlAdress: Stri
             ops.close()
             if (con.responseCode == 200) {
                 var inputstream: InputStream = BufferedInputStream(con.inputStream)
-                var br: BufferedReader = BufferedReader(InputStreamReader(inputstream))
-
-                var line: String?
-                var jsonData: StringBuffer = StringBuffer()
-
-                do {
-                    line = br.readLine()
-
-                    if (line == null) {
-                        break
-                    }
-
-                    jsonData.append(line + "\n")
-                } while (true)
-
-                br.close()
+//                var br: BufferedReader = BufferedReader(InputStreamReader(inputstream))
+//
+//                br.close()
                 inputstream.close()
-                return jsonData.toString()
+                return true
             }
             else{
-                return "Error" + con.responseMessage
+                return false
             }
+            return true
         } catch (e: IOException){
             e.printStackTrace()
         }
-        return null
+        return false
     }
 }

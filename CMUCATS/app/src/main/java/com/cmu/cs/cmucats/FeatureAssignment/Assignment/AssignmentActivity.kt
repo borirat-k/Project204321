@@ -20,7 +20,7 @@ import com.afollestad.materialdialogs.customview.customView
 import com.afollestad.materialdialogs.customview.getCustomView
 import com.cmu.cs.cmucats.FeatureAssignment.MySQL.SELECT.DownloaderAssignment
 import com.cmu.cs.cmucats.FeatureActivity
-import com.cmu.cs.cmucats.FeatureAssignment.MySQL.INSERT_UPDATE.InsertUpdateAssignment
+import com.cmu.cs.cmucats.FeatureAssignment.MySQL.INSERT_UPDATE.InsertAssignment
 import com.cmu.cs.cmucats.NavigationActivity
 import com.cmu.cs.cmucats.R
 import com.rengwuxian.materialedittext.MaterialEditText
@@ -28,8 +28,6 @@ import com.rengwuxian.materialedittext.validation.RegexpValidator
 import kotlinx.android.synthetic.main.content_assignment.*
 import nectec.thai.widget.date.DatePicker
 import java.util.*
-import android.support.v4.os.HandlerCompat.postDelayed
-
 
 
 private var courseID: String? = null
@@ -74,6 +72,7 @@ class AssignmentActivity : NavigationActivity(){
         add_assignment.setOnClickListener { view ->
 //            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
 //                    .setAction("Action", null).show()
+            var optionAssign: String = "insert"
             val dialog = MaterialDialog(this).show {
                 title(text = "Add Assignment")
                 customView(R.layout.edit_add_assignment)
@@ -85,6 +84,7 @@ class AssignmentActivity : NavigationActivity(){
 
                     println(datePicker.year.toString() + datePicker.month.toString() + datePicker.dayOfMonth.toString())
                     val nowToday: Calendar = Calendar.getInstance()
+                    println("TODAYYYYYYYYY")
                     println(nowToday.get(Calendar.YEAR))
                     println(nowToday.get(Calendar.MONTH))
                     println(nowToday.get(Calendar.DATE))
@@ -96,9 +96,10 @@ class AssignmentActivity : NavigationActivity(){
                     if (!assignment_max_score.validateWith(RegexpValidator(getString(R.string.required), "\\d+"))) {
                         check_add_assignment = false
                     }
-                    if (datePicker.year < nowToday.get(Calendar.YEAR) ||
-                            datePicker.month < nowToday.get(Calendar.MONTH) ||
-                            datePicker.dayOfMonth < nowToday.get(Calendar.DATE)){
+//                    if (datePicker.year < nowToday.get(Calendar.YEAR) ||
+//                            datePicker.month < nowToday.get(Calendar.MONTH) ||
+//                            datePicker.dayOfMonth < nowToday.get(Calendar.DATE)){
+                    if (validDate(datePicker, nowToday)){
                         check_add_assignment = false
                         datePicker.error = "กรุณาระบุวันที่ให้ถูกต้อง"
                         Toast.makeText(dialog.context, "กรุณาระบุวันที่ให้ถูกต้อง", Toast.LENGTH_SHORT).show()
@@ -106,15 +107,17 @@ class AssignmentActivity : NavigationActivity(){
                     if (check_add_assignment){
                         var assignmentID: String = assignment_name.text.toString()
                         var startDate: String = nowToday.get(Calendar.YEAR).toString() + "-"
-                        startDate += nowToday.get(Calendar.MONTH).toString() + "-"
+                        startDate += (nowToday.get(Calendar.MONTH) + 1).toString() + "-"
                         startDate += nowToday.get(Calendar.DATE).toString()
                         var deadLine: String = datePicker.year.toString() + "-"
-                        deadLine += datePicker.month.toString() + "-"
+                        deadLine += (datePicker.month + 1).toString() + "-"
                         deadLine += datePicker.dayOfMonth.toString()
+//                        println("MONTH = " + (datePicker.month + 1).toString())
+//                        println("DEADLINE =" + deadLine)
                         var maxScore: String = assignment_max_score.text.toString()
 //                        startDate += if (datePicker.month < 10) "0" + datePicker.month.toString() else datePicker.month.toString()
 //                        startDate += if (datePicker.dayOfMonth < 10) "-0" + datePicker.dayOfMonth.toString()
-                        InsertUpdateAssignment(this@AssignmentActivity, insertAdress, courseID!!, assignmentID, startDate, deadLine, maxScore).execute()
+                        InsertAssignment(this@AssignmentActivity, insertAdress, courseID!!, assignmentID, startDate, deadLine, maxScore).execute()
                         DownloaderAssignment(this@AssignmentActivity, urlAdress, recyclerView, courseID!!, FLAG_ASSIGNMENT, "").execute()
                         dialog.dismiss()
                     }
@@ -172,6 +175,25 @@ class AssignmentActivity : NavigationActivity(){
 //                .beginTransaction()
 //                .replace(R.id.content_frame, AssignmentFragment(), TAG_ASSIGNMENT_FRAGMENT)
 //                .commit()
+    }
+
+    fun validDate(datePicker: DatePicker, nowToday: Calendar): Boolean{
+        if (datePicker.year < nowToday.get(Calendar.YEAR)){
+            return true
+        }
+        else if (datePicker.month < nowToday.get(Calendar.MONTH)){
+            if (datePicker.year <= nowToday.get(Calendar.YEAR)){
+                return true
+            }
+        }
+        else if (datePicker.dayOfMonth < nowToday.get(Calendar.DATE)){
+            if (datePicker.month <= nowToday.get(Calendar.MONTH)){
+                if (datePicker.year <= nowToday.get(Calendar.YEAR)){
+                    return true
+                }
+            }
+        }
+        return false
     }
 
 //    override fun onNavigationItemSelected(item: MenuItem): Boolean {

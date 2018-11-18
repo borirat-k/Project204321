@@ -15,16 +15,13 @@ import com.cmu.cs.cmucats.R
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.customview.customView
 import com.afollestad.materialdialogs.customview.getCustomView
-import com.afollestad.materialdialogs.input.getInputField
-import com.afollestad.materialdialogs.input.input
 import com.cmu.cs.cmucats.FeatureAssignment.MySQL.DELETE.DeleteAssignment
+import com.cmu.cs.cmucats.FeatureAssignment.MySQL.INSERT_UPDATE.EditShowAssignment
+import com.cmu.cs.cmucats.FeatureAssignment.MySQL.INSERT_UPDATE.EditUpdateAssignment
 import com.cmu.cs.cmucats.FeatureAssignment.Student.AssignmentStudentActivity
 import com.rengwuxian.materialedittext.MaterialEditText
 import com.rengwuxian.materialedittext.validation.RegexpValidator
-import nectec.thai.date.DatePrinter
 import nectec.thai.widget.date.DatePicker
-import nectec.thai.widget.date.DateView
-import th.or.nectec.thai.widget.BuildConfig
 import java.util.Calendar
 
 
@@ -34,7 +31,9 @@ class AssignmentAdapter(val assignList: ArrayList<Assignment>, context: Context,
     private var activity = mContext as Activity
 
     val TAG_ASSIGN_STU_FRAGMENT = "tag_assign_stu_fragment"
-    var deleteAdress: String = "http://10.0.2.2/Project204321/delete_assignment.php"
+    val deleteAdress: String = "http://10.0.2.2/Project204321/delete_assignment.php"
+    val editShowAdress: String = "http://10.0.2.2/Project204321/update_show_assignment.php"
+    val editEditAdress: String = "http://10.0.2.2/Project204321/update_edit_assignment.php"
 
     private var assignmentID: String? = null
 
@@ -139,7 +138,7 @@ class AssignmentAdapter(val assignList: ArrayList<Assignment>, context: Context,
                         val assignment_max_score: MaterialEditText = customView.findViewById(R.id.edit_assignment_max_score)
                         val datePicker: DatePicker = customView.findViewById(R.id.date_picker) as DatePicker
 
-                        println(datePicker.year.toString() + datePicker.month.toString() + datePicker.dayOfMonth.toString())
+//                        println(datePicker.year.toString() + datePicker.month.toString() + datePicker.dayOfMonth.toString())
                         val nowToday: Calendar = Calendar.getInstance()
                         if (assignment_name.text.toString().trim().isEmpty()) {
                             assignment_name.error = mContext.getString(R.string.required)
@@ -148,25 +147,29 @@ class AssignmentAdapter(val assignList: ArrayList<Assignment>, context: Context,
                         if (!assignment_max_score.validateWith(RegexpValidator(mContext.getString(R.string.required), "\\d+"))) {
                             check_add_assignment = false
                         }
-                        if (datePicker.year < nowToday.get(Calendar.YEAR) ||
-                                datePicker.month < nowToday.get(Calendar.MONTH) ||
-                                datePicker.dayOfMonth < nowToday.get(Calendar.DATE)){
+//                        if (datePicker.year < nowToday.get(Calendar.YEAR) ||
+//                                datePicker.month < nowToday.get(Calendar.MONTH) ||
+//                                datePicker.dayOfMonth < nowToday.get(Calendar.DATE)){
+                        if (validDate(datePicker, nowToday)){
                             check_add_assignment = false
                             datePicker.error = "กรุณาระบุวันที่ให้ถูกต้อง"
                             Toast.makeText(dialog.context, "กรุณาระบุวันที่ให้ถูกต้อง", Toast.LENGTH_SHORT).show()
                         }
                         if (check_add_assignment){
-                            var assignmentID: String = assignment_name.text.toString()
+                            var assignmentID_new: String = assignment_name.text.toString()
                             var startDate: String = nowToday.get(Calendar.YEAR).toString() + "-"
                             startDate += nowToday.get(Calendar.MONTH).toString() + "-"
                             startDate += nowToday.get(Calendar.DATE).toString()
                             var deadLine: String = datePicker.year.toString() + "-"
-                            deadLine += datePicker.month.toString() + "-"
+                            deadLine += (datePicker.month + 1).toString() + "-"
                             deadLine += datePicker.dayOfMonth.toString()
                             var maxScore: String = assignment_max_score.text.toString()
 
-//                            InsertUpdateAssignment(this@AssignmentActivity, insertAdress, courseID!!, assignmentID, startDate, deadLine, maxScore).execute()
-//                            DownloaderAssignment(this@AssignmentActivity, urlAdress, recyclerView, courseID!!, FLAG_ASSIGNMENT, "").execute()
+                            EditUpdateAssignment(customView.context, editEditAdress, courseID, assignmentID!!, assignmentID_new, deadLine, maxScore).execute()
+                            val intent = Intent(mContext, AssignmentActivity::class.java)
+                            intent.putExtra("course", courseID)
+                            mContext.startActivity(intent)
+                            activity.finish()
                             dialog.dismiss()
                         }
                         else{
@@ -182,9 +185,13 @@ class AssignmentAdapter(val assignList: ArrayList<Assignment>, context: Context,
                 }
                 val datePicker: DatePicker = dialog.findViewById(R.id.date_picker) as DatePicker
                 datePicker.setPopupTitle("ระบุ วัน/เดือน/ปี")
+//                datePicker.updateDate(2019,0,17)
                 datePicker.setOnDateChangedListener {
                     datePicker.error = null
                 }
+//                var edit_assignment_name = dialog.findViewById(R.id.edit_assignment_name) as MaterialEditText
+                EditShowAssignment(dialog.getCustomView()!!.context, editShowAdress, dialog, courseID, assignmentID!!).execute()
+
 
 
 //                var ee = dialog.findViewById(R.id.edit_assignment_name) as EditText
@@ -204,6 +211,25 @@ class AssignmentAdapter(val assignList: ArrayList<Assignment>, context: Context,
                 activity.finish()
 //                Toast.makeText(mContext, "Delete", Toast.LENGTH_SHORT).show()
                 return true
+            }
+        }
+        return false
+    }
+
+    fun validDate(datePicker: DatePicker, nowToday: Calendar): Boolean{
+        if (datePicker.year < nowToday.get(Calendar.YEAR)){
+            return true
+        }
+        else if (datePicker.month < nowToday.get(Calendar.MONTH)){
+            if (datePicker.year <= nowToday.get(Calendar.YEAR)){
+                return true
+            }
+        }
+        else if (datePicker.dayOfMonth < nowToday.get(Calendar.DATE)){
+            if (datePicker.month <= nowToday.get(Calendar.MONTH)){
+                if (datePicker.year <= nowToday.get(Calendar.YEAR)){
+                    return true
+                }
             }
         }
         return false
