@@ -26,7 +26,8 @@
         android:hint="1/25.."
         android:inputType="textAutoComplete"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_semester" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_semester"
+        android:singleLine="true"/>
 
     <TextView
         android:id="@+id/tv_idCourse"
@@ -47,6 +48,7 @@
         android:ems="10"
         android:hint="รหัสวิชา"
         android:inputType="textAutoComplete"
+        android:singleLine="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_idCourse" />
 
@@ -118,7 +120,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:singleLine="true"
+        android:inputType="textPersonName|number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.14"
         app:layout_constraintStart_toEndOf="@+id/textView3"
@@ -132,6 +135,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="40dp"
         android:ems="10"
+        android:singleLine="true"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.2"
@@ -145,6 +149,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginTop="28dp"
         android:ems="10"
+        android:singleLine="true"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.151"
@@ -159,7 +164,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:singleLine="true"
+        android:inputType="textPersonName|number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.181"
         app:layout_constraintStart_toEndOf="@+id/textView"

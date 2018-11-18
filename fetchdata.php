@@ -1,50 +1,38 @@
 <?php
-class Constants
-{
-    static $db_server = "localhost";
-    static $db_name = "cmucats";
-    static $username = "root";
-    static $password = "";
+$servername = "localhost";
+$username = "root";
+$password="";
+$dbname ="cmucats";
 
-    static $sql_select_all = "select * from student";
-}
+//create connection
+$conn = new mysqli($servername,$username,$password,$dbname);
 
-class quotes
-{
-    public function connect()
-    {
-        $conn =new mysqli(Constants::$db_server,Constants::$username,Constants::$password,Constants::$db_name);
-        if($conn->connect_error){
-            echo "unable to connect";
-        }
-        else
-        {
-            return $conn;
-        }
+//check connection
+if($conn->connect_error)
+    die("connection failed:".$conn->connect_error);
+
+mysqli_set_charset($conn,"utf8");
+//$teacher_id = $_POST['user_id'];
+$tc_id = $_POST["tc_id"];
+$sql = "select course.Cid,course.time_teach,course.date_teach,teach_schedule.semester from course join select_in on course.Cid = select_in.Cid join teach_schedule on select_in.tc_id = teach_schedule.tc_id where tc_id = $tc_id";
+$result1 = $conn->query($sql);
+
+if($result1->num_rows > 0){
+    $course = array();
+    while($row = mysqli_fetch_array($result1)){
+        $idCourse = $row["Cid"];
+        $time_teach = $row["time_teach"];
+        $date_teach = $row["date_teach"];
+        $semester = $row["semester"];
+
+        array_push($course,array("idCourse"=>$idCourse,"time_teach"=>$time_teach,"date_teach"=> $date_teach,"semester"=>$semester));
     }
 
-    public function select(){
-        $conn = $this->connect();
-        if($conn != null){
-            mysqli_set_charset($conn, "utf8");
-            $result = $conn->query(Constants::$sql_select_all);
-            if($result->num_rows>0)
-            {
-                $quotes = array();
-                while($row = $result->fetch_array()){
-                    array_push($quotes,array("stu_id"=>$row['stu_id'],"title"=>$row['Title'],
-                "Fname"=>$row['Fname'],"Lname"=>$row['Lname'],"Email"=>$row['Email'],"Class"=>$row["Class"],
-                "Degree"=>$row["Degree"]));
-                }
-                print(json_encode(array_reverse($quotes)));
-            }
-            else{
-                print(json_encode("php exception: can't retrive from mysql"));
-            }
-            $conn->close();
-        }
-    }
+    echo json_encode($course);
+
+    // for ($x = 0; $x <= 10; $x++) {
+    // echo $flag[$x];
+    // }
 }
-$quotes = new quotes();
-$quotes->select();
+$conn->close();
  ?>
