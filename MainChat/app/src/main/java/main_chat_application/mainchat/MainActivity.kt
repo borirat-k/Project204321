@@ -5,18 +5,29 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
+import android.widget.EditText
+import com.android.volley.toolbox.StringRequest
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.self_message.view.*
+import com.android.volley.AuthFailureError
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.VolleyError
+
+import org.json.JSONException
+import org.json.JSONObject
+import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
 
     companion object {
         val TAG = "ChatLog"
     }
-
+    var message: EditText? = null
+    val addUrl : String = "localhost/android/addActivity.php" // connect with ???
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +36,8 @@ class MainActivity : AppCompatActivity() {
 
         supportActionBar?.title = "Group Chat"
 
+        message = findViewById(R.id.edittext_main)
+
 
         Send_button.setOnClickListener{
             val text = edittext_main.text.toString()
@@ -32,7 +45,36 @@ class MainActivity : AppCompatActivity() {
             recycler_message.adapter = adapter
             //Log.d(TAG,"Attempt to send message....")
             edittext_main.setText("")
+            addMessage()
         }
+    }
+
+    private fun addMessage() {
+        val getMessage = message?.text.toString()
+
+            val stringRequest = object : StringRequest(Request.Method.POST,addUrl,Response.Listener<String>{
+                response ->
+            try {
+                val obj = JSONObject(response)
+                Toast.makeText(applicationContext, obj.getString("message"), Toast.LENGTH_SHORT).show()
+            }catch (e: JSONException){
+                e.printStackTrace()
+            }
+
+        }, object : Response.ErrorListener{
+            override fun onErrorResponse(volleyError: VolleyError) {
+                Toast.makeText(applicationContext, volleyError.message, Toast.LENGTH_LONG).show()
+            }
+        }){
+            @Throws(AuthFailureError::class)
+            override fun getParams(): Map<String, String> {
+                val params = HashMap<String, String>()
+                params.put("message", getMessage)
+                return params
+            }
+        }
+        VolleySingleton.instance?.addToRequestQueue(stringRequest)
+    }
     }
     //class ChatMessage(val text: String)
 
@@ -50,7 +92,7 @@ class MainActivity : AppCompatActivity() {
 //        adapter.add(ChatSelfItem(text))
 //        recycler_message.adapter = adapter
 //    }
-}
+
 
 
 
