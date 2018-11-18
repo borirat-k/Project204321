@@ -36,16 +36,18 @@ class MainActivity : AppCompatActivity() {
 
         supportActionBar?.title = "Group Chat"
 
-        message = findViewById(R.id.edittext_main)
 
 
         Send_button.setOnClickListener{
-            val text = edittext_main.text.toString()
-            adapter.add(ChatSelfItem(text))
-            recycler_message.adapter = adapter
-            //Log.d(TAG,"Attempt to send message....")
-            edittext_main.setText("")
-            addMessage()
+            val text = edittext_main?.text.toString()
+            if(text != ""){
+                adapter.add(ChatSelfItem(text))
+                recycler_message.adapter = adapter
+                //Log.d(TAG,"Attempt to send message...."
+                edittext_main.setText("")
+                //addMessage()
+            }
+
         }
     }
 
@@ -73,7 +75,7 @@ class MainActivity : AppCompatActivity() {
                 return params
             }
         }
-        VolleySingleton.instance?.addToRequestQueue(stringRequest)
+//        VolleySingleton.instance?.addToRequestQueue(stringRequest)
     }
     }
     //class ChatMessage(val text: String)
@@ -81,8 +83,8 @@ class MainActivity : AppCompatActivity() {
     //private fun performSendMessage(){
       //  val text = edittext_main.text.toString()
         //val reference = //Connect to Database Ex. FirebaseDatabase.getInstnace().getReference("/messages").push()
-        //val chatMesage = ChatMessage(text)
-        //reference.setValue(chatMesage)
+        //val chatMessage = ChatMessage(text)
+        //reference.setValue(chatMessage)
           //  .addOnSuccessListener{
             //    Log.d(TAG,"Save our chat message: ${reference.key}")
             //}
