@@ -51,6 +51,8 @@ dependencies {
     implementation 'th.or.nectec.android:thai-widget:0.6.2'
     implementation 'in.srain.cube:ultra-ptr:1.0.11'
 
+    implementation 'com.xwray:groupie:2.1.0'
+
 //    api('com.mikepenz:materialdrawer:6.0.9@aar') {
 //        transitive = true
 //    }
