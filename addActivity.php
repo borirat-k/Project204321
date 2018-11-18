@@ -1,7 +1,11 @@
 <?php
 //getting user values
-$activity=$_POST['activity'];
-$day=$_POST['day'];
+$Gid=$_POST['Gid'];
+$Tid=$_POST['Tid'];
+$message=$_POST['message'];
+$date_c=$_POST['date_c'];
+$time=$_POST['time'];
+
 
 //array of responses
 $output=array();
@@ -10,11 +14,14 @@ $output=array();
 require_once('db.php');
 
 //insert activity
-$conn=$dbh->prepare('INSERT INTO weeklyactivities(activity,day) VALUES (?,?)');
+$conn=$dbh->prepare('INSERT INTO chat(Gid,Tid,message,date_c,time) VALUES (?,?,?,?,?)');
    
  //binding parameters   
-    $conn->bindParam(1,$activity);
-    $conn->bindParam(2,$day);
+    $conn->bindParam(1,$Gid);
+    $conn->bindParam(2,$Tid);
+    $conn->bindParam(3,$message);
+    $conn->bindParam(4,$date_c);
+    $conn->bindParam(5,$time);
 
     $conn->execute();
     if($conn->rowCount() == 0)
