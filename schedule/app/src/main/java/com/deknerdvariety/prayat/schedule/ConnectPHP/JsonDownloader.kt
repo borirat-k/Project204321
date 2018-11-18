@@ -13,7 +13,7 @@ import java.net.MalformedURLException
 import java.net.URL
 import java.net.URLEncoder
 
-class JsonDownloader(var context: Context,private var phpUrl:String,var flagHead:Int) : AsyncTask<Void, Void, String>() {
+class JsonDownloader(var context: Context,private var phpUrl:String,var rv:RecyclerView,var flagHead:Int) : AsyncTask<Void, Void, String>() {
     private val user_id = 4;
     private lateinit var pd: ProgressDialog
 
@@ -96,7 +96,7 @@ class JsonDownloader(var context: Context,private var phpUrl:String,var flagHead
         }
         else{
             Toast.makeText(context,"connection and download success,Now attemt to parse....",Toast.LENGTH_SHORT).show()
-            JsonParser(context,jsonData,flagHead).execute()
+            JsonParser(context,jsonData,rv,flagHead).execute()
         }
     }
 

@@ -25,7 +25,7 @@ import java.net.MalformedURLException
 import java.net.URL
 
 @Suppress("DEPRECATION")
-class JsonParser(var context: Context, private var jsonData: String,var flagHead:Int) : AsyncTask<Void, Void, Boolean>() {
+class JsonParser(var context: Context, private var jsonData: String,var rv:RecyclerView,var flagHead:Int) : AsyncTask<Void, Void, Boolean>() {
 
 
     private lateinit var pd: ProgressDialog
@@ -122,6 +122,7 @@ class JsonParser(var context: Context, private var jsonData: String,var flagHead
             //Toast.makeText(context,"adapter pass",Toast.LENGTH_SHORT).show()
             //var view = LayoutInflater.from(context).inflate(R.layout.downloadphp,viewGroup,false)
             Teach_schedule_fragment.course_schedule_Head = headScheduleList
+            rv.adapter = TeachHeadingAdapter(headScheduleList,context)
            // Toast.makeText(context,"ddddddddddddddddddddddddddddddddd",Toast.LENGTH_SHORT).show()
 
         } else {

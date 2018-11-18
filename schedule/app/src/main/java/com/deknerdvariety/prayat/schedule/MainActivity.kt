@@ -12,8 +12,8 @@ import kotlinx.android.synthetic.main.teach_schedule_fragment.view.*
 
 
 class MainActivity : AppCompatActivity() {
-    val TAG_URI_PHP = "http://192.168.0.1/selectSchedule.php"
-    val FlagHead:Int  =1
+//    val TAG_URI_PHP = "http://10.80.102.152/project204321/selectSchedule.php"
+//    val FlagHead:Int  =1
 
     companion object {
         lateinit var adapter:MyViewPagerAdapter ;
@@ -32,15 +32,7 @@ class MainActivity : AppCompatActivity() {
         //create tab of viewpager
 
         tabs.setupWithViewPager(viewPager)
-        JsonDownloader(this,TAG_URI_PHP,FlagHead).execute()
-
-    }
-
-    override fun onStart() {
-        super.onStart()
-//        var view = layoutInflater.inflate(R.layout.teach_schedule_fragment,null)
-//
-//        JsonDownloader(view.context,TAG_URI_PHP,FlagHead).execute()
+        //JsonDownloader(this,TAG_URI_PHP,FlagHead).execute()
     }
 
 

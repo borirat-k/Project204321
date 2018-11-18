@@ -48,6 +48,8 @@ class Teach_schedule_fragment : Fragment() {
     lateinit var count_edt: EditText
 
     var changeAc = 0
+    val TAG_URI_PHP = "http://10.80.102.152/project204321/selectSchedule.php"
+    val FlagHead:Int  =1
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -56,6 +58,8 @@ class Teach_schedule_fragment : Fragment() {
 
         view.teach_list.layoutManager = LinearLayoutManager(context)
         view.teach_list.adapter = TeachHeadingAdapter(course_schedule_Head,context)
+
+        JsonDownloader(context,TAG_URI_PHP,view.teach_list,FlagHead).execute()
 
         return view
     }

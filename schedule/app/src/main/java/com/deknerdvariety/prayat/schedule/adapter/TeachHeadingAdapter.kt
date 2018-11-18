@@ -5,6 +5,8 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import android.widget.Toast
 import com.deknerdvariety.prayat.schedule.ConnectPHP.CourseScheduleSelect
 import com.deknerdvariety.prayat.schedule.ConnectPHP.HeadScedule
 import com.deknerdvariety.prayat.schedule.R
@@ -22,11 +24,15 @@ class TeachHeadingAdapter(val items : ArrayList<HeadScedule>, val context:Contex
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 //        holder?.teach_heading?.text = items.get(position)
-        holder.view.teach_heading.text = items[position].semester
+        //holder.view.teach_heading.text = items[position].semester
+        holder.teach_head.text = "ตารางสอนปีการศึกษา ${items[position].semester}"
+        holder.teach_head.setOnClickListener {
+            Toast.makeText(context,"${items[position].semester}",Toast.LENGTH_SHORT).show()
+        }
     }
 }
 
-class ViewHolder (val view: View) : RecyclerView.ViewHolder(view) {
+class ViewHolder (val view: View) : RecyclerView.ViewHolder(view){
     // Holds the TextView that will add each animal to
-
+   var teach_head = view.findViewById<TextView>(R.id.teach_heading)
 }

@@ -14,7 +14,7 @@ if($conn->connect_error)
 mysqli_set_charset($conn,"utf8");
 //$teacher_id = $_POST['user_id'];
 $tc_id = $_POST["tc_id"];
-$sql = "select course.Cid,course.time_teach,course.date_teach,teach_schedule.semester from course join select_in on course.Cid = select_in.Cid join teach_schedule on select_in.tc_id = teach_schedule.tc_id where tc_id = $tc_id";
+$sql = "select course.Cid,course.time_teach,course.date_teach,teach_schedule.semester from course join select_in on course.Cid = select_in.Cid join teach_schedule on select_in.tc_id = teach_schedule.tc_id where teach_schedule.tc_id = $tc_id";
 $result1 = $conn->query($sql);
 
 if($result1->num_rows > 0){
