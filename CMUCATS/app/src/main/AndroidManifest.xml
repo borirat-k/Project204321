@@ -17,15 +17,17 @@
             </intent-filter>
         </activity>
         <activity android:name=".NavigationActivity">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name=".FeatureActivity"
-            android:label="204321"></activity>
+            android:label="204321" />
         <!-- <fragment android:name=".CourseActivity"> -->
         <!-- <intent-filter> -->
         <!-- <action android:name="android.intent.action.MAIN" /> -->
@@ -34,6 +36,19 @@
         <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
         <!-- </intent-filter> -->
         <!-- </fragment> -->
+        <activity android:name=".Editprofile" />
+        <!-- <activity android:name=".Main2Activity" /> -->
+        <activity android:name=".Creat_course" />
+        <activity
+            android:name=".Main2Activity"
+            android:label="@string/title_activity_main2"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".StudentInfo"
+            android:label="@string/title_activity_student_info"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".Creatstudent" />
+        <activity android:name=".Editstudent"></activity>
     </application>
 
 </manifest>
