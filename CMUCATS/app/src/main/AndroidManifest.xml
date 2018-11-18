@@ -50,6 +50,11 @@
             android:name=".FeatureSchedule.ScheduleActivity" />
         <activity
             android:name=".FeatureSchedule.timetable" />
+        <activity android:name=".FeatureCourse.Editprofile" />
+        <activity android:name=".FeatureCourse.Creat_course" />
+        <activity android:name=".FeatureCourse.Creatstudent" />
+        <activity android:name=".FeatureCourse.Editstudent" />
+        <activity android:name=".FeatureCourse.StudentInfo" />
     </application>
 
 </manifest>

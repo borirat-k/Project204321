@@ -8,6 +8,8 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.Toast
 import com.cmu.cs.cmucats.FeatureAssignment.Assignment.AssignmentActivity
+import com.cmu.cs.cmucats.FeatureCourse.Editstudent
+import com.cmu.cs.cmucats.FeatureCourse.StudentInfo
 
 class FeatureActivity : NavigationActivity(), View.OnClickListener {
 
@@ -71,6 +73,10 @@ class FeatureActivity : NavigationActivity(), View.OnClickListener {
             }
             R.id.student_card -> {
                 Toast.makeText(this, "Student",Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, StudentInfo::class.java)
+                intent.putExtra("course", courseID)
+                startActivity(intent)
+                finish()
             }
         }
         this.overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)

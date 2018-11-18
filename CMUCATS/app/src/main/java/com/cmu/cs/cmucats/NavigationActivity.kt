@@ -10,6 +10,7 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.view.MenuItem
 import android.widget.FrameLayout
 import android.widget.Toast
+import com.cmu.cs.cmucats.FeatureCourse.Editprofile
 import com.cmu.cs.cmucats.FeatureSchedule.ScheduleActivity
 //import com.mikepenz.materialdrawer.Drawer
 import kotlinx.android.synthetic.main.activity_navigation.*
@@ -69,9 +70,12 @@ open class NavigationActivity : AppCompatActivity(), NavigationView.OnNavigation
 //                        .remove(fragment!!)
 //                        .commit()
                 // ลบทุก fragment
-                for (fragment in supportFragmentManager.fragments) {
-                    supportFragmentManager.beginTransaction().remove(fragment).commit()
-                }
+//                for (fragment in supportFragmentManager.fragments) {
+//                    supportFragmentManager.beginTransaction().remove(fragment).commit()
+//                }
+                val intent = Intent(this, Editprofile::class.java)
+                startActivity(intent)
+                finish()
             }
             R.id.my_course -> {
                 navigationView.setCheckedItem(R.id.my_course)
