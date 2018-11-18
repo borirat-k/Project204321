@@ -45,10 +45,11 @@
             android:name=".FeatureAssignment.Student.AssignStuDetailActivity"
             android:excludeFromRecents="true"
             android:taskAffinity=""
-            android:theme="@style/Theme.Sliding.Light"
-            />
+            android:theme="@style/Theme.Sliding.Light"/>
         <activity
             android:name=".FeatureSchedule.ScheduleActivity" />
+        <activity
+            android:name=".FeatureSchedule.timetable" />
     </application>
 
 </manifest>

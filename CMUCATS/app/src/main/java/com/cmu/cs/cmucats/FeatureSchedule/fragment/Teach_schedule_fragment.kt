@@ -22,6 +22,7 @@ import kotlinx.android.synthetic.main.teach_schedule_fragment.*
 import kotlinx.android.synthetic.main.teach_schedule_fragment.view.*
 import android.util.TypedValue
 import com.cmu.cs.cmucats.FeatureActivity
+import com.cmu.cs.cmucats.FeatureSchedule.timetable
 
 
 class Teach_schedule_fragment : Fragment(){
@@ -135,7 +136,7 @@ class Teach_schedule_fragment : Fragment(){
 
             posturn.run() {
                 if (changeAc == n) {
-                    val intent = Intent(context, MainActivity::class.java)
+                    val intent = Intent(context, timetable::class.java)
                     startActivity(intent)
                     changeAc=0
                 }

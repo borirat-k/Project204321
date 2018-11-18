@@ -3,4 +3,10 @@
     <string name="open">Open</string>
     <string name="close">Close</string>
     <string name="title_activity_assignment">AssignmentActivity</string>
+    <string name="submit">Submit</string>
+    <string name="cancel">Cancel</string>
+    <string name="required">*จำเป็นต้องกรอก</string>
+    <string name="assignment_name">Assignment Name or Exam Name*</string>
+    <string name="assignment_max_score">Max Score*</string>
+    <string name="assignment_deadline">Deadline*</string>
 </resources>

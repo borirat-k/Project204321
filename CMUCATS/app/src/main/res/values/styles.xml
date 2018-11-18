@@ -8,6 +8,12 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <!--<item name="md_color_titl">@color/green</item>-->
+        <!--<item name="md_color_content">@color/yello</item>-->
+        <!--<item name="md_positive_color">@color/primaryTextColor</item>-->
+        <!--<item name="md_negative_color">@color/primaryTextColor</item>-->
+        primaryTextColor
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

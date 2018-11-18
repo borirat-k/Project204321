@@ -8,8 +8,7 @@ import android.support.v7.widget.RecyclerView
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import com.cmu.cs.cmucats.FeatureAssignment.Assignment.AssignmentActivity
-import com.cmu.cs.cmucats.FeatureAssignment.Assignment.AssignmentStudent
-import com.cmu.cs.cmucats.FeatureAssignment.MySQL.DownloaderAssignment
+import com.cmu.cs.cmucats.FeatureAssignment.MySQL.SELECT.DownloaderAssignment
 import com.cmu.cs.cmucats.NavigationActivity
 import com.cmu.cs.cmucats.R
 import kotlinx.android.synthetic.main.content_assignment_student.*
@@ -22,6 +21,7 @@ class AssignmentStudentActivity : NavigationActivity() {
     val FLAG_ASSIGNMENT = "student"
 
     var urlAdress: String = "http://10.0.2.2/Project204321/select_assign_stu.php"
+//    var urlAdress: String = "http://10.80.102.152/Project204321/select_assign_stu.php"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

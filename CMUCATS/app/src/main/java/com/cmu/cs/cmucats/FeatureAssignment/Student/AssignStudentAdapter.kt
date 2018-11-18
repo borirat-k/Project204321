@@ -21,6 +21,7 @@ class AssignStudentAdapter(val assignList: ArrayList<AssignmentStudent>, context
     private var activity = mContext as Activity
 
     val TAG_ASSIGN_STU_FRAGMENT = "tag_assign_stu_fragment"
+    var urlAdress: String = "http://10.0.2.2/Project204321/select_assign_stu_detail.php"
 
     //มีหน้าที่เพื่อให้เราสร้าง view ต่างๆแล้วเก็บไว้ใน ViewHolder อีกที
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -48,6 +49,7 @@ class AssignStudentAdapter(val assignList: ArrayList<AssignmentStudent>, context
                 intent.putExtra("assign", assignmentID)
                 intent.putExtra("studetail", holder.textAssignStuID.text)
                 mContext.startActivity(intent)
+//                DownloaderAssignStuDetail(mContext, urlAdress, courseID!!, assignmentID!!, holder.textAssignStuID.text.toString()).execute()
 //                activity.finish()
             }
         })
