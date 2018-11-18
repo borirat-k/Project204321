@@ -18,18 +18,12 @@
 	}
 	
 	$Cid = $_POST['Cid'];
+	$Aid = $_POST['Aid'];
 	
-	$sql = "SELECT * FROM study, student WHERE Cid = '$Cid' and study.Stu_id = student.stu_id";
-	// $sql = "select * from assignment";
+	$sql = "DELETE FROM `assignment` 
+			WHERE `assignment`.`Cid` = '$Cid' AND `assignment`.`Aid` = '$Aid';";
 	
-	$result=mysqli_query($con, $sql);
-	if($result){
-		while($row=mysqli_fetch_array($result)){
-			$flag[]=$row;
-		}
-		
-		print(json_encode($flag));
-	}
+	mysqli_query($con, $sql) or die (mysqli_error($con));
 	
 	mysqli_close($con);
 ?>

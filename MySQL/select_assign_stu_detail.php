@@ -18,8 +18,13 @@
 	}
 	
 	$Cid = $_POST['Cid'];
+	$Aid = $_POST['Aid'];
+	$Stu_id = $_POST['Stu_id'];
 	
-	$sql = "SELECT * FROM study, student WHERE Cid = '$Cid' and study.Stu_id = student.stu_id";
+	$sql = "SELECT DISTINCT title, fname, lname, max_score, score_correct
+			FROM student as stu, assignment as a, checked as c, study s
+			where c.cid = '$Cid' and c.aid = '$Aid' and stu.stu_id = '$Stu_id' and 
+			c.Cid = a.Cid and a.Cid = s.Cid and c.Aid = a.Aid and s.Stu_id = stu.stu_id";
 	// $sql = "select * from assignment";
 	
 	$result=mysqli_query($con, $sql);
