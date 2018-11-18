@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.cmu.cs.cmucats">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".NavigationActivity">
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        </activity>
+        <activity
+            android:name=".FeatureActivity"
+            android:label="000000"></activity>
+        <!-- <fragment android:name=".CourseFragment"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+        <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+        <!-- </intent-filter> -->
+        <!-- </fragment> -->
+        <activity
+            android:name=".FeatureAssignment.Assignment.AssignmentActivity"
+            android:label="@string/title_activity_assignment"></activity>
+        <activity
+            android:name=".FeatureAssignment.Student.AssignmentStudentActivity" />
+        <activity
+            android:name=".FeatureAssignment.Student.AssignStuDetailActivity"
+            android:excludeFromRecents="true"
+            android:taskAffinity=""
+            android:theme="@style/Theme.Sliding.Light"/>
+        <activity
+            android:name=".FeatureSchedule.ScheduleActivity" />
+        <activity
+            android:name=".FeatureSchedule.timetable" />
+        <activity android:name=".FeatureCourse.Editprofile" />
+        <activity android:name=".FeatureCourse.Creat_course" />
+        <activity android:name=".FeatureCourse.Creatstudent" />
+        <activity android:name=".FeatureCourse.Editstudent" />
+        <activity android:name=".FeatureCourse.StudentInfo" />
+        <activity android:name=".FeatureChat.ChatActivity" />
+    </application>
+
+</manifest>
