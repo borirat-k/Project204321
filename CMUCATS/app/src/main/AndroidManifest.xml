@@ -55,7 +55,6 @@
         <activity android:name=".FeatureCourse.Creatstudent" />
         <activity android:name=".FeatureCourse.Editstudent" />
         <activity android:name=".FeatureCourse.StudentInfo" />
-        <activity android:name=".FeatureChat.ChatActivity" />
     </application>
 
 </manifest>
