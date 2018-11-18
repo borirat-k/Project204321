@@ -17,4 +17,8 @@
     <color name="yello">#ffb300</color>
     <color name="green">#00bfba</color>
     <color name="pink">#ff4081</color>
+
+    <color name="colorToGet">#00FF00</color>
+    <color name="colorToPay">#ff0000</color>
+    <color name="colorSecondary">#64b5f6</color>
 </resources>

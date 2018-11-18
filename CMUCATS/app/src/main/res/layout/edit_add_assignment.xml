@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/edit_assignment_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="30dp"
+        android:hint="@string/assignment_name"
+        app:met_helperText="@string/required"
+        app:met_floatingLabel="highlight"
+        app:met_maxCharacters="20"
+        app:met_singleLineEllipsis="true" />
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/edit_assignment_max_score"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:hint="@string/assignment_max_score"
+        app:met_helperText="@string/required"
+        app:met_floatingLabel="highlight"
+        android:inputType="number"
+        app:met_singleLineEllipsis="true" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:text="@string/assignment_deadline"/>
+
+    <!--<Button-->
+        <!--android:id="@+id/spinner_date"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:layout_marginHorizontal="30dp"-->
+        <!--android:layout_marginBottom="30dp" />-->
+
+    <nectec.thai.widget.date.DatePicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/date_picker"
+        android:layout_marginHorizontal="30dp"/>
+
+</LinearLayout>

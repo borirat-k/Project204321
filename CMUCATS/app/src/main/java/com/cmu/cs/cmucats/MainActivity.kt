@@ -1,8 +1,8 @@
 package com.cmu.cs.cmucats
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.FrameLayout
+import com.cmu.cs.cmucats.FeatureCourse.CourseFragment
 
 class MainActivity : NavigationActivity() {
 
@@ -15,7 +15,7 @@ class MainActivity : NavigationActivity() {
         //คำสั่งเพิ่ม Fragment ลงบน ViewGroup
         supportFragmentManager
                 .beginTransaction()
-                .replace(R.id.content_frame, CourseActivity(), TAG_COURSE_FRAGMENT)
+                .replace(R.id.content_frame, CourseFragment(), TAG_COURSE_FRAGMENT)
                 .commit()
         navigationView.setCheckedItem(R.id.my_course)
 
