@@ -3,26 +3,30 @@
                                              xmlns:app="http://schemas.android.com/apk/res-auto"
                                              xmlns:tools="http://schemas.android.com/tools"
                                              android:layout_width="match_parent"
-                                             android:layout_height="wrap_content">
+                                             android:layout_height="wrap_content" tools:layout_editor_absoluteY="81dp">
 
-    <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            app:srcCompat="@mipmap/ic_launcher"
-            android:id="@+id/imageView2" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="16dp" android:layout_marginRight="16dp" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.0"/>
+    <TextView
+            android:id="@+id/txtMyMessageTime"
+            android:text="12:00 PM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:layout_marginEnd="7dp"
+            app:layout_constraintEnd_toStartOf="@+id/self_message_text" android:layout_marginRight="7dp"
+            app:layout_constraintBottom_toBottomOf="@+id/self_message_text"/>
+
+
     <TextView
             android:text="AjaJaaaaaaaa"
             android:padding="16dp"
             android:maxWidth="220dp"
-            android:background="@android:color/holo_red_dark"
+            android:background="@drawable/my_message"
             android:layout_height="wrap_content"
-            android:id="@+id/Message_text" android:layout_marginTop="16dp"
+            android:id="@+id/self_message_text"
+            android:layout_width="wrap_content"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_width="wrap_content" app:layout_constraintStart_toEndOf="@+id/imageView"
-            android:layout_marginStart="8dp" android:layout_marginLeft="8dp" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toStartOf="@+id/imageView2" android:layout_marginRight="8dp"/>
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="4dp"/>
 </android.support.constraint.ConstraintLayout>

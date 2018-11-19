@@ -12,18 +12,17 @@ import java.net.URL
 import java.net.URLEncoder
 
 @Suppress("DEPRECATION")
-class JSonDownloader(private var c: Context, private var jsonURL: String, private var myListView: RecyclerView): AsyncTask<Void, Void, String>(){
+class JSonDownloader(private var c: Context, private var jsonURL: String,var myListView:RecyclerView): AsyncTask<Void, Void, String>(){
 
-    private val user_id = 3;
     private lateinit var pd: ProgressDialog
-
-
+    val Gid = "001"
+    val Tid = 1
 
     private fun connect(jsonURL: String):Any{
         try{
             val url = URL(jsonURL)
             val con = url.openConnection() as HttpURLConnection
-            con.requestMethod = "GET"
+            con.requestMethod = "POST"
             con.connectTimeout = 15000
             con.readTimeout = 15000
             con.doInput = true
@@ -49,7 +48,7 @@ class JSonDownloader(private var c: Context, private var jsonURL: String, privat
             val con =  connection as HttpURLConnection
             val ops = con.outputStream
             val writer = BufferedWriter(OutputStreamWriter(ops,"UTF-8"))
-            var data: String = URLEncoder.encode("user_id", "UTF-8") + "=" + URLEncoder.encode(user_id.toString(), "UTF-8")
+            var data: String =URLEncoder.encode("Gid", "UTF-8") + "=" + URLEncoder.encode(Gid, "UTF-8")
             writer.write(data)
             writer.flush()
             writer.close()
