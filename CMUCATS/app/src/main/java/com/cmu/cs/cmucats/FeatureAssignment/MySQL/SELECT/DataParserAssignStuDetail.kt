@@ -50,11 +50,17 @@ class DataParserAssignStuDetail(private var c: Context, private var jsonData: St
         mView!!.dismiss()
 
         if (parsed!!){
+            println(nameStu)
+            println(scoreCorrect)
+            println(maxScore)
             name_Stu!!.text = nameStu
             score_correct!!.text = scoreCorrect
             max_score!!.text = maxScore
         }
         else{
+            name_Stu!!.text = "not found"
+            score_correct!!.text = "0"
+            max_score!!.text = "0"
             Toast.makeText(c, "Unable To Parse", Toast.LENGTH_SHORT).show()
         }
     }
@@ -64,7 +70,7 @@ class DataParserAssignStuDetail(private var c: Context, private var jsonData: St
             var ja: JSONArray = JSONArray(jsonData)
             var jo: JSONObject? = null
 
-//            nameStu!!.text = ""
+//            name_Stu!!.text = ""
 //            score_correct!!.text = ""
 //            max_score!!.text = ""
 
