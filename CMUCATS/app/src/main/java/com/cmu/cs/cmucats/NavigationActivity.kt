@@ -10,11 +10,15 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.view.MenuItem
 import android.widget.FrameLayout
 import android.widget.Toast
+import com.cmu.cs.cmucats.FeatureCourse.CourseFragment
 import com.cmu.cs.cmucats.FeatureCourse.Editprofile
 import com.cmu.cs.cmucats.FeatureSchedule.ScheduleActivity
 //import com.mikepenz.materialdrawer.Drawer
 import kotlinx.android.synthetic.main.activity_navigation.*
+import kotlinx.android.synthetic.main.header.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
+
+var teacher_id: String = ""
 
 open class NavigationActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -33,7 +37,9 @@ open class NavigationActivity : AppCompatActivity(), NavigationView.OnNavigation
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_navigation)
         setSupportActionBar(toolbar)
-
+//        if (teacher_id == ""){
+//            teacher_id = "3"
+//        }
         mDrawerlayout = findViewById(R.id.drawer_layout)
         navigationView = findViewById(R.id.navigationView)
 
@@ -51,7 +57,7 @@ open class NavigationActivity : AppCompatActivity(), NavigationView.OnNavigation
 //                .beginTransaction()
 //                .replace(R.id.content_frame, CourseFragment().newInstance(), TAG_COURSE_FRAGMENT)
 //                .commit()
-//        navigationView.setCheckedItem(R.id.my_course)
+        navigationView.setCheckedItem(R.id.my_course)
 
     }
 
@@ -111,6 +117,23 @@ open class NavigationActivity : AppCompatActivity(), NavigationView.OnNavigation
             R.id.logout -> {
                 navigationView.setCheckedItem(R.id.logout)
 
+            }
+            R.id.teacher_praphaporn -> {
+                teacher_id = "5"
+                navigationView.setCheckedItem(R.id.my_course)
+                displayMessage("my course")
+//                val intent = Intent(this, MainActivity::class.java)
+//                intent.putExtra("check",1)
+//                startActivity(intent)
+//                finish()
+                picture_teacher.setImageResource(R.drawable.prapaporn)
+                teacher_name.setText("ดร. ประภาพร เตชอังกูร")
+                teacher_email.setText("prapaporn.techaang@cmu.ac.th")
+                val myFragment = CourseFragment().newInstance(teacher_id)
+                val manager = supportFragmentManager
+                val transaction = manager.beginTransaction()
+                transaction.replace(R.id.content_frame, myFragment)
+                transaction.commit()
             }
         }
         mDrawerlayout.closeDrawer(GravityCompat.START)

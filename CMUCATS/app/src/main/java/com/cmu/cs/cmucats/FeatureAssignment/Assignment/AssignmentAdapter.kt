@@ -31,9 +31,12 @@ class AssignmentAdapter(val assignList: ArrayList<Assignment>, context: Context,
     private var activity = mContext as Activity
 
     val TAG_ASSIGN_STU_FRAGMENT = "tag_assign_stu_fragment"
-    val deleteAdress: String = "http://10.0.2.2/Project204321/delete_assignment.php"
-    val editShowAdress: String = "http://10.0.2.2/Project204321/update_show_assignment.php"
-    val editEditAdress: String = "http://10.0.2.2/Project204321/update_edit_assignment.php"
+//    val deleteAdress: String = "http://10.0.2.2/Project204321/delete_assignment.php"
+//    val editShowAdress: String = "http://10.0.2.2/Project204321/update_show_assignment.php"
+//    val editEditAdress: String = "http://10.0.2.2/Project204321/update_edit_assignment.php"
+    val deleteAdress: String = "http://192.168.0.102/Project204321/delete_assignment.php"
+    val editShowAdress: String = "http://192.168.0.102/Project204321/update_show_assignment.php"
+    val editEditAdress: String = "http://192.168.0.102/Project204321/update_edit_assignment.php"
 
     private var assignmentID: String? = null
 

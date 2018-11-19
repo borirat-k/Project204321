@@ -11,13 +11,26 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.cmu.cs.cmucats.R
 
-class CourseFragment : Fragment(){
+class CourseFragment() : Fragment(){
 
 //    var address:String = "http://10.80.145.210/course.php"
-    var address:String = "http://10.0.2.2/Project204321/course.php"
+//    var address:String = "http://10.0.2.2/Project204321/course.php"
+    var address:String = "http://192.168.0.102/Project204321/course.php"
+
+    var teacher_id: String? = ""
+
+    public fun newInstance(teacher_id: String): CourseFragment{
+        val fragment = CourseFragment()
+        val bundle = Bundle()
+        bundle.putString("teach_id", teacher_id)
+        fragment.arguments = bundle
+        return fragment
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var view: View = inflater.inflate(R.layout.activity_course, container, false)
+        val bundle = arguments
+        teacher_id = bundle!!.getString("teach_id");
 
 //        val contentFrameLayout: FrameLayout = view.findViewById<FrameLayout>(R.id.content_frame)
 //        layoutInflater.inflate(R.layout.activity_course, contentFrameLayout)
@@ -25,7 +38,7 @@ class CourseFragment : Fragment(){
         val recyclerView = view.findViewById(R.id.recycleView_course) as RecyclerView
         recyclerView.layoutManager = LinearLayoutManager(view.context, LinearLayout.VERTICAL, false)
 
-        downloadcourse(view.context,address,recyclerView).execute()
+        downloadcourse(view.context,address,recyclerView,teacher_id!!).execute()
        // val course = ArrayList<Course>()
 
 //        add course from database mySQL

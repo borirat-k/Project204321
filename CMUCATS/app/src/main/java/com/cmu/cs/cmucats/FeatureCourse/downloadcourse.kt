@@ -10,7 +10,8 @@ import java.io.*
 import java.net.HttpURLConnection
 import java.net.URLEncoder
 
-class downloadcourse(private var c: Context, private var urlAdress: String, private var rv: RecyclerView) : AsyncTask<Void, Void, String>() {
+class downloadcourse(private var c: Context, private var urlAdress: String,
+                     private var rv: RecyclerView, private var Tid: String) : AsyncTask<Void, Void, String>() {
 
     var mView: CatLoadingView? = null
 
@@ -55,7 +56,7 @@ class downloadcourse(private var c: Context, private var urlAdress: String, priv
 //            println(courseID)
             val ops: OutputStream = con.outputStream
             val writer: BufferedWriter = BufferedWriter(OutputStreamWriter(ops, "UTF-8"))
-            var data: String = URLEncoder.encode("Tid", "UTF-8") + "=" + URLEncoder.encode("3", "UTF-8")
+            var data: String = URLEncoder.encode("Tid", "UTF-8") + "=" + URLEncoder.encode(Tid, "UTF-8")
             writer.write(data)
 
             writer.flush()

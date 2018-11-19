@@ -39,9 +39,10 @@ class AssignmentActivity : NavigationActivity(){
     val FLAG_ASSIGNMENT = "assign"
     var check_add_assignment: Boolean = true
 
-    var urlAdress: String = "http://10.0.2.2/Project204321/select_assignment.php"
-//    var urlAdress: String = "http://10.80.102.152/Project204321/select_assignment.php"
-    var insertAdress: String = "http://10.0.2.2/Project204321/insert_assignment.php"
+//    var urlAdress: String = "http://10.0.2.2/Project204321/select_assignment.php"
+    var urlAdress: String = "http://192.168.0.102/Project204321/select_assignment.php"
+//    var insertAdress: String = "http://10.0.2.2/Project204321/insert_assignment.php"
+    var insertAdress: String = "http://192.168.0.102/Project204321/insert_assignment.php"
 
 //    val datePickerCallback = object : DateView.DatePickerCallback {
 //        override fun onPicked(view: DateView, calendar: Calendar) {
