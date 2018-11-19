@@ -10,7 +10,7 @@ import java.io.*
 import java.net.HttpURLConnection
 import java.net.URLEncoder
 
-class downloadcourse (private var c: Context, private var urlAdress: String, private var rv: RecyclerView): AsyncTask<Void, Void, String>() {
+class downloadcourse(private var c: Context, private var urlAdress: String, private var rv: RecyclerView) : AsyncTask<Void, Void, String>() {
 
     var mView: CatLoadingView? = null
 
@@ -36,10 +36,10 @@ class downloadcourse (private var c: Context, private var urlAdress: String, pri
         println("passssssssssPOSTTTTTTTTAfterrrr")
 //        Toast.makeText(c, jsonData.toString(), Toast.LENGTH_SHORT).show()
 
-        if(jsonData==null){
+        if (jsonData == null) {
             Toast.makeText(c, "Unsuccessful,No data retrieved", Toast.LENGTH_SHORT).show()
         }
-        else{
+        else {
             //PARSE
             parsercourse(c, jsonData, rv).execute()
         }
@@ -47,7 +47,7 @@ class downloadcourse (private var c: Context, private var urlAdress: String, pri
 
     private fun downloadData(): String? {
         val con: HttpURLConnection? = Connector().connect(urlAdress)
-        if(con==null){
+        if (con == null) {
             return null
         }
 
@@ -84,11 +84,10 @@ class downloadcourse (private var c: Context, private var urlAdress: String, pri
 
                 println("JSONNNNNNNN = " + jsonData.toString())
                 return jsonData.toString()
-            }
-            else{
+            } else {
                 return "Error" + con.responseMessage
             }
-        } catch (e: IOException){
+        } catch (e: IOException) {
             e.printStackTrace()
         }
         return null

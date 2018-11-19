@@ -13,7 +13,9 @@ import com.cmu.cs.cmucats.R
 
 class CourseFragment : Fragment(){
 
-    var address:String = "http://10.80.145.210/course.php"
+//    var address:String = "http://10.80.145.210/course.php"
+    var address:String = "http://10.0.2.2/Project204321/course.php"
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var view: View = inflater.inflate(R.layout.activity_course, container, false)
 

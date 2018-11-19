@@ -41,6 +41,7 @@ class parsercourse (private var c: Context, private var jsonData: String, privat
         if (parsed!!){
             //BIND
             val adapter = CourseAdapter(courses, c)
+            rv.adapter = adapter
         }
         else{
             Toast.makeText(c, "Unable To Parse", Toast.LENGTH_SHORT).show()
