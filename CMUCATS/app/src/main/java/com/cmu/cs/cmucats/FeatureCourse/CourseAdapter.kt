@@ -17,7 +17,7 @@ import android.widget.Toast
 import com.cmu.cs.cmucats.MainActivity
 
 
-class CourseAdapter(val courseList: ArrayList<Course>, context: Context): RecyclerView.Adapter<CourseAdapter.ViewHolder>(), PopupMenu.OnMenuItemClickListener {
+class CourseAdapter(val courseList: ArrayList<Course>, context: Context, private var teacherID: String): RecyclerView.Adapter<CourseAdapter.ViewHolder>(), PopupMenu.OnMenuItemClickListener {
 
     private var mContext: Context = context
     private var activity = mContext as Activity
@@ -59,6 +59,7 @@ class CourseAdapter(val courseList: ArrayList<Course>, context: Context): Recycl
                 val intent = Intent(mContext, FeatureActivity::class.java)
                 println(holder.textCourseID.text)
                 intent.putExtra("course", holder.textCourseID.text)
+                intent.putExtra("teacher", teacherID)
                 mContext.startActivity(intent)
                 activity.finish()
                 activity.overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)

@@ -16,6 +16,7 @@ import kotlinx.android.synthetic.main.self_message.view.*
 class ChatActivity : NavigationActivity() {
 
     private var courseID: String? = null
+    private var teacherID: String? = null
 
     companion object {
         val TAG = "ChatLog"
@@ -26,6 +27,7 @@ class ChatActivity : NavigationActivity() {
         super.onCreate(savedInstanceState)
         val bundle: Bundle = intent.extras
         courseID = bundle.getString("course")!!
+        teacherID = bundle.getString("teacher")!!
 //        setContentView(R.layout.activity_chat)
 
         val contentFrameLayout: FrameLayout = findViewById<FrameLayout>(R.id.content_frame)

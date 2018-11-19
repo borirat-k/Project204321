@@ -10,7 +10,8 @@ import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 
-class parsercourse (private var c: Context, private var jsonData: String, private var rv: RecyclerView): AsyncTask<Void, Void, Boolean>() {
+class parsercourse (private var c: Context, private var jsonData: String,
+                    private var rv: RecyclerView, private var Tid: String): AsyncTask<Void, Void, Boolean>() {
 
 
     val courses = ArrayList<Course>()
@@ -40,7 +41,7 @@ class parsercourse (private var c: Context, private var jsonData: String, privat
 
         if (parsed!!){
             //BIND
-            val adapter = CourseAdapter(courses, c)
+            val adapter = CourseAdapter(courses, c, Tid)
             rv.adapter = adapter
         }
         else{

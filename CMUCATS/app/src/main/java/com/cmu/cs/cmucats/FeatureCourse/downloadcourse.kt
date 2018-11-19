@@ -42,7 +42,7 @@ class downloadcourse(private var c: Context, private var urlAdress: String,
         }
         else {
             //PARSE
-            parsercourse(c, jsonData, rv).execute()
+            parsercourse(c, jsonData, rv, Tid).execute()
         }
     }
 
