@@ -4,8 +4,6 @@ import android.app.ProgressDialog
 import android.content.Context
 import android.os.AsyncTask
 import android.support.v7.widget.RecyclerView
-import android.widget.ListView
-import android.widget.TextView
 import android.widget.Toast
 import java.io.*
 import java.net.HttpURLConnection
@@ -13,7 +11,7 @@ import java.net.MalformedURLException
 import java.net.URL
 import java.net.URLEncoder
 
-class JsonDownloader(var context: Context,private var phpUrl:String,var rv:RecyclerView,var flagHead:Int) : AsyncTask<Void, Void, String>() {
+class JsonDownloadSchedule(var context: Context, private var phpUrl:String, var rv: RecyclerView) : AsyncTask<Void, Void, String>() {
     private val user_id = 4;
     private lateinit var pd: ProgressDialog
 
@@ -29,10 +27,10 @@ class JsonDownloader(var context: Context,private var phpUrl:String,var rv:Recyc
             con.doOutput = true
 
             return con
-        }catch (e:MalformedURLException){
+        }catch (e: MalformedURLException){
             e.printStackTrace()
             return "URL ERROR" + e.message
-        }catch (e:IOException){
+        }catch (e: IOException){
             e.printStackTrace()
             return "CONNECT ERROR" + e.message
         }
@@ -79,7 +77,7 @@ class JsonDownloader(var context: Context,private var phpUrl:String,var rv:Recyc
             }else{
                 return "Error "+con.responseMessage
             }
-        }catch (e:IOException){
+        }catch (e: IOException){
             return "Error "+e.message
         }
     }
@@ -89,14 +87,14 @@ class JsonDownloader(var context: Context,private var phpUrl:String,var rv:Recyc
         pd.dismiss()
         if(jsonData!!.startsWith("URL ERROR")){
             val error = jsonData
-            Toast.makeText(context,error,Toast.LENGTH_SHORT).show()
+            Toast.makeText(context,error, Toast.LENGTH_SHORT).show()
         }else if(jsonData.startsWith("connect error")){
             val error = jsonData
-            Toast.makeText(context,error,Toast.LENGTH_SHORT).show()
+            Toast.makeText(context,error, Toast.LENGTH_SHORT).show()
         }
         else{
-            Toast.makeText(context,"connection and download success,Now attemt to parse....",Toast.LENGTH_SHORT).show()
-            JsonParser(context,jsonData,rv,flagHead).execute()
+            Toast.makeText(context,"connection and download success,Now attemt to parse....", Toast.LENGTH_SHORT).show()
+            JsonParserSchedule(context,jsonData,rv).execute()
         }
     }
 

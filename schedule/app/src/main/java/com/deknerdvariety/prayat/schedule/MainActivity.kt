@@ -3,12 +3,9 @@ package com.deknerdvariety.prayat.schedule
 import com.deknerdvariety.prayat.schedule.adapter.MyViewPagerAdapter
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import com.deknerdvariety.prayat.schedule.ConnectPHP.JsonDownloader
 import com.deknerdvariety.prayat.schedule.fragment.Teach_schedule_fragment
 import com.deknerdvariety.prayat.schedule.fragment.test_schedule_fragment
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.downloadphp.*
-import kotlinx.android.synthetic.main.teach_schedule_fragment.view.*
 
 
 class MainActivity : AppCompatActivity() {

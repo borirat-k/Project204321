@@ -12,8 +12,11 @@ import android.widget.TextView
 import android.view.*
 import android.widget.TableLayout
 import android.widget.RelativeLayout
+import com.deknerdvariety.prayat.schedule.ConnectPHP.CourseScheduleSelect
+import com.deknerdvariety.prayat.schedule.ConnectPHP.JsonParserDetailSchedule
 import com.deknerdvariety.prayat.schedule.MainActivity
 import com.deknerdvariety.prayat.schedule.R
+import com.deknerdvariety.prayat.schedule.fragment.CourseScheduleInsert
 
 
 class timetable : AppCompatActivity(), HorizontalScroll.ScrollViewListener, VerticalScroll.ScrollViewListener {
@@ -51,10 +54,13 @@ class timetable : AppCompatActivity(), HorizontalScroll.ScrollViewListener, Vert
     val labelList = ArrayList<TextView>()
     var wedday = ""
 
-    val course_list = Teach_schedule_fragment.course_ary
+    //val course_list = Teach_schedule_fragment.course_ary
+    lateinit var course_list: ArrayList<CourseScheduleInsert>
+    lateinit var course_detail: ArrayList<CourseScheduleSelect>
 
 
     var clearXml = 0
+    var check_list = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,6 +79,15 @@ class timetable : AppCompatActivity(), HorizontalScroll.ScrollViewListener, Vert
         addRowToTableA()
         initializeRowForTableB()
 
+        check_list = intent.getIntExtra("check_list", 0)
+        if (check_list == 1) {
+            course_detail = JsonParserDetailSchedule.courseScheduleL
+            course_list = Teach_schedule_fragment.course_ary
+        } else {
+            course_list = Teach_schedule_fragment.course_ary
+            course_detail = JsonParserDetailSchedule.courseScheduleL
+        }
+
 
         for (i in 0..4) {
             addColumnsToTableB("${dateLabel[i]}", i)
@@ -87,8 +102,14 @@ class timetable : AppCompatActivity(), HorizontalScroll.ScrollViewListener, Vert
             }
         }
 
-        for (i in 0..course_list.size - 1) {
-            calculateSchedule(i)
+        if (check_list == 1) {
+            for (i in 0..course_detail!!.size - 1) {
+                calculateSchedule(i)
+            }
+        } else {
+            for (i in 0..course_list!!.size - 1) {
+                calculateSchedule(i)
+            }
         }
         clearXml++
 
@@ -99,13 +120,20 @@ class timetable : AppCompatActivity(), HorizontalScroll.ScrollViewListener, Vert
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent)
 
-            for (i in 0..course_list.size - 1) {
-                calculateSchedule(i)
-            }
-            clearXml--
-            Teach_schedule_fragment.course_ary.clear()
-            finish()
 
+            if (check_list == 1) {
+                for (i in 0..course_detail!!.size - 1) {
+                    calculateSchedule(i)
+                }
+                clearXml--
+                JsonParserDetailSchedule.courseScheduleL.clear()
+            } else {
+                for (i in 0..course_list!!.size - 1) {
+                    calculateSchedule(i)
+                }
+                clearXml--
+                Teach_schedule_fragment.course_ary.clear()
+            }
         }
 
 
@@ -128,16 +156,15 @@ class timetable : AppCompatActivity(), HorizontalScroll.ScrollViewListener, Vert
         println("jjjjjjjjjjjjjjjjjjjjjjjjjj-> $changeStartTime, $changeStopTime")
         println("jjjjjjjjjjjjjjjjjjjjjjjjjj-> $diff")
 
-        if(clearXml == 0){
+        if (clearXml == 0) {
             if (diff < 1.1) {
                 //setText
-                if(wedday.equals("wednesday")){
+                if (wedday.equals("wednesday")) {
                     labelList[startList].text = idCourse
 
                     labelList[startList].setBackgroundColor(resources.getColor(R.color.colorToPay))
                     labelList[startList + 5].setBackgroundColor(resources.getColor(R.color.colorToPay))
-                }
-                else{
+                } else {
                     labelList[startList].text = idCourse
                     labelList[startList + 3].text = idCourse
 
@@ -151,13 +178,12 @@ class timetable : AppCompatActivity(), HorizontalScroll.ScrollViewListener, Vert
 
             } else if (1.1 < diff && diff < 1.9) {
                 //settext
-                if(wedday.equals("wednesday")){
+                if (wedday.equals("wednesday")) {
                     labelList[startList + 5].text = idCourse
                     labelList[startList].setBackgroundColor(resources.getColor(R.color.colorToPay))
                     labelList[startList + 5].setBackgroundColor(resources.getColor(R.color.colorToPay))
                     labelList[startList + 5 + 5].setBackgroundColor(resources.getColor(R.color.colorToPay))
-                }
-                else{
+                } else {
                     labelList[startList + 5].text = idCourse
                     labelList[startList + 5 + 3].text = idCourse
 
@@ -172,30 +198,29 @@ class timetable : AppCompatActivity(), HorizontalScroll.ScrollViewListener, Vert
 
             } else if (1.9 < diff && diff < 2.1) {
                 //updateCompleteRow(startList % 5, idCourse)
-               if(wedday.equals("wednesday")){
-                   labelList[startList + 5].text = idCourse
+                if (wedday.equals("wednesday")) {
+                    labelList[startList + 5].text = idCourse
 
-                   labelList[startList].setBackgroundColor(resources.getColor(R.color.colorToPay))
-                   labelList[startList + 5].setBackgroundColor(resources.getColor(R.color.colorToPay))
-                   labelList[startList + 5 + 5].setBackgroundColor(resources.getColor(R.color.colorToPay))
-                   labelList[startList + 5 + 5 + 5].setBackgroundColor(resources.getColor(R.color.colorToPay))
-               }else{
-                   labelList[startList + 5].text = idCourse
-                   labelList[startList + 5 + 3].text = idCourse
+                    labelList[startList].setBackgroundColor(resources.getColor(R.color.colorToPay))
+                    labelList[startList + 5].setBackgroundColor(resources.getColor(R.color.colorToPay))
+                    labelList[startList + 5 + 5].setBackgroundColor(resources.getColor(R.color.colorToPay))
+                    labelList[startList + 5 + 5 + 5].setBackgroundColor(resources.getColor(R.color.colorToPay))
+                } else {
+                    labelList[startList + 5].text = idCourse
+                    labelList[startList + 5 + 3].text = idCourse
 
-                   labelList[startList].setBackgroundColor(resources.getColor(R.color.colorToPay))
-                   labelList[startList + 5].setBackgroundColor(resources.getColor(R.color.colorToPay))
-                   labelList[startList + 5 + 5].setBackgroundColor(resources.getColor(R.color.colorToPay))
-                   labelList[startList + 5 + 5 + 5].setBackgroundColor(resources.getColor(R.color.colorToPay))
+                    labelList[startList].setBackgroundColor(resources.getColor(R.color.colorToPay))
+                    labelList[startList + 5].setBackgroundColor(resources.getColor(R.color.colorToPay))
+                    labelList[startList + 5 + 5].setBackgroundColor(resources.getColor(R.color.colorToPay))
+                    labelList[startList + 5 + 5 + 5].setBackgroundColor(resources.getColor(R.color.colorToPay))
 
-                   labelList[startList + 3].setBackgroundColor(resources.getColor(R.color.colorToPay))
-                   labelList[startList + 5 + 3].setBackgroundColor(resources.getColor(R.color.colorToPay))
-                   labelList[startList + 5 + 5 + 3].setBackgroundColor(resources.getColor(R.color.colorToPay))
-                   labelList[startList + 5 + 5 + 5 + 3].setBackgroundColor(resources.getColor(R.color.colorToPay))
-               }
+                    labelList[startList + 3].setBackgroundColor(resources.getColor(R.color.colorToPay))
+                    labelList[startList + 5 + 3].setBackgroundColor(resources.getColor(R.color.colorToPay))
+                    labelList[startList + 5 + 5 + 3].setBackgroundColor(resources.getColor(R.color.colorToPay))
+                    labelList[startList + 5 + 5 + 5 + 3].setBackgroundColor(resources.getColor(R.color.colorToPay))
+                }
             }
-        }
-        else if(clearXml == 1){
+        } else if (clearXml == 1) {
             if (diff < 1.1) {
                 //setText
                 labelList[startList].text = ""
@@ -237,12 +262,27 @@ class timetable : AppCompatActivity(), HorizontalScroll.ScrollViewListener, Vert
     }
 
     private fun calculateSchedule(i: Int) {
-        val semester = course_list[i].semester!!
-        val idCourse = course_list[i].idCourse!!
-        val startTime = course_list[i].startTime!!
-        val stopTime = course_list[i].stopTime!!
-        val firstDay = course_list[i].startDate!!
-        val secondDay = course_list[i].stopDate!!
+        var semester: String = ""
+        var startTime: String = ""
+        var stopTime: String = ""
+        var firstDay: String = ""
+        var secondDay: String = ""
+        var idCourse: String = ""
+        if (check_list == 1) {
+            semester = JsonParserDetailSchedule.courseScheduleL[i].semester!!
+            idCourse = JsonParserDetailSchedule.courseScheduleL[i].idCourse!!
+            startTime = JsonParserDetailSchedule.courseScheduleL[i].startTime!!
+            stopTime = JsonParserDetailSchedule.courseScheduleL[i].stopTime!!
+            firstDay = JsonParserDetailSchedule.courseScheduleL[i].firstDay!!
+            secondDay = JsonParserDetailSchedule.courseScheduleL[i].secondDay!!
+        } else {
+            semester = course_list[i].semester!!
+            idCourse = course_list[i].idCourse!!
+            startTime = course_list[i].startTime!!
+            stopTime = course_list[i].stopTime!!
+            firstDay = course_list[i].startDate!!
+            secondDay = course_list[i].stopDate!!
+        }
 
         wedday = firstDay.toLowerCase()
 
@@ -292,8 +332,7 @@ class timetable : AppCompatActivity(), HorizontalScroll.ScrollViewListener, Vert
 //            else if (startTime.equals(timeStart[17])) {
 //                calTime(startTime!!, stopTime!!, timeStartvalueMon[17], idCourse)
 //            }
-        }
-        else if (firstDay!!.toLowerCase().equals("tuesday")) {
+        } else if (firstDay!!.toLowerCase().equals("tuesday")) {
             if (startTime.equals(timeStart[0])) {
                 calTime(startTime!!, stopTime!!, timeStartvalueTue[0], idCourse)
             } else if (startTime.equals(timeStart[1])) {
@@ -332,8 +371,7 @@ class timetable : AppCompatActivity(), HorizontalScroll.ScrollViewListener, Vert
 //            else if (startTime.equals(timeStart[17])) {
 //                calTime(startTime!!, stopTime!!, timeStartvalueTue[17], idCourse)
 //            }
-        }
-        else {
+        } else {
             if (startTime.equals(timeStart[0])) {
                 calTime(startTime!!, stopTime!!, timeStartvalueWed[0], idCourse)
             } else if (startTime.equals(timeStart[1])) {

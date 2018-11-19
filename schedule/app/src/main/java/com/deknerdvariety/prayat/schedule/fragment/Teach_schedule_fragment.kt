@@ -2,7 +2,6 @@ package com.deknerdvariety.prayat.schedule.fragment
 
 
 import android.app.AlertDialog
-import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -15,12 +14,10 @@ import android.widget.Toast
 import com.deknerdvariety.prayat.schedule.R
 import com.deknerdvariety.prayat.schedule.adapter.TeachHeadingAdapter
 import android.content.Intent
-import android.support.v7.widget.RecyclerView
-import com.deknerdvariety.prayat.schedule.ConnectPHP.CourseScheduleSelect
 import com.deknerdvariety.prayat.schedule.ConnectPHP.HeadScedule
-import com.deknerdvariety.prayat.schedule.ConnectPHP.JsonDownloader
+import com.deknerdvariety.prayat.schedule.ConnectPHP.JsonDownloadSchedule
 import com.deknerdvariety.prayat.schedule.timetable.timetable
-import kotlinx.android.synthetic.main.downloadphp.view.*
+
 import kotlinx.android.synthetic.main.teach_input_from.view.*
 import kotlinx.android.synthetic.main.teach_schedule_fragment.*
 import kotlinx.android.synthetic.main.teach_schedule_fragment.view.*
@@ -30,7 +27,7 @@ class Teach_schedule_fragment : Fragment() {
 
     companion object {
         val course_ary: ArrayList<CourseScheduleInsert> = ArrayList()
-        var course_schedule_Head  = ArrayList<HeadScedule>()
+        var course_schedule_Head = ArrayList<HeadScedule>()
         val teachHeading: ArrayList<String> = ArrayList()
         fun addTeachSchedule(name: String) {
             teachHeading.add(name)
@@ -48,8 +45,7 @@ class Teach_schedule_fragment : Fragment() {
     lateinit var count_edt: EditText
 
     var changeAc = 0
-    val TAG_URI_PHP = "http://10.80.102.152/project204321/selectSchedule.php"
-    val FlagHead:Int  =1
+    val TAG_URI_PHP = "http://192.168.0.102/selectSchedule.php"
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -57,9 +53,9 @@ class Teach_schedule_fragment : Fragment() {
         val view = inflater.inflate(R.layout.teach_schedule_fragment, container, false)
 
         view.teach_list.layoutManager = LinearLayoutManager(context)
-        view.teach_list.adapter = TeachHeadingAdapter(course_schedule_Head,context)
+        view.teach_list.adapter = TeachHeadingAdapter(course_schedule_Head, context)
 
-        JsonDownloader(context,TAG_URI_PHP,view.teach_list,FlagHead).execute()
+        JsonDownloadSchedule(context, TAG_URI_PHP, view.teach_list).execute()
 
         return view
     }
@@ -160,6 +156,5 @@ class Teach_schedule_fragment : Fragment() {
     }
 
 }
-
 
 class CourseScheduleInsert(val semester: String?, val idCourse: String?, val startTime: String?, val stopTime: String?, val startDate: String?, val stopDate: String?) {}
