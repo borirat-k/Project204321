@@ -5,25 +5,16 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
-import com.android.volley.toolbox.StringRequest
+
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.self_message.view.*
-import com.android.volley.AuthFailureError
-import com.android.volley.Request
-import com.android.volley.Response
-import com.android.volley.VolleyError
-
-import org.json.JSONException
-import org.json.JSONObject
-import android.widget.Toast
-import com.android.volley.toolbox.JsonArrayRequest
 import kotlinx.android.synthetic.main.other_message.view.*
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
+
 
 class MainActivity : AppCompatActivity() {
     companion object {
