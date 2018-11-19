@@ -4,8 +4,6 @@ import android.app.ProgressDialog
 import android.content.Context
 import android.os.AsyncTask
 import android.support.v7.widget.RecyclerView
-import android.widget.ListView
-import android.widget.TextView
 import android.widget.Toast
 import java.io.*
 import java.net.HttpURLConnection
@@ -13,42 +11,44 @@ import java.net.MalformedURLException
 import java.net.URL
 import java.net.URLEncoder
 
-class JSonDownloader(var context: Context,private var phpUrl:String,var rv:RecyclerView) : AsyncTask<Void, Void, String>() {
-    private val user_id = 4;
+@Suppress("DEPRECATION")
+class JSonDownloader(private var c: Context, private var jsonURL: String, private var myListView: RecyclerView): AsyncTask<Void, Void, String>(){
+
+    private val user_id = 3;
     private lateinit var pd: ProgressDialog
 
-    private fun connect(phpUrl:String):Any{
-        try{
-            val url = URL(phpUrl)
-            val con = url.openConnection() as HttpURLConnection
 
-            con.requestMethod = "POST"
-            con.connectTimeout = 10000
-            con.readTimeout = 10000
+
+    private fun connect(jsonURL: String):Any{
+        try{
+            val url = URL(jsonURL)
+            val con = url.openConnection() as HttpURLConnection
+            con.requestMethod = "GET"
+            con.connectTimeout = 15000
+            con.readTimeout = 15000
             con.doInput = true
-            con.doOutput = true
 
             return con
-        }catch (e:MalformedURLException){
+
+        }catch(e: MalformedURLException){
             e.printStackTrace()
-            return "URL ERROR" + e.message
-        }catch (e:IOException){
+            return "URL Error"+e.message
+        }catch(e: IOException){
             e.printStackTrace()
-            return "CONNECT ERROR" + e.message
+            return "Connect Error" + e.message
         }
     }
 
+
     private fun download():String{
-        val connection = connect(phpUrl)
+        val connection = connect(jsonURL)
         if(connection.toString().startsWith("Error")){
             return connection.toString()
         }
-
         try{
-            val con = connection as HttpURLConnection
+            val con =  connection as HttpURLConnection
             val ops = con.outputStream
             val writer = BufferedWriter(OutputStreamWriter(ops,"UTF-8"))
-            // Send Data to Outsite
             var data: String = URLEncoder.encode("user_id", "UTF-8") + "=" + URLEncoder.encode(user_id.toString(), "UTF-8")
             writer.write(data)
             writer.flush()
@@ -56,61 +56,64 @@ class JSonDownloader(var context: Context,private var phpUrl:String,var rv:Recyc
             ops.close()
 
             if(con.responseCode == 200){
-                val `is` = BufferedInputStream(con.inputStream)
-                val br = BufferedReader(InputStreamReader(`is`))
+                val bufcon = BufferedInputStream(con.inputStream)  // `is` = bufcon
+                val br = BufferedReader(InputStreamReader(bufcon))
                 val jsonData = StringBuffer()
                 var line:String?
 
-                do{
+                do {
                     line = br.readLine()
-                    if(line == null){
-                        break
-                    }
-
-                    //println("jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj-> $line")
+                    if(line == null){break}
                     jsonData.append(line+"\n")
-                }while(true)
+
+                }while (true)
 
                 br.close()
-                `is`.close()
-
-                println("ffffffffffffffffffffffffffffffff-> $jsonData")
+                bufcon.close()
 
                 return jsonData.toString()
+
+
             }else{
                 return "Error "+con.responseMessage
             }
-        }catch (e:IOException){
-            return "Error "+e.message
-        }
-    }
 
-    override fun onPostExecute(jsonData: String) {
-        super.onPostExecute(jsonData)
-        pd.dismiss()
-        if(jsonData!!.startsWith("URL ERROR")){
-            val error = jsonData
-            Toast.makeText(context,error,Toast.LENGTH_SHORT).show()
-        }else if(jsonData.startsWith("connect error")){
-            val error = jsonData
-            Toast.makeText(context,error,Toast.LENGTH_SHORT).show()
+        }catch (e: IOException){
+            e.printStackTrace()
+            return "Error " + e.message
         }
-        else{
-            Toast.makeText(context,"connection and download success,Now attemt to parse....",Toast.LENGTH_SHORT).show()
-            JsonParser(context,jsonData,rv.execute()
-        }
-    }
-
-    override fun doInBackground(vararg params: Void): String {
-
-        return download()
     }
 
     override fun onPreExecute() {
         super.onPreExecute()
-        pd = ProgressDialog(context)
-        pd.setTitle("Download json")
-        pd.setMessage("Message downloading Please wait")
+        pd = ProgressDialog(c)
+        pd.setTitle("Download JSON")
+        pd.setMessage("Downloading.. Please wait")
         pd.show()
     }
+
+    override fun doInBackground(vararg params: Void?): String {
+        return download()
+    }
+
+    override fun onPostExecute(jsonData: String) {
+        super.onPostExecute(jsonData)
+
+        pd.dismiss()
+        if(jsonData.startsWith("URL ERROR")){
+            val error = jsonData
+            Toast.makeText(c,error,Toast.LENGTH_LONG).show()
+            Toast.makeText(c,"MOST PROBABLY APP CANNOT CONNECT DUE TO WRONG ...",Toast.LENGTH_LONG).show()
+        }else if(jsonData.startsWith("Connect ERROR")){
+            val error = jsonData
+            Toast.makeText(c,error,Toast.LENGTH_LONG).show()
+            Toast.makeText(c,"MOST PROBABLY APP CANNOT CONNECT To any network ...",Toast.LENGTH_LONG).show()
+        }
+        else{
+            Toast.makeText(c,"Network Connection and download successful", Toast.LENGTH_LONG).show()
+            JSonParser(c,jsonData,myListView).execute()
+        }
+    }
+
 }
+
