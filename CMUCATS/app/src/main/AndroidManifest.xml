@@ -19,15 +19,17 @@
             </intent-filter>
         </activity>
         <activity android:name=".NavigationActivity">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name=".FeatureActivity"
-            android:label="000000"></activity>
+            android:label="000000" />
         <!-- <fragment android:name=".CourseFragment"> -->
         <!-- <intent-filter> -->
         <!-- <action android:name="android.intent.action.MAIN" /> -->
@@ -38,9 +40,8 @@
         <!-- </fragment> -->
         <activity
             android:name=".FeatureAssignment.Assignment.AssignmentActivity"
-            android:label="@string/title_activity_assignment"></activity>
-        <activity
-            android:name=".FeatureAssignment.Student.AssignmentStudentActivity" />
+            android:label="@string/title_activity_assignment" />
+        <activity android:name=".FeatureAssignment.Student.AssignmentStudentActivity" />
         <activity
             android:name=".FeatureAssignment.Student.AssignStuDetailActivity"
             android:excludeFromRecents="true"
@@ -56,6 +57,7 @@
         <activity android:name=".FeatureCourse.Editstudent" />
         <activity android:name=".FeatureCourse.StudentInfo" />
         <activity android:name=".FeatureChat.ChatActivity" />
+        <activity android:name=".ShowstuInfo"></activity>
     </application>
 
 </manifest>

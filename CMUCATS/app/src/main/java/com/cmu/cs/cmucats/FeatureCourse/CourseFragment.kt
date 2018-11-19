@@ -1,5 +1,6 @@
 package com.cmu.cs.cmucats.FeatureCourse
 
+import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -12,6 +13,9 @@ import com.cmu.cs.cmucats.R
 
 class CourseFragment : Fragment(){
 
+//    var address:String = "http://10.80.145.210/course.php"
+    var address:String = "http://10.0.2.2/Project204321/course.php"
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var view: View = inflater.inflate(R.layout.activity_course, container, false)
 
@@ -21,24 +25,25 @@ class CourseFragment : Fragment(){
         val recyclerView = view.findViewById(R.id.recycleView_course) as RecyclerView
         recyclerView.layoutManager = LinearLayoutManager(view.context, LinearLayout.VERTICAL, false)
 
-        val course = ArrayList<Course>()
+        downloadcourse(view.context,address,recyclerView).execute()
+       // val course = ArrayList<Course>()
 
-        //add course from database mySQL
-        course.add(Course("204100", "IT AND MODERN LIFE"))
-        course.add(Course("204361", "SOFTWARE ENGINEERING"))
-        course.add(Course("204451", "ALGO DESIGN & ANALYSIS3"))
-        course.add(Course("204111", "FUNDAMENTALS OF PROGRAMMING"))
-        course.add(Course("204321", "DATABASE SYSTEM 1"))
-        course.add(Course("204321", "DATABASE SYSTEM 1"))
-        course.add(Course("204321", "DATABASE SYSTEM 1"))
-        course.add(Course("204321", "DATABASE SYSTEM 1"))
-        course.add(Course("204321", "DATABASE SYSTEM 1"))
-        course.add(Course("204321", "DATABASE SYSTEM 1"))
-        course.add(Course("204321", "DATABASE SYSTEM 1"))
+//        add course from database mySQL
+//        course.add(Course("204100", "IT AND MODERN LIFE"))
+//        course.add(Course("204361", "SOFTWARE ENGINEERING"))
+//        course.add(Course("204451", "ALGO DESIGN & ANALYSIS3"))
+//        course.add(Course("204111", "FUNDAMENTALS OF PROGRAMMING"))
+//        course.add(Course("204321", "DATABASE SYSTEM 1"))
+//        course.add(Course("204321", "DATABASE SYSTEM 1"))
+//        course.add(Course("204321", "DATABASE SYSTEM 1"))
+//        course.add(Course("204321", "DATABASE SYSTEM 1"))
+//        course.add(Course("204321", "DATABASE SYSTEM 1"))
+//        course.add(Course("204321", "DATABASE SYSTEM 1"))
+//        course.add(Course("204321", "DATABASE SYSTEM 1"))
+//
+//        val adapter = CourseAdapter(course, view.context)
 
-        val adapter = CourseAdapter(course, view.context)
-
-        recyclerView.adapter = adapter
+      //  recyclerView.adapter = adapter
         return view
     }
 
