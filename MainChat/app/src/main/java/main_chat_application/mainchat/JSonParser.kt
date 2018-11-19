@@ -9,6 +9,7 @@ import main_chat_application.mainchat.MainActivity.Companion.adapter
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
+import java.text.SimpleDateFormat
 import kotlin.collections.ArrayList
 
 @Suppress("DEPRECATION")
@@ -63,13 +64,13 @@ class JSonParser(private var c: Context, private var jsonData:String, private va
 
             for (i in 0..data.size - 1) {
                 if (data[i].Tid == 1) {
-                    adapter.add(MainActivity.ChatSelfItem(data[i].message, data[i].time_c + " น."))
+                    adapter.add(MainActivity.ChatSelfItem(data[i].message, data[i].time_c + "น."))
                 } else {
                     adapter.add(
                         MainActivity.ChatOtherItem(
                             data[i].message,
                             data[i].Tid.toString(),
-                            data[i].time_c + " น."
+                            data[i].time_c + "น."
                         )
                     )
                 }

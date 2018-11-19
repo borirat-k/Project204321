@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         val adapter = GroupAdapter<ViewHolder>()
     }
 
-    val message: EditText? = null
+
     val addUrl: String = "http://192.168.1.11/android/insert.php" // connect with ???
     val selectUrl = "http://192.168.1.11/android/select.php"
 
@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
             val text = edittext_main?.text.toString()
             if (text != "") {
                 //addMessage()
-                adapter.add(ChatSelfItem(text,time_c+" น."))
+                adapter.add(ChatSelfItem(text,time_c+"  น."))
 //                adapter.add(ChatOtherItem("Yes I am","Teacher 1",aboutTime())) // Text,Time And Name must pull from db
                 recycler_message.adapter = adapter
 //                //Log.d(TAG,"Attempt to send message...."
