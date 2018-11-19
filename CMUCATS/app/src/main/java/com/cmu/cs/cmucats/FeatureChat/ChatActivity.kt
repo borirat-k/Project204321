@@ -27,8 +27,8 @@ class ChatActivity : NavigationActivity() {
         val adapter = GroupAdapter<ViewHolder>()
     }
 
-    val addUrl: String = "http://192.168.1.11/android/insert.php" // connect with ???
-    val selectUrl = "http://192.168.1.11/android/select.php"
+    val addUrl: String = "http://192.168.0.102/Project204321/insert.php" // connect with ???
+    val selectUrl = "http://192.168.0.102/Project204321/select.php"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,29 +36,28 @@ class ChatActivity : NavigationActivity() {
         val bundle: Bundle = intent.extras
         courseID = bundle.getString("course")!!
         teacherID = bundle.getString("teacher")!!
-
+        var Gid = "001"
         var Tid = teacherID.toString()
 
         val contentFrameLayout: FrameLayout = findViewById<FrameLayout>(R.id.content_frame)
         layoutInflater.inflate(R.layout.activity_chat, contentFrameLayout)
 
         val adapter = GroupAdapter<ViewHolder>()
-        supportActionBar?.title = "Group Chat"
+        supportActionBar?.title = "$courseID Group chat"
 
-        JSonDownloader(this,selectUrl,recycler_message).execute()
+
+        JSonDownloader(this,selectUrl,recycler_message,Gid,Tid).execute()
 
         send_button_chat.setOnClickListener{
             var Date_c:String = aboutDate()
             var time_c:String = aboutTime()
             val text = edittext_main?.text.toString()
             if (text != "") {
-                //addMessage()
-                adapter.add(ChatSelfItem(text,time_c+" น."))
-//                adapter.add(ChatOtherItem("Yes I am","Teacher 1",aboutTime())) // Text,Time And Name must pull from db
+                adapter.add(ChatSelfItem(text,time_c+"น."))
                 recycler_message.adapter = adapter
-//                //Log.d(TAG,"Attempt to send message...."
-                resetInput()
                 InsertMessage(this,addUrl,Tid,Gid,text,Date_c,time_c).execute()
+                resetInput()
+
             }
         }
     }

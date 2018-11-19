@@ -15,7 +15,7 @@ import java.net.URLEncoder
 @Suppress("DEPRECATION")
 class InsertMessage(private var context: Context,
                     private var phpUrl: String,
-                    private val Tid:Int,
+                    private val Tid:String,
                     private val Gid:String,
                     private val Message:String,
                     private val Date_c:String,
@@ -54,7 +54,7 @@ class InsertMessage(private var context: Context,
             val con = connection as HttpURLConnection
             val ops = con.outputStream
             val writer = BufferedWriter(OutputStreamWriter(ops,"UTF-8"))
-            var data: String = URLEncoder.encode("Tid", "UTF-8") + "=" + URLEncoder.encode(Tid.toString(), "UTF-8")
+            var data: String = URLEncoder.encode("Tid", "UTF-8") + "=" + URLEncoder.encode(Tid, "UTF-8")
             data+="&"+URLEncoder.encode("Gid", "UTF-8") + "=" + URLEncoder.encode(Gid, "UTF-8")
             data+="&"+URLEncoder.encode("Message", "UTF-8") + "=" + URLEncoder.encode(Message, "UTF-8")
             data+="&"+URLEncoder.encode("Date_c", "UTF-8") + "=" + URLEncoder.encode(Date_c, "UTF-8")

@@ -13,11 +13,9 @@ import java.net.URL
 import java.net.URLEncoder
 
 @Suppress("DEPRECATION")
-class JSonDownloader(private var c: Context, private var jsonURL: String,var myListView:RecyclerView): AsyncTask<Void, Void, String>(){
+class JSonDownloader(private var c: Context, private var jsonURL: String,var myListView:RecyclerView,var Gid:String,var Tid:String): AsyncTask<Void, Void, String>(){
 
     private lateinit var pd: ProgressDialog
-    val Gid = "001"
-    val Tid = 1
 
     private fun connect(jsonURL: String):Any{
         try{
