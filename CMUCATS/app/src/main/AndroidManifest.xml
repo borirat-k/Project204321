@@ -49,7 +49,7 @@
         <activity
             android:name=".FeatureSchedule.ScheduleActivity" />
         <activity
-            android:name=".FeatureSchedule.timetable" />
+            android:name=".FeatureSchedule.timetable.timetable" />
         <activity android:name=".FeatureCourse.Editprofile" />
         <activity android:name=".FeatureCourse.Creat_course" />
         <activity android:name=".FeatureCourse.Creatstudent" />
