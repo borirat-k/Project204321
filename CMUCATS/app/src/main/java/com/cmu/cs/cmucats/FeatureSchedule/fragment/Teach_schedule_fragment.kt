@@ -52,16 +52,16 @@ class Teach_schedule_fragment : Fragment() {
 //    val TAG_URI_PHP_SELECT = "http://10.80.100.107/Project204321/selectSchedule.php"
 //    val TAG_URI_PHP_INSERT_T = "http://10.80.100.107/Project204321/insertSchedule.php"
 //    val TAG_URI_PHP_INSERT_Se = "http://10.80.100.107/Project204321/insert_SelectIn.php"
-    val TAG_URI_PHP_SELECT = "http://192.168.0.102/Project204321/selectSchedule.php"
-    val TAG_URI_PHP_INSERT_T = "http://192.168.0.102/Project204321/insertSchedule.php"
-    val TAG_URI_PHP_INSERT_Se = "http://192.168.0.102/Project204321/insert_SelectIn.php"
+    val TAG_URI_PHP_SELECT = "http://192.168.1.11/Project204321/selectSchedule.php"
+    val TAG_URI_PHP_INSERT_T = "http://192.168.1.11/Project204321/insertSchedule.php"
+    val TAG_URI_PHP_INSERT_Se = "http://192.168.1.11/Project204321/insert_SelectIn.php"
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.teach_schedule_fragment, container, false)
 
-        //JsonDownloadSchedule(view.context, TAG_URI_PHP_SELECT, view.teach_list).execute()
+        JsonDownloadSchedule(view.context, TAG_URI_PHP_SELECT, view.teach_list).execute()
 
         view.teach_list.layoutManager = LinearLayoutManager(context)
         view.teach_list.adapter = TeachHeadingAdapter(course_schedule_Head,view.context)

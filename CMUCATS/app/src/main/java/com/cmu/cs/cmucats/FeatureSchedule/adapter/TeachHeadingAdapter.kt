@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.teach_list_item.view.*
 class TeachHeadingAdapter(val items: ArrayList<HeadScedule>, val context: Context) : RecyclerView.Adapter<ViewHolder>() {
 
 //    val TAG_DOWNLOAD_DETAIL_SCHEDULE = "http://10.80.100.107/Project204321/fetchdata.php"
-    val TAG_DOWNLOAD_DETAIL_SCHEDULE = "http://192.168.0.102/Project204321/fetchdata.php"
+    val TAG_DOWNLOAD_DETAIL_SCHEDULE = "http://192.168.1.11/Project204321/fetchdata.php"
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(p0.context).inflate(R.layout.teach_list_item, p0, false))
