@@ -13,7 +13,7 @@ import org.json.JSONException
 import org.json.JSONObject
 
 class DataParserAssignStuDetail(private var c: Context, private var jsonData: String,
-                                private var courseID: String, private var assignmentID: String, private var studentID: String): AsyncTask<Void, Void, Boolean>() {
+                                private var courseID: String, private var assignmentID: String, private var studentID: String, private var teacherID: String): AsyncTask<Void, Void, Boolean>() {
 
     var mView: CatLoadingView? = null
     var name_Stu: TextView? = null

@@ -3,11 +3,6 @@
 	$username='root';
 	$pwd='';
 	$db='cmucats';
-	
-	//$host='202.28.24.216';
-	//$username='cmucats';
-	//$pwd='CMUcats59';
-	//$db='cmucats';
 
 	error_reporting(0);
 	$con = new mysqli ($host, $username, $pwd, $db) or die('Unable to connect');
@@ -22,20 +17,12 @@
 		mysqli_set_charset($con, "utf8");
 	}
 	
-	$Tid = $_POST['Tid'];
+	$Cid = $_POST['Cid'];
 	
-	$sql = "SELECT * FROM teach , course where teach.Tid = '$Tid' and teach.Cid = course.Cid";
-	// $sql = "SELECT * FROM assignment WHERE Cid = '204100'";
-	// $sql = "select * from assignment";
+	$sql = "DELETE FROM `course` 
+			WHERE `Cid` = '$Cid';";
 	
-	$result=mysqli_query($con, $sql);
-	if($result){
-		while($row=mysqli_fetch_array($result)){
-			$flag[]=$row;
-		}
-		
-		print(json_encode($flag));
-	}
+	mysqli_query($con, $sql) or die (mysqli_error($con));
 	
 	mysqli_close($con);
 ?>

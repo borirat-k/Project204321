@@ -9,11 +9,12 @@ import com.klinker.android.sliding.SlidingActivity
 private var courseID: String? = null
 private var assignmentID: String? = null
 private var studentID: String? = null
+private var teacherID: String? = null
 
 class AssignStuDetailActivity: SlidingActivity() {
 
 //    var urlAdress: String = "http://10.0.2.2/Project204321/select_assign_stu_detail.php"
-    var urlAdress: String = "http://192.168.0.102/Project204321/select_assign_stu_detail.php"
+    var urlAdress: String = "http://10.80.101.163/Project204321/select_assign_stu_detail.php"
 
 
 
@@ -22,13 +23,14 @@ class AssignStuDetailActivity: SlidingActivity() {
         courseID = bundle.getString("course")
         assignmentID = bundle.getString("assign")
         studentID = bundle.getString("studetail")
+        teacherID = bundle.getString("teacher")
         setTitle(studentID)
         setPrimaryColors(
                 getResources().getColor(R.color.colorPrimary),
                 getResources().getColor(R.color.colorPrimaryDark)
         )
         setContent(R.layout.content_assign_stu_detail)
-        DownloaderAssignStuDetail(this@AssignStuDetailActivity, urlAdress, courseID!!, assignmentID!!, studentID!!).execute()
+        DownloaderAssignStuDetail(this@AssignStuDetailActivity, urlAdress, courseID!!, assignmentID!!, studentID!!, teacherID!!).execute()
     }
 
     override fun configureScroller(scroller: MultiShrinkScroller?) {

@@ -25,7 +25,7 @@ import nectec.thai.widget.date.DatePicker
 import java.util.Calendar
 
 
-class AssignmentAdapter(val assignList: ArrayList<Assignment>, context: Context, private var courseID: String): RecyclerView.Adapter<AssignmentAdapter.ViewHolder>(), PopupMenu.OnMenuItemClickListener {
+class AssignmentAdapter(val assignList: ArrayList<Assignment>, context: Context, private var courseID: String, private var teacherID: String): RecyclerView.Adapter<AssignmentAdapter.ViewHolder>(), PopupMenu.OnMenuItemClickListener {
 
     private var mContext: Context = context
     private var activity = mContext as Activity
@@ -34,9 +34,9 @@ class AssignmentAdapter(val assignList: ArrayList<Assignment>, context: Context,
 //    val deleteAdress: String = "http://10.0.2.2/Project204321/delete_assignment.php"
 //    val editShowAdress: String = "http://10.0.2.2/Project204321/update_show_assignment.php"
 //    val editEditAdress: String = "http://10.0.2.2/Project204321/update_edit_assignment.php"
-    val deleteAdress: String = "http://192.168.0.102/Project204321/delete_assignment.php"
-    val editShowAdress: String = "http://192.168.0.102/Project204321/update_show_assignment.php"
-    val editEditAdress: String = "http://192.168.0.102/Project204321/update_edit_assignment.php"
+    val deleteAdress: String = "http://10.80.101.163/Project204321/delete_assignment.php"
+    val editShowAdress: String = "http://10.80.101.163/Project204321/update_show_assignment.php"
+    val editEditAdress: String = "http://10.80.101.163/Project204321/update_edit_assignment.php"
 
     private var assignmentID: String? = null
 
@@ -84,6 +84,7 @@ class AssignmentAdapter(val assignList: ArrayList<Assignment>, context: Context,
                 val intent = Intent(mContext, AssignmentStudentActivity::class.java)
                 intent.putExtra("course", courseID)
                 intent.putExtra("assign", holder.textAssignID.text)
+                intent.putExtra("teacher", teacherID)
                 mContext.startActivity(intent)
                 activity.finish()
                 activity.overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)

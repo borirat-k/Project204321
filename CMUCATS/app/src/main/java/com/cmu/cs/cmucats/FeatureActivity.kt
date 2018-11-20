@@ -65,6 +65,7 @@ class FeatureActivity : NavigationActivity(), View.OnClickListener {
                 Toast.makeText(this, "FeatureAssignment", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, AssignmentActivity::class.java)
                 intent.putExtra("course", courseID)
+                intent.putExtra("teacher", teacherID)
                 startActivity(intent)
                 finish()
             }
@@ -75,7 +76,7 @@ class FeatureActivity : NavigationActivity(), View.OnClickListener {
                 Toast.makeText(this, "Chat",Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, ChatActivity::class.java)
                 intent.putExtra("course", courseID)
-                intent.putExtra("teacher", courseID)
+                intent.putExtra("teacher", teacherID)
                 startActivity(intent)
                 finish()
             }

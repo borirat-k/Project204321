@@ -22,11 +22,17 @@
 		mysqli_set_charset($con, "utf8");
 	}
 	
-	$Tid = $_POST['Tid'];
+	$Cid = $_POST['Cid'];
+	$Aid = $_POST['Aid'];
+	// $Cid = 204100;
+	// $Aid = 'Lec3';
+	// $start_date = '2018-10-17';
+	// $Dead_line = '2018-10-19';
+	// $max_score = '50';
 	
-	$sql = "SELECT * FROM teach , course where teach.Tid = '$Tid' and teach.Cid = course.Cid";
-	// $sql = "SELECT * FROM assignment WHERE Cid = '204100'";
-	// $sql = "select * from assignment";
+	$sql = "SELECT * FROM assignment WHERE Cid = '$Cid' and Aid = '$Aid'";
+	// $sql = "INSERT INTO `assignment` (`Cid`, `Aid`, `start_date`, `Dead_line`, `max_score`) 
+			// VALUES ('204100', 'Lec3', '2018-8-18', '2018-08-27', '50')";
 	
 	$result=mysqli_query($con, $sql);
 	if($result){
@@ -36,6 +42,5 @@
 		
 		print(json_encode($flag));
 	}
-	
 	mysqli_close($con);
 ?>

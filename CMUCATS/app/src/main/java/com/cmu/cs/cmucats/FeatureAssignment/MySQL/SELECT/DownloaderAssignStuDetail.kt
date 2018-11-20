@@ -12,7 +12,7 @@ import java.net.HttpURLConnection
 import java.net.URLEncoder
 
 class DownloaderAssignStuDetail(private var c: Context, private var urlAdress: String,
-                                private var courseID: String, private var assignmentID: String, private var studentID: String): AsyncTask<Void, Void, String>() {
+                                private var courseID: String, private var assignmentID: String, private var studentID: String, private var teacherID: String): AsyncTask<Void, Void, String>() {
 
     var mView: CatLoadingView? = null
 
@@ -38,7 +38,7 @@ class DownloaderAssignStuDetail(private var c: Context, private var urlAdress: S
         }
         else{
             //PARSE
-            DataParserAssignStuDetail(c, jsonData, courseID, assignmentID, studentID).execute()
+            DataParserAssignStuDetail(c, jsonData, courseID, assignmentID, studentID, teacherID).execute()
         }
     }
 

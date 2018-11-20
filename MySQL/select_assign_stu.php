@@ -20,6 +20,7 @@
 	$Cid = $_POST['Cid'];
 	
 	$sql = "SELECT * FROM study, student WHERE Cid = '$Cid' and study.Stu_id = student.stu_id";
+	// $sql = "SELECT * FROM study, student WHERE Cid = '$Cid' and study.sec = '$Sec' and study.Stu_id = student.stu_id";
 	// $sql = "select * from assignment";
 	
 	$result=mysqli_query($con, $sql);

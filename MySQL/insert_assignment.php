@@ -40,5 +40,12 @@
 	
 	mysqli_query($con, $sql) or die (mysqli_error($con));
 	
+	$sql2 = "INSERT into checked (stu_id, tid, cid, aid)
+	SELECT s.Stu_id, t.Tid, s.Cid, a.Aid
+	from study as s, teacher as t, assignment as a
+	WHERE a.Aid = '$Aid' and t.Tid = '3'";
+	
+	mysqli_query($con, $sql2) or die (mysqli_error($con));
+	
 	mysqli_close($con);
 ?>

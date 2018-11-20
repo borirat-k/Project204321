@@ -31,6 +31,7 @@ import java.util.*
 
 
 private var courseID: String? = null
+private var teacherID: String? = null
 
 class AssignmentActivity : NavigationActivity(){
 
@@ -40,9 +41,9 @@ class AssignmentActivity : NavigationActivity(){
     var check_add_assignment: Boolean = true
 
 //    var urlAdress: String = "http://10.0.2.2/Project204321/select_assignment.php"
-    var urlAdress: String = "http://192.168.0.102/Project204321/select_assignment.php"
+    var urlAdress: String = "http://10.80.101.163/Project204321/select_assignment.php"
 //    var insertAdress: String = "http://10.0.2.2/Project204321/insert_assignment.php"
-    var insertAdress: String = "http://192.168.0.102/Project204321/insert_assignment.php"
+    var insertAdress: String = "http://10.80.101.163/Project204321/insert_assignment.php"
 
 //    val datePickerCallback = object : DateView.DatePickerCallback {
 //        override fun onPicked(view: DateView, calendar: Calendar) {
@@ -60,6 +61,7 @@ class AssignmentActivity : NavigationActivity(){
 //        setContentView(R.layout.activity_assignment)
         val bundle: Bundle = intent.extras
         courseID = bundle.getString("course")!!
+        teacherID = bundle.getString("teacher")!!
 
         val contentFrameLayout: FrameLayout = findViewById<FrameLayout>(R.id.content_frame)
         layoutInflater.inflate(R.layout.activity_assignment, contentFrameLayout)
@@ -119,7 +121,7 @@ class AssignmentActivity : NavigationActivity(){
 //                        startDate += if (datePicker.month < 10) "0" + datePicker.month.toString() else datePicker.month.toString()
 //                        startDate += if (datePicker.dayOfMonth < 10) "-0" + datePicker.dayOfMonth.toString()
                         InsertAssignment(this@AssignmentActivity, insertAdress, courseID!!, assignmentID, startDate, deadLine, maxScore).execute()
-                        DownloaderAssignment(this@AssignmentActivity, urlAdress, recyclerView, courseID!!, FLAG_ASSIGNMENT, "").execute()
+                        DownloaderAssignment(this@AssignmentActivity, urlAdress, recyclerView, courseID!!, FLAG_ASSIGNMENT, "", teacherID!!).execute()
                         dialog.dismiss()
                     }
                     else{
@@ -141,14 +143,14 @@ class AssignmentActivity : NavigationActivity(){
             }
         }
 
-        DownloaderAssignment(this@AssignmentActivity, urlAdress, recyclerView, courseID!!, FLAG_ASSIGNMENT, "").execute()
+        DownloaderAssignment(this@AssignmentActivity, urlAdress, recyclerView, courseID!!, FLAG_ASSIGNMENT, "", teacherID!!).execute()
 
         val ptrFrame : PtrClassicFrameLayout = findViewById(R.id.ptrLoading)
         ptrFrame.setLastUpdateTimeRelateObject(this)
         ptrFrame.setPtrHandler(object : PtrHandler {
             override fun onRefreshBegin(frame: PtrFrameLayout) {
                 frame.postDelayed({ ptrFrame.refreshComplete() }, 1800)
-                DownloaderAssignment(this@AssignmentActivity, urlAdress, recyclerView, courseID!!, FLAG_ASSIGNMENT, "").execute()
+                DownloaderAssignment(this@AssignmentActivity, urlAdress, recyclerView, courseID!!, FLAG_ASSIGNMENT, "", teacherID!!).execute()
             }
 
             override fun checkCanDoRefresh(frame: PtrFrameLayout, content: View, header: View): Boolean {
@@ -206,6 +208,7 @@ class AssignmentActivity : NavigationActivity(){
 //        if (supportFragmentManager.findFragmentByTag(TAG_ASSIGNMENT_FRAGMENT)) {
             val intent = Intent(this, FeatureActivity::class.java)
             intent.putExtra("course", courseID)
+            intent.putExtra("teacher", teacherID)
             startActivity(intent)
             finish()
             overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right)
@@ -244,7 +247,7 @@ class AssignmentFragment : Fragment(){
                     .setAction("Action", null).show()
         }
 
-        DownloaderAssignment(view.context, urlAdress, recyclerView, courseID!!, FLAG_ASSIGNMENT, "").execute()
+        DownloaderAssignment(view.context, urlAdress, recyclerView, courseID!!, FLAG_ASSIGNMENT, "", teacherID!!).execute()
         return view
     }
 
