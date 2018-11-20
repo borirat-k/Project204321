@@ -31,14 +31,14 @@ class ChatActivity : NavigationActivity() {
 
     var Gid:String=""
 
-    val addUrl: String = "http://192.168.1.11/Project204321/insert.php" // connect with ???
-    val selectUrl = "http://192.168.1.11/Project204321/select.php"
+    val addUrl: String = "http://192.168.1.11/android/insert.php" // connect with ???
+    val selectUrl = "http://192.168.1.11/android/select.php"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val bundle: Bundle = intent.extras
-        val RecyclerView2 = findViewById<RecyclerView>(R.id.recycler_message)
+
         courseID = bundle.getString("course")!!
         teacherID = bundle.getString("teacher")!!
         var Cid = courseID.toString()
@@ -52,14 +52,16 @@ class ChatActivity : NavigationActivity() {
         }
 
         var Tid = teacherID.toString()
+        print("$Tid +++++++++++++++++++++++++++")
 
         val contentFrameLayout: FrameLayout = findViewById<FrameLayout>(R.id.content_frame)
         layoutInflater.inflate(R.layout.activity_chat, contentFrameLayout)
 
         supportActionBar?.title = "$courseID Group chat"
+        val recyclerView2 = findViewById<RecyclerView>(R.id.recycler_message)
 
 
-        JSonDownloader(this,selectUrl,RecyclerView2,Gid,Tid).execute()
+        JSonDownloader(this,selectUrl,recyclerView2,Gid,Tid).execute()
 
 
 
@@ -69,7 +71,7 @@ class ChatActivity : NavigationActivity() {
             val text = edittext_main?.text.toString()
             if (text != "") {
                 adapter.add(ChatSelfItem(text,time_c+"น."))
-                recycler_message.adapter = adapter
+                recyclerView2.adapter = adapter
                 InsertMessage(this,addUrl,Tid,Gid,text,Date_c,time_c).execute()
                 resetInput()
 
