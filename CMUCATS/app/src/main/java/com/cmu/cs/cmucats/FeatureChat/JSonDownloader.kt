@@ -107,7 +107,7 @@ class JSonDownloader(private var c: Context, private var jsonURL: String,var myL
         }
         else{
             Toast.makeText(c,"Network Connection and download successful", Toast.LENGTH_LONG).show()
-            JSonParser(c,jsonData,myListView).execute()
+            JSonParser(c,jsonData,myListView,Tid).execute()
         }
     }
 }

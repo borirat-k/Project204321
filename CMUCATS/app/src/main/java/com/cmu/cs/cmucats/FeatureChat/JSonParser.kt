@@ -6,13 +6,15 @@ import android.os.AsyncTask
 import android.support.v7.widget.RecyclerView
 import android.widget.Toast
 import com.cmu.cs.cmucats.FeatureChat.ChatActivity.Companion.adapter
+import com.cmu.cs.cmucats.teacher_id
+//import com.cmu.cs.cmucats.FeatureChat.ChatActivity.Companion.adapter
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 import kotlin.collections.ArrayList
 
 @Suppress("DEPRECATION")
-class JSonParser(private var c: Context, private var jsonData:String, private var myListView: RecyclerView): AsyncTask<Void, Void, Boolean>() {
+class JSonParser(private var c: Context, private var jsonData:String, private var myListView: RecyclerView,var teacher_id:String): AsyncTask<Void, Void, Boolean>() {
     private lateinit var pd: ProgressDialog
 
     companion object {
@@ -36,7 +38,7 @@ class JSonParser(private var c: Context, private var jsonData:String, private va
                 val message_c = jo.getString("Message")
                 val time_c = jo.getString("Time")
                 val date_c = jo.getString("Date_c")
-                val tid = jo.getString("Tid").toInt()
+                val tid = jo.getString("Tid")
 
                 var c = MessageInfo(message_c, date_c, time_c, tid)
                 messageGo.add(c)
@@ -59,8 +61,10 @@ class JSonParser(private var c: Context, private var jsonData:String, private va
         if (result!!) {
             Toast.makeText(c, "successful", Toast.LENGTH_LONG).show()
             val data = JSonParser.messageGo
+
+
             for (i in 0..data.size - 1) {
-                if (data[i].Tid == 1) {
+                if ((data[i].Tid) == teacher_id) {
                     adapter.add(ChatSelfItem(data[i].message, data[i].time_c + "น."))
                 } else {
                     adapter.add(ChatOtherItem(data[i].message, data[i].Tid.toString(), data[i].time_c + "น."
@@ -75,4 +79,4 @@ class JSonParser(private var c: Context, private var jsonData:String, private va
         }
     }
 }
-class MessageInfo(val message: String, val date_c: String, val time_c: String,var Tid:Int){}
+class MessageInfo(val message: String, val date_c: String, val time_c: String,var Tid:String){}

@@ -12,7 +12,7 @@ import com.cmu.cs.cmucats.FeatureChat.ChatActivity
 import com.cmu.cs.cmucats.FeatureCourse.Editstudent
 import com.cmu.cs.cmucats.FeatureCourse.StudentInfo
 
-class FeatureActivity : NavigationActivity(), View.OnClickListener {
+class   FeatureActivity : NavigationActivity(), View.OnClickListener {
 
     private var courseID: String? = null
     private var teacherID: String? = null
