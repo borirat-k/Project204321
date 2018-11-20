@@ -96,6 +96,7 @@ class timetable : AppCompatActivity(), HorizontalScroll.ScrollViewListener, Vert
         okBtn.setOnClickListener {
             val intent = Intent(this, ScheduleActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            Teach_schedule_fragment.course_schedule_Head.clear()
             startActivity(intent)
             if (check_list == 1) {
                 for (i in 0..course_detail!!.size - 1) {

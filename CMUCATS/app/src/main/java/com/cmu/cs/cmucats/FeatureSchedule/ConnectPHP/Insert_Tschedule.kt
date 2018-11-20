@@ -92,7 +92,7 @@ class Insert_Tschedule(var context: Context, private var phpUrl: String,var user
             Toast.makeText(context, error, Toast.LENGTH_SHORT).show()
         } else {
             Toast.makeText(context, "connection and download success,Now attemt to parse....", Toast.LENGTH_SHORT).show()
-            JsonParserDetailSchedule(context, jsonData).execute()
+            //JsonParserDetailSchedule(context, jsonData).execute()
         }
     }
 
