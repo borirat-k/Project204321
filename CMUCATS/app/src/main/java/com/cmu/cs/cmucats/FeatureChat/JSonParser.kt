@@ -6,6 +6,8 @@ import android.os.AsyncTask
 import android.support.v7.widget.RecyclerView
 import android.widget.Toast
 import com.cmu.cs.cmucats.FeatureChat.ChatActivity.Companion.adapter
+import com.cmu.cs.cmucats.teacher_id
+//import com.cmu.cs.cmucats.FeatureChat.ChatActivity.Companion.adapter
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -59,8 +61,10 @@ class JSonParser(private var c: Context, private var jsonData:String, private va
         if (result!!) {
             Toast.makeText(c, "successful", Toast.LENGTH_LONG).show()
             val data = JSonParser.messageGo
+
+
             for (i in 0..data.size - 1) {
-                if (data[i].Tid == 1) {
+                if ((data[i].Tid) == 1) {
                     adapter.add(ChatSelfItem(data[i].message, data[i].time_c + "น."))
                 } else {
                     adapter.add(ChatOtherItem(data[i].message, data[i].Tid.toString(), data[i].time_c + "น."

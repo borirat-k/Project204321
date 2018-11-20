@@ -15,7 +15,7 @@ class CourseFragment() : Fragment(){
 
 //    var address:String = "http://10.80.145.210/course.php"
 //    var address:String = "http://10.0.2.2/Project204321/course.php"
-    var address:String = "http://192.168.0.102/Project204321/course.php"
+    var address:String = "http://192.168.1.11/Project204321/course.php"
 
     var teacher_id: String? = ""
 

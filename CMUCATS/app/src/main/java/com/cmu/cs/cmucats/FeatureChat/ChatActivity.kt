@@ -3,6 +3,7 @@ package com.cmu.cs.cmucats.FeatureChat
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.support.v7.widget.RecyclerView
 import android.view.inputmethod.InputMethodManager
 import android.widget.FrameLayout
 import com.cmu.cs.cmucats.FeatureActivity
@@ -22,31 +23,45 @@ class ChatActivity : NavigationActivity() {
 
     private var courseID: String? = null
     private var teacherID: String? = null
+    private var k:Int = 1
 
     companion object {
         val adapter = GroupAdapter<ViewHolder>()
     }
 
-    val addUrl: String = "http://192.168.0.102/Project204321/insert.php" // connect with ???
-    val selectUrl = "http://192.168.0.102/Project204321/select.php"
+    var Gid:String=""
+
+    val addUrl: String = "http://192.168.1.11/Project204321/insert.php" // connect with ???
+    val selectUrl = "http://192.168.1.11/Project204321/select.php"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val bundle: Bundle = intent.extras
+        val RecyclerView2 = findViewById<RecyclerView>(R.id.recycler_message)
         courseID = bundle.getString("course")!!
         teacherID = bundle.getString("teacher")!!
-        var Gid = "001"
+        var Cid = courseID.toString()
+
+        if(Cid == "204111"){
+            Gid = "002"
+        }else if(Cid == "204100"){
+            Gid = "001"
+        }else if(Cid == "204321"){
+            Gid = "003"
+        }
+
         var Tid = teacherID.toString()
 
         val contentFrameLayout: FrameLayout = findViewById<FrameLayout>(R.id.content_frame)
         layoutInflater.inflate(R.layout.activity_chat, contentFrameLayout)
 
-        val adapter = GroupAdapter<ViewHolder>()
         supportActionBar?.title = "$courseID Group chat"
 
 
-        JSonDownloader(this,selectUrl,recycler_message,Gid,Tid).execute()
+        JSonDownloader(this,selectUrl,RecyclerView2,Gid,Tid).execute()
+
+
 
         send_button_chat.setOnClickListener{
             var Date_c:String = aboutDate()
@@ -62,9 +77,11 @@ class ChatActivity : NavigationActivity() {
         }
     }
 
+
     override fun onBackPressed() {
         val intent = Intent(this, FeatureActivity::class.java)
         intent.putExtra("course", courseID)
+        JSonParser.messageGo.clear()
         startActivity(intent)
         finish()
         overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right)
