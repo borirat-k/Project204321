@@ -49,7 +49,7 @@ class JsonParserSchedule(var context: Context, private var jsonData: String, var
             //Toast.makeText(context,"adapter pass",Toast.LENGTH_SHORT).show()
             //var view = LayoutInflater.from(context).inflate(R.layout.downloadphp,viewGroup,false)
 
-            Teach_schedule_fragment.course_schedule_Head = headScheduleList
+            //Teach_schedule_fragment.course_schedule_Head = headScheduleList
             rv.adapter = TeachHeadingAdapter(headScheduleList, context)
 
         } else {

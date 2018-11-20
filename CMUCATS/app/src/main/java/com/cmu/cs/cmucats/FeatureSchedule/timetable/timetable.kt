@@ -65,13 +65,15 @@ class timetable : AppCompatActivity(), HorizontalScroll.ScrollViewListener, Vert
         addRowToTableA()
         initializeRowForTableB()
         check_list = intent.getIntExtra("check_list", 0)
-        if (check_list == 1) {
-            course_detail = JsonParserDetailSchedule.courseScheduleL
-            course_list = Teach_schedule_fragment.course_ary
-        } else {
-            course_list = Teach_schedule_fragment.course_ary
-            course_detail = JsonParserDetailSchedule.courseScheduleL
-        }
+        course_detail = JsonParserDetailSchedule.courseScheduleL
+        course_list = Teach_schedule_fragment.course_ary
+//        if (check_list == 1) {
+//            course_detail = JsonParserDetailSchedule.courseScheduleL
+//            course_list = Teach_schedule_fragment.course_ary
+//        } else {
+//            course_list = Teach_schedule_fragment.course_ary
+//            course_detail = JsonParserDetailSchedule.courseScheduleL
+//        }
         for (i in 0..4) {
             addColumnsToTableB("${dateLabel[i]}", i)
         }

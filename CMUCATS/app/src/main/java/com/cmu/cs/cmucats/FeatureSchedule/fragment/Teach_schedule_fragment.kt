@@ -61,7 +61,7 @@ class Teach_schedule_fragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.teach_schedule_fragment, container, false)
 
-        //JsonDownloadSchedule(view.context, TAG_URI_PHP_SELECT, view.teach_list).execute()
+        JsonDownloadSchedule(view.context, TAG_URI_PHP_SELECT, view.teach_list).execute()
 
         view.teach_list.layoutManager = LinearLayoutManager(context)
         view.teach_list.adapter = TeachHeadingAdapter(course_schedule_Head,view.context)
