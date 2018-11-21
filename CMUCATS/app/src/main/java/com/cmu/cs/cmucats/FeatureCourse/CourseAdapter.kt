@@ -11,14 +11,20 @@ import android.widget.TextView
 import com.cmu.cs.cmucats.R
 import com.cmu.cs.cmucats.FeatureActivity
 import android.content.Intent
+import android.support.v7.widget.PopupMenu
+import android.view.MenuItem
 import android.widget.Toast
+import com.cmu.cs.cmucats.MainActivity
 
 
-
-class CourseAdapter(val courseList: ArrayList<Course>, context: Context): RecyclerView.Adapter<CourseAdapter.ViewHolder>() {
+class CourseAdapter(val courseList: ArrayList<Course>, context: Context, private var teacherID: String): RecyclerView.Adapter<CourseAdapter.ViewHolder>(), PopupMenu.OnMenuItemClickListener {
 
     private var mContext: Context = context
     private var activity = mContext as Activity
+
+    private var courseID: String? = null
+
+    val deleteAdress: String = "http://10.80.101.163/project204321/delete_course.php"
 
     //มีหน้าที่เพื่อให้เราสร้าง view ต่างๆแล้วเก็บไว้ใน ViewHolder อีกที
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -39,7 +45,12 @@ class CourseAdapter(val courseList: ArrayList<Course>, context: Context): Recycl
         holder.textCourseName.text = course.name
 
         //set Click option menu
-//        holder.textCourseOption
+        holder.textCourseOption.setOnClickListener(object :View.OnClickListener {
+            override fun onClick(v: View) {
+                courseID = holder.textCourseID.text.toString()
+                showPopup(v)
+            }
+        })
 
         holder.course_layout.setOnClickListener(object :View.OnClickListener {
             override fun onClick(p0: View?) {
@@ -48,6 +59,7 @@ class CourseAdapter(val courseList: ArrayList<Course>, context: Context): Recycl
                 val intent = Intent(mContext, FeatureActivity::class.java)
                 println(holder.textCourseID.text)
                 intent.putExtra("course", holder.textCourseID.text)
+                intent.putExtra("teacher", teacherID)
                 mContext.startActivity(intent)
                 activity.finish()
                 activity.overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
@@ -78,5 +90,30 @@ class CourseAdapter(val courseList: ArrayList<Course>, context: Context): Recycl
 //        override fun onClick(p0: View?) {
 //            this.itemClickListener.onItemClick(layoutPosition)
 //        }
+    }
+
+    fun showPopup(v: View){
+        var popup: PopupMenu = PopupMenu(mContext, v)
+        popup.setOnMenuItemClickListener(this)
+        popup.inflate(R.menu.popup_menu)
+        popup.show()
+    }
+
+    override fun onMenuItemClick(item: MenuItem): Boolean {
+        when (item.itemId){
+            R.id.update -> {
+                return true
+            }
+            R.id.delete -> {
+                DeleteCourse(mContext, deleteAdress, courseID!!).execute()
+                val intent = Intent(mContext, MainActivity::class.java)
+                intent.putExtra("course", courseID)
+                mContext.startActivity(intent)
+                activity.finish()
+//                Toast.makeText(mContext, "Delete", Toast.LENGTH_SHORT).show()
+                return true
+            }
+        }
+        return false
     }
 }

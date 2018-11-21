@@ -25,6 +25,7 @@
 	$Cid = $_POST['Cid'];
 	
 	$sql = "SELECT * FROM assignment WHERE Cid = '$Cid'";
+	// $sql = "SELECT * FROM assignment WHERE Cid = '204100'";
 	// $sql = "select * from assignment";
 	
 	$result=mysqli_query($con, $sql);

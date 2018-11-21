@@ -21,5 +21,8 @@
             android:id="@+id/logout"
             android:icon="@drawable/ic_power_settings_new_black_24dp"
             android:title="Logout" />
+        <item
+            android:id="@+id/teacher_praphaporn"
+            android:title="" />
     </group>
 </menu>

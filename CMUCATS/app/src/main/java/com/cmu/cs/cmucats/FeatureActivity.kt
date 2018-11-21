@@ -12,9 +12,10 @@ import com.cmu.cs.cmucats.FeatureChat.ChatActivity
 import com.cmu.cs.cmucats.FeatureCourse.Editstudent
 import com.cmu.cs.cmucats.FeatureCourse.StudentInfo
 
-class FeatureActivity : NavigationActivity(), View.OnClickListener {
+class   FeatureActivity : NavigationActivity(), View.OnClickListener {
 
     private var courseID: String? = null
+    private var teacherID: String? = null
 
     private var assignmentCard: CardView? = null
     private var attendanceCard: CardView? = null
@@ -26,6 +27,7 @@ class FeatureActivity : NavigationActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         val bundle: Bundle = intent.extras
         courseID = bundle.getString("course")!!
+        teacherID = bundle.getString("teacher")!!
 //        setContentView(R.layout.activity_feature)
 //        setSupportActionBar(toolbar)
 
@@ -63,6 +65,7 @@ class FeatureActivity : NavigationActivity(), View.OnClickListener {
                 Toast.makeText(this, "FeatureAssignment", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, AssignmentActivity::class.java)
                 intent.putExtra("course", courseID)
+                intent.putExtra("teacher", teacherID)
                 startActivity(intent)
                 finish()
             }
@@ -73,6 +76,7 @@ class FeatureActivity : NavigationActivity(), View.OnClickListener {
                 Toast.makeText(this, "Chat",Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, ChatActivity::class.java)
                 intent.putExtra("course", courseID)
+                intent.putExtra("teacher", teacherID)
                 startActivity(intent)
                 finish()
             }

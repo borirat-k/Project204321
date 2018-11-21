@@ -24,8 +24,11 @@
 	$sql = "SELECT DISTINCT title, fname, lname, max_score, score_correct
 			FROM student as stu, assignment as a, checked as c, study s
 			where c.cid = '$Cid' and c.aid = '$Aid' and stu.stu_id = '$Stu_id' and 
-			c.Cid = a.Cid and a.Cid = s.Cid and c.Aid = a.Aid and s.Stu_id = stu.stu_id";
-	// $sql = "select * from assignment";
+			c.Cid = a.Cid and a.Cid = s.Cid and c.Aid = a.Aid and c.Stu_id = s.Stu_id and s.Stu_id = stu.stu_id";
+	// $sql = "SELECT *
+			// FROM student as stu, assignment as a, checked as c, study s
+			// where c.cid = '204100' and c.aid = 'Lec1' and stu.stu_id = '610710051' and 
+			// c.Cid = a.Cid and a.Cid = s.Cid and c.Aid = a.Aid and c.Stu_id = s.Stu_id and s.Stu_id = stu.stu_id";
 	
 	$result=mysqli_query($con, $sql);
 	if($result){
