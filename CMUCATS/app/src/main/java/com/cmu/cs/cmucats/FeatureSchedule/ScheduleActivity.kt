@@ -2,12 +2,14 @@ package com.cmu.cs.cmucats.FeatureSchedule
 
 import android.os.Bundle
 import android.widget.FrameLayout
+import com.cmu.cs.cmucats.FeatureSchedule.ConnectPHP.JsonDownloadSchedule
 import com.cmu.cs.cmucats.FeatureSchedule.adapter.MyViewPagerAdapter
 import com.cmu.cs.cmucats.FeatureSchedule.fragment.Teach_schedule_fragment
 import com.cmu.cs.cmucats.FeatureSchedule.fragment.test_schedule_fragment
 import com.cmu.cs.cmucats.NavigationActivity
 import com.cmu.cs.cmucats.R
 import kotlinx.android.synthetic.main.activity_schedule.*
+import kotlinx.android.synthetic.main.teach_schedule_fragment.view.*
 
 class ScheduleActivity : NavigationActivity() {
 
@@ -28,5 +30,6 @@ class ScheduleActivity : NavigationActivity() {
         //create tab of viewpager
         tabs.setupWithViewPager(viewPager)
         navigationView.setCheckedItem(R.id.schedule)
+
     }
 }

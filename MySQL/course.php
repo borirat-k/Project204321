@@ -22,9 +22,9 @@
 		mysqli_set_charset($con, "utf8");
 	}
 	
-	$Cid = $_POST['Cid'];
+	$Tid = $_POST['Tid'];
 	
-	$sql = "SELECT * FROM teach , course where teach.Tid = '3' and teach.Cid = course.Cid";
+	$sql = "SELECT * FROM teach , course where teach.Tid = '$Tid' and teach.Cid = course.Cid";
 	// $sql = "SELECT * FROM assignment WHERE Cid = '204100'";
 	// $sql = "select * from assignment";
 	

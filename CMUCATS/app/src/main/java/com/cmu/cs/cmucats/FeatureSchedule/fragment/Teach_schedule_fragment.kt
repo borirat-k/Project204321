@@ -21,6 +21,7 @@ import kotlinx.android.synthetic.main.teach_input_from.view.*
 import kotlinx.android.synthetic.main.teach_schedule_fragment.*
 import kotlinx.android.synthetic.main.teach_schedule_fragment.view.*
 import com.cmu.cs.cmucats.FeatureSchedule.timetable.timetable
+import kotlinx.android.synthetic.main.alert_dialog.*
 
 
 class Teach_schedule_fragment : Fragment() {
@@ -34,30 +35,37 @@ class Teach_schedule_fragment : Fragment() {
         }
     }
 
-    var str_semester: String? = ""
+    //var str_semester: String? = ""
     var str_idCourse: String? = ""
     var str_startTime: String? = ""
     var str_stopTime: String? = ""
     var str_startDate: String? = ""
     var str_stopDate: String? = ""
+    lateinit var semester:String
 
-    var user_id = 4
+    var user_id = 3
 
 
     lateinit var count_edt: EditText
 
     var changeAc = 0
-    val TAG_URI_PHP_SELECT = "http://10.80.100.107/Project204321/selectSchedule.php"
-    val TAG_URI_PHP_INSERT_T = "http://10.80.100.107/Project204321/insertSchedule.php"
-    val TAG_URI_PHP_INSERT_Se = "http://10.80.100.107/Project204321/insert_SelectIn.php"
+//    val TAG_URI_PHP_SELECT = "http://10.80.100.107/Project204321/selectSchedule.php"
+//    val TAG_URI_PHP_INSERT_T = "http://10.80.100.107/Project204321/insertSchedule.php"
+//    val TAG_URI_PHP_INSERT_Se = "http://10.80.100.107/Project204321/insert_SelectIn.php"
+    val TAG_URI_PHP_SELECT = "http://10.80.101.163/Project204321/selectSchedule.php"
+    val TAG_URI_PHP_INSERT_T = "http://10.80.101.163/Project204321/insertSchedule.php"
+    val TAG_URI_PHP_INSERT_Se = "http://10.80.101.163/Project204321/insert_SelectIn.php"
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.teach_schedule_fragment, container, false)
+
+        JsonDownloadSchedule(view.context, TAG_URI_PHP_SELECT, view.teach_list).execute()
+
         view.teach_list.layoutManager = LinearLayoutManager(context)
         view.teach_list.adapter = TeachHeadingAdapter(course_schedule_Head,view.context)
-        JsonDownloadSchedule(view.context, TAG_URI_PHP_SELECT, view.teach_list).execute()
+
         return view
     }
     override fun onViewCreated(view1: View, savedInstanceState: Bundle?) {
@@ -81,6 +89,10 @@ class Teach_schedule_fragment : Fragment() {
             //when clik positive button of alert dialog
             customDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener { it ->
                 val all_form_course = count_edt.text.toString().toInt()
+                semester = view.findViewById<EditText>(R.id.et_semester).text.toString()
+
+                Insert_Tschedule(view.context,TAG_URI_PHP_INSERT_T,user_id,semester).execute()
+
                 customDialog.dismiss()
                 Toast.makeText(context, "$all_form_course", Toast.LENGTH_SHORT).show()
                 for (i in 1..all_form_course) {
@@ -113,19 +125,18 @@ class Teach_schedule_fragment : Fragment() {
         //when clik positive button of alert dialog
         customDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener { it ->
             customDialog.dismiss()
-            str_semester = view.et_semester.text?.toString()
             str_idCourse = view.et_idCourse.text?.toString()
             str_startTime = view.et_startTime.text?.toString()
             str_stopTime = view.et_stopTime.text?.toString()
             str_startDate = view.et_startDate.text?.toString()
             str_stopDate = view.et_stopDate.text?.toString()
-            course_ary.add(CourseScheduleInsert(str_semester, str_idCourse, str_startTime, str_stopTime, str_startDate, str_stopDate))
+            course_ary.add(CourseScheduleInsert( semester,str_idCourse, str_startTime, str_stopTime, str_startDate, str_stopDate))
             //update current form
             changeAc++
 
-            var tc_id = course_schedule_Head.size+1
-            Insert_Tschedule(view.context,TAG_URI_PHP_INSERT_T,user_id,str_semester!!).execute()
-            Insert_SelectIn(view.context,TAG_URI_PHP_INSERT_Se,tc_id,str_idCourse!!).execute()
+            //var tc_id = course_schedule_Head.size+1
+            //Insert_Tschedule(view.context,TAG_URI_PHP_INSERT_T,user_id,str_semester!!).execute()
+            Insert_SelectIn(view.context,TAG_URI_PHP_INSERT_Se,semester,str_idCourse!!,user_id).execute()
 
             customDialog.dismiss()
             posturn.run() {

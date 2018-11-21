@@ -50,6 +50,7 @@ dependencies {
     implementation 'com.rengwuxian.materialedittext:library:2.1.4'
     implementation 'th.or.nectec.android:thai-widget:0.6.2'
     implementation 'in.srain.cube:ultra-ptr:1.0.11'
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
 
     implementation 'com.xwray:groupie:2.1.0'
 

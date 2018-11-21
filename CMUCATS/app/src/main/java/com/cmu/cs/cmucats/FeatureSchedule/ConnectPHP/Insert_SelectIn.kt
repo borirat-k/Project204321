@@ -11,7 +11,7 @@ import java.net.MalformedURLException
 import java.net.URL
 import java.net.URLEncoder
 
-class Insert_SelectIn (var context: Context, private var phpUrl: String, var tc_id:Int, var Cid:String) : AsyncTask<Void, Void, String>() {
+class Insert_SelectIn (var context: Context, private var phpUrl: String, var semester:String, var Cid:String,var user_id:Int) : AsyncTask<Void, Void, String>() {
     private lateinit var mView: CatLoadingView
 
     private fun connect(phpUrl: String): Any {
@@ -44,37 +44,20 @@ class Insert_SelectIn (var context: Context, private var phpUrl: String, var tc_
             val con = connection as HttpURLConnection
             val ops = con.outputStream
             val writer = BufferedWriter(OutputStreamWriter(ops, "UTF-8"))
-            var data: String = URLEncoder.encode("tc_id", "UTF-8") + "=" + URLEncoder.encode(tc_id.toString(), "UTF-8")+"&&"+ URLEncoder.encode("Cid", "UTF-8")+"="+URLEncoder.encode(Cid.toString(), "UTF-8")
+            var data: String = URLEncoder.encode("user_id", "UTF-8") + "=" + URLEncoder.encode(user_id.toString(), "UTF-8")+"&"+ URLEncoder.encode("semester", "UTF-8")+"="+URLEncoder.encode(semester, "UTF-8")+"&"+URLEncoder.encode("Cid","UTF-8")+"="+URLEncoder.encode(Cid,"UTF-8")
             writer.write(data)
             writer.flush()
             writer.close()
             ops.close()
-
             if (con.responseCode == 200) {
-                val `is` = BufferedInputStream(con.inputStream)
-                val br = BufferedReader(InputStreamReader(`is`))
-                val jsonData = StringBuffer()
-                var line: String?
-
-                do {
-                    line = br.readLine()
-                    if (line == null) {
-                        break
-                    }
-
-                    //println("jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj-> $line")
-                    jsonData.append(line + "\n")
-                } while (true)
-
-                br.close()
-                `is`.close()
-
-                println("ffffffffffffffffffffffffffffffff-> $jsonData")
-
-                return jsonData.toString()
-            } else {
-                return "Error " + con.responseMessage
+                var inputstream: InputStream = BufferedInputStream(con.inputStream)
+                inputstream.close()
+                return ""
             }
+            else {
+                return "connect error"
+            }
+            return ""
         } catch (e: IOException) {
             return "Error " + e.message
         }
@@ -91,7 +74,7 @@ class Insert_SelectIn (var context: Context, private var phpUrl: String, var tc_
             Toast.makeText(context, error, Toast.LENGTH_SHORT).show()
         } else {
             Toast.makeText(context, "connection and download success,Now attemt to parse....", Toast.LENGTH_SHORT).show()
-            JsonParserDetailSchedule(context, jsonData).execute()
+            //JsonParserDetailSchedule(context, jsonData).execute()
         }
     }
 

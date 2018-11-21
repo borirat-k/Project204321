@@ -14,7 +14,7 @@ import java.net.URL
 import java.net.URLEncoder
 
 class JsonDownloadSchedule(var context: Context, private var phpUrl:String, var rv: RecyclerView) : AsyncTask<Void, Void, String>() {
-    private val user_id = 4;
+    private val user_id = 3
     private lateinit var mView:CatLoadingView
 
     private fun connect(phpUrl:String):Any{
@@ -65,7 +65,6 @@ class JsonDownloadSchedule(var context: Context, private var phpUrl:String, var 
                     if(line == null){
                         break
                     }
-
                     //println("jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj-> $line")
                     jsonData.append(line+"\n")
                 }while(true)
