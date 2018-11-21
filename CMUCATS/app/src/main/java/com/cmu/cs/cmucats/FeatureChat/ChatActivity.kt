@@ -53,7 +53,6 @@ class ChatActivity : NavigationActivity() {
         }
 
         var Tid = teacherID.toString()
-        print("$Tid +++++++++++++++++++++++++++")
 
         val contentFrameLayout: FrameLayout = findViewById<FrameLayout>(R.id.content_frame)
         layoutInflater.inflate(R.layout.activity_chat, contentFrameLayout)
@@ -84,6 +83,7 @@ class ChatActivity : NavigationActivity() {
     override fun onBackPressed() {
         val intent = Intent(this, FeatureActivity::class.java)
         intent.putExtra("course", courseID)
+        intent.putExtra("teacher", teacherID)
         JSonParser.messageGo.clear()
         startActivity(intent)
         finish()
@@ -119,7 +119,7 @@ class ChatActivity : NavigationActivity() {
 class ChatOtherItem(val text: String, val textName:String, val textTime:String) : Item<ViewHolder>() {
     override fun bind(viewHolder: ViewHolder, position: Int) {
         viewHolder.itemView.Message_text.text = text
-        viewHolder.itemView.txtOtherUser.text = textName
+        viewHolder.itemView.txtOtherUser.text = "Teacher $textName"
         viewHolder.itemView.txtOtherMessageTime.text = textTime
     }
     override fun getLayout(): Int {
