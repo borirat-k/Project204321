@@ -38,29 +38,20 @@ class ChatActivity : NavigationActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val bundle: Bundle = intent.extras
+        val contentFrameLayout: FrameLayout = findViewById<FrameLayout>(R.id.content_frame)
+        layoutInflater.inflate(R.layout.activity_chat, contentFrameLayout)
 
+        adapter.clear()
         courseID = bundle.getString("course")!!
         teacherID = bundle.getString("teacher")!!
 
         var Cid = courseID.toString()
-
-        if(Cid == "204111"){
-            Gid = "002"
-        }else if(Cid == "204100"){
-            Gid = "001"
-        }else if(Cid == "204321"){
-            Gid = "003"
-        }
-
+        var Gid = "G$Cid"
         var Tid = teacherID.toString()
-
-        val contentFrameLayout: FrameLayout = findViewById<FrameLayout>(R.id.content_frame)
-        layoutInflater.inflate(R.layout.activity_chat, contentFrameLayout)
-
         supportActionBar?.title = "$courseID Group chat"
+
+
         val recyclerView2 = findViewById<RecyclerView>(R.id.recycler_message)
-
-
         JSonDownloader(this,selectUrl,recyclerView2,Gid,Tid).execute()
 
 
@@ -71,7 +62,7 @@ class ChatActivity : NavigationActivity() {
             val text = edittext_main?.text.toString()
             if (text != "") {
                 adapter.add(ChatSelfItem(text,time_c+"น."))
-                recyclerView2.adapter = adapter
+                //recyclerView2.adapter = adapter
                 InsertMessage(this,addUrl,Tid,Gid,text,Date_c,time_c).execute()
                 resetInput()
 
