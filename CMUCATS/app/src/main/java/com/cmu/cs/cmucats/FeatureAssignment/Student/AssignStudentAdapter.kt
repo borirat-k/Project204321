@@ -22,7 +22,7 @@ class AssignStudentAdapter(val assignList: ArrayList<AssignmentStudent>, context
 
     val TAG_ASSIGN_STU_FRAGMENT = "tag_assign_stu_fragment"
 //    var urlAdress: String = "http://10.0.2.2/Project204321/select_assign_stu_detail.php"
-    var urlAdress: String = "http://10.80.101.163/Project204321/select_assign_stu_detail.php"
+    var urlAdress: String = "http://192.168.1.110/Project204321/select_assign_stu_detail.php"
 
     //มีหน้าที่เพื่อให้เราสร้าง view ต่างๆแล้วเก็บไว้ใน ViewHolder อีกที
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

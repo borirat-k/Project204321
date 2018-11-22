@@ -34,9 +34,9 @@ class AssignmentAdapter(val assignList: ArrayList<Assignment>, context: Context,
 //    val deleteAdress: String = "http://10.0.2.2/Project204321/delete_assignment.php"
 //    val editShowAdress: String = "http://10.0.2.2/Project204321/update_show_assignment.php"
 //    val editEditAdress: String = "http://10.0.2.2/Project204321/update_edit_assignment.php"
-    val deleteAdress: String = "http://10.80.101.163/Project204321/delete_assignment.php"
-    val editShowAdress: String = "http://10.80.101.163/Project204321/update_show_assignment.php"
-    val editEditAdress: String = "http://10.80.101.163/Project204321/update_edit_assignment.php"
+    val deleteAdress: String = "http://192.168.1.110/Project204321/delete_assignment.php"
+    val editShowAdress: String = "http://192.168.1.110/Project204321/update_show_assignment.php"
+    val editEditAdress: String = "http://192.168.1.110/Project204321/update_edit_assignment.php"
 
     private var assignmentID: String? = null
 
@@ -172,6 +172,7 @@ class AssignmentAdapter(val assignList: ArrayList<Assignment>, context: Context,
                             EditUpdateAssignment(customView.context, editEditAdress, courseID, assignmentID!!, assignmentID_new, deadLine, maxScore).execute()
                             val intent = Intent(mContext, AssignmentActivity::class.java)
                             intent.putExtra("course", courseID)
+                            intent.putExtra("teacher", teacherID)
                             mContext.startActivity(intent)
                             activity.finish()
                             dialog.dismiss()
@@ -211,6 +212,7 @@ class AssignmentAdapter(val assignList: ArrayList<Assignment>, context: Context,
                 DeleteAssignment(mContext, deleteAdress, courseID, assignmentID!!).execute()
                 val intent = Intent(mContext, AssignmentActivity::class.java)
                 intent.putExtra("course", courseID)
+                intent.putExtra("teacher", teacherID)
                 mContext.startActivity(intent)
                 activity.finish()
 //                Toast.makeText(mContext, "Delete", Toast.LENGTH_SHORT).show()

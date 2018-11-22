@@ -41,9 +41,9 @@ class AssignmentActivity : NavigationActivity(){
     var check_add_assignment: Boolean = true
 
 //    var urlAdress: String = "http://10.0.2.2/Project204321/select_assignment.php"
-    var urlAdress: String = "http://10.80.101.163/Project204321/select_assignment.php"
+    var urlAdress: String = "http://192.168.1.110/Project204321/select_assignment.php"
 //    var insertAdress: String = "http://10.0.2.2/Project204321/insert_assignment.php"
-    var insertAdress: String = "http://10.80.101.163/Project204321/insert_assignment.php"
+    var insertAdress: String = "http://192.168.1.110/Project204321/insert_assignment.php"
 
 //    val datePickerCallback = object : DateView.DatePickerCallback {
 //        override fun onPicked(view: DateView, calendar: Calendar) {
