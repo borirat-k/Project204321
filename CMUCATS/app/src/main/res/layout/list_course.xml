@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
     android:id="@+id/course_layout"
-    tools:context=".CourseActivity">
+    tools:context=".FeatureCourse.CourseFragment">
     <!--tools:showIn="@layout/activity_navigation">-->
     <!--app:layout_behavior="@string/appbar_scrolling_view_behavior">-->
 

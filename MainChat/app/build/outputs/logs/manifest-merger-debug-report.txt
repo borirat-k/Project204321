@@ -1,0 +1,183 @@
+-- Merging decision tree log ---
+manifest
+ADDED from O:\GitHub\Project204321\MainChat\app\src\main\AndroidManifest.xml:3:1-23:12
+INJECTED from O:\GitHub\Project204321\MainChat\app\src\main\AndroidManifest.xml:3:1-23:12
+INJECTED from O:\GitHub\Project204321\MainChat\app\src\main\AndroidManifest.xml:3:1-23:12
+INJECTED from O:\GitHub\Project204321\MainChat\app\src\main\AndroidManifest.xml:3:1-23:12
+MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\appcompat-v7-28.0.0.aar\bbf193baf466a9104f1f30efa3ca6c9d\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\b743918bd60a5d1a6aa6b023d96c059a\AndroidManifest.xml:2:1-11:12
+MERGED from [com.xwray:groupie:2.1.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\groupie-2.1.0.aar\249b329e819876f2d0e53838b8ad23b9\AndroidManifest.xml:2:1-14:12
+MERGED from [com.android.support:recyclerview-v7:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-28.0.0.aar\b89505191d8154443169de4d6229eab4\AndroidManifest.xml:17:1-22:12
+MERGED from [com.squareup.picasso:picasso:2.71828] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\picasso-2.71828.aar\3f601923b23c88d7ba86bd4cd5d0ed40\AndroidManifest.xml:2:1-14:12
+MERGED from [com.android.volley:volley:1.1.1] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\volley-1.1.1.aar\5b3c8e3a265f06df004cdb7650c66f21\AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\support-fragment-28.0.0.aar\e46c5ed1cf290ed7a1c3d4e27a44576a\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-28.0.0.aar\3e5ce12a6f45bd754fed3b3931608ac4\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\support-core-ui-28.0.0.aar\f44cfa2d0b2fd763c35d74250c224c22\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\support-core-utils-28.0.0.aar\a7db7dc74982a27e9af11e18186909dc\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-28.0.0.aar\b1b228f3b2ebd22aad7afa4f70d34076\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:loader:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\loader-28.0.0.aar\92f8d8fc4cf8d7c31c83630141cfd84a\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:viewpager:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\viewpager-28.0.0.aar\61deec5e3462d84be41a83abee305561\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:coordinatorlayout:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\coordinatorlayout-28.0.0.aar\15bdf89cef6b64fc2a8513c3a6d718d9\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:drawerlayout:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\drawerlayout-28.0.0.aar\48885bda477e31cfed08e783acb6b448\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:slidingpanelayout:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\slidingpanelayout-28.0.0.aar\3a7a5fd563c2fec0c05e96699867c32c\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:customview:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\customview-28.0.0.aar\3585c3bd22bbbc7bb44075a594672abe\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\swiperefreshlayout-28.0.0.aar\a8861c6f8543fe75859abbb2d21e7944\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\asynclayoutinflater-28.0.0.aar\f8330e31b844cfdbb61ba297e423105f\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\985b25de467ecfec99b423eb12bd1012\AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\1520471ff2b2752d92efa5f605c3a462\AndroidManifest.xml:17:1-25:12
+MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\cursoradapter-28.0.0.aar\6570cd9b6d0b7cea7375658a022c60c3\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:exifinterface:27.1.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\exifinterface-27.1.0.aar\273e6cc824425caa6298d8a13ae21bf1\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\98785cc5ed56447305a2871509302188\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:documentfile:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\documentfile-28.0.0.aar\1ea849c9f54c0b8901498a019f9db438\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\localbroadcastmanager-28.0.0.aar\cf1867935dda2cb0b7eb46f7e9a6044a\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:print:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\print-28.0.0.aar\c3b0d91460d95ac36ddf16f03b249cdb\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.1.aar\8dd0424c52009e835cf33102b2992acc\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:interpolator:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\interpolator-28.0.0.aar\1ee2c573e8f02608cd3ccf5291a42474\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\livedata-1.1.1.aar\0381e61440585c3ff6e4afbe8141331d\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.1.aar\0063f06661dd8cdbe46a33c3954f37f5\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.1] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\785ff1067bff95fbf97b5ed4909408c8\AndroidManifest.xml:17:1-22:12
+INJECTED from O:\GitHub\Project204321\MainChat\app\src\main\AndroidManifest.xml:3:1-23:12
+INJECTED from O:\GitHub\Project204321\MainChat\app\src\main\AndroidManifest.xml:3:1-23:12
+INJECTED from O:\GitHub\Project204321\MainChat\app\src\main\AndroidManifest.xml:3:1-23:12
+	package
+		ADDED from O:\GitHub\Project204321\MainChat\app\src\main\AndroidManifest.xml:4:11-51
+		INJECTED from O:\GitHub\Project204321\MainChat\app\src\main\AndroidManifest.xml
+		INJECTED from O:\GitHub\Project204321\MainChat\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from O:\GitHub\Project204321\MainChat\app\src\main\AndroidManifest.xml
+		ADDED from O:\GitHub\Project204321\MainChat\app\src\main\AndroidManifest.xml:3:1-23:12
+		INJECTED from O:\GitHub\Project204321\MainChat\app\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from O:\GitHub\Project204321\MainChat\app\src\main\AndroidManifest.xml
+		ADDED from O:\GitHub\Project204321\MainChat\app\src\main\AndroidManifest.xml:3:1-23:12
+		INJECTED from O:\GitHub\Project204321\MainChat\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from O:\GitHub\Project204321\MainChat\app\src\main\AndroidManifest.xml:3:11-69
+application
+ADDED from O:\GitHub\Project204321\MainChat\app\src\main\AndroidManifest.xml:6:5-21:19
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\b743918bd60a5d1a6aa6b023d96c059a\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\b743918bd60a5d1a6aa6b023d96c059a\AndroidManifest.xml:9:5-20
+MERGED from [com.xwray:groupie:2.1.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\groupie-2.1.0.aar\249b329e819876f2d0e53838b8ad23b9\AndroidManifest.xml:11:5-12:19
+MERGED from [com.xwray:groupie:2.1.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\groupie-2.1.0.aar\249b329e819876f2d0e53838b8ad23b9\AndroidManifest.xml:11:5-12:19
+MERGED from [com.squareup.picasso:picasso:2.71828] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\picasso-2.71828.aar\3f601923b23c88d7ba86bd4cd5d0ed40\AndroidManifest.xml:7:5-12:19
+MERGED from [com.squareup.picasso:picasso:2.71828] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\picasso-2.71828.aar\3f601923b23c88d7ba86bd4cd5d0ed40\AndroidManifest.xml:7:5-12:19
+MERGED from [com.android.volley:volley:1.1.1] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\volley-1.1.1.aar\5b3c8e3a265f06df004cdb7650c66f21\AndroidManifest.xml:9:5-20
+MERGED from [com.android.volley:volley:1.1.1] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\volley-1.1.1.aar\5b3c8e3a265f06df004cdb7650c66f21\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\985b25de467ecfec99b423eb12bd1012\AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\985b25de467ecfec99b423eb12bd1012\AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\1520471ff2b2752d92efa5f605c3a462\AndroidManifest.xml:22:5-23:19
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\1520471ff2b2752d92efa5f605c3a462\AndroidManifest.xml:22:5-23:19
+	android:appComponentFactory
+		ADDED from [com.android.support:support-compat:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\985b25de467ecfec99b423eb12bd1012\AndroidManifest.xml:22:18-91
+	android:supportsRtl
+		ADDED from O:\GitHub\Project204321\MainChat\app\src\main\AndroidManifest.xml:11:13-39
+	android:label
+		ADDED from O:\GitHub\Project204321\MainChat\app\src\main\AndroidManifest.xml:9:13-45
+	android:roundIcon
+		ADDED from O:\GitHub\Project204321\MainChat\app\src\main\AndroidManifest.xml:10:13-58
+	android:icon
+		ADDED from O:\GitHub\Project204321\MainChat\app\src\main\AndroidManifest.xml:8:13-47
+	android:allowBackup
+		ADDED from O:\GitHub\Project204321\MainChat\app\src\main\AndroidManifest.xml:7:13-39
+	android:theme
+		ADDED from O:\GitHub\Project204321\MainChat\app\src\main\AndroidManifest.xml:12:13-44
+activity#main_chat_application.mainchat.MainActivity
+ADDED from O:\GitHub\Project204321\MainChat\app\src\main\AndroidManifest.xml:13:9-19:20
+	android:name
+		ADDED from O:\GitHub\Project204321\MainChat\app\src\main\AndroidManifest.xml:13:19-47
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from O:\GitHub\Project204321\MainChat\app\src\main\AndroidManifest.xml:14:13-18:29
+action#android.intent.action.MAIN
+ADDED from O:\GitHub\Project204321\MainChat\app\src\main\AndroidManifest.xml:15:17-68
+	android:name
+		ADDED from O:\GitHub\Project204321\MainChat\app\src\main\AndroidManifest.xml:15:25-66
+category#android.intent.category.LAUNCHER
+ADDED from O:\GitHub\Project204321\MainChat\app\src\main\AndroidManifest.xml:17:17-76
+	android:name
+		ADDED from O:\GitHub\Project204321\MainChat\app\src\main\AndroidManifest.xml:17:27-74
+uses-sdk
+INJECTED from O:\GitHub\Project204321\MainChat\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from O:\GitHub\Project204321\MainChat\app\src\main\AndroidManifest.xml
+INJECTED from O:\GitHub\Project204321\MainChat\app\src\main\AndroidManifest.xml
+MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\appcompat-v7-28.0.0.aar\bbf193baf466a9104f1f30efa3ca6c9d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\appcompat-v7-28.0.0.aar\bbf193baf466a9104f1f30efa3ca6c9d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\b743918bd60a5d1a6aa6b023d96c059a\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\b743918bd60a5d1a6aa6b023d96c059a\AndroidManifest.xml:5:5-7:41
+MERGED from [com.xwray:groupie:2.1.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\groupie-2.1.0.aar\249b329e819876f2d0e53838b8ad23b9\AndroidManifest.xml:7:5-9:41
+MERGED from [com.xwray:groupie:2.1.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\groupie-2.1.0.aar\249b329e819876f2d0e53838b8ad23b9\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:recyclerview-v7:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-28.0.0.aar\b89505191d8154443169de4d6229eab4\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-28.0.0.aar\b89505191d8154443169de4d6229eab4\AndroidManifest.xml:20:5-44
+MERGED from [com.squareup.picasso:picasso:2.71828] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\picasso-2.71828.aar\3f601923b23c88d7ba86bd4cd5d0ed40\AndroidManifest.xml:5:5-44
+MERGED from [com.squareup.picasso:picasso:2.71828] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\picasso-2.71828.aar\3f601923b23c88d7ba86bd4cd5d0ed40\AndroidManifest.xml:5:5-44
+MERGED from [com.android.volley:volley:1.1.1] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\volley-1.1.1.aar\5b3c8e3a265f06df004cdb7650c66f21\AndroidManifest.xml:7:5-43
+MERGED from [com.android.volley:volley:1.1.1] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\volley-1.1.1.aar\5b3c8e3a265f06df004cdb7650c66f21\AndroidManifest.xml:7:5-43
+MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\support-fragment-28.0.0.aar\e46c5ed1cf290ed7a1c3d4e27a44576a\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\support-fragment-28.0.0.aar\e46c5ed1cf290ed7a1c3d4e27a44576a\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-28.0.0.aar\3e5ce12a6f45bd754fed3b3931608ac4\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-28.0.0.aar\3e5ce12a6f45bd754fed3b3931608ac4\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\support-core-ui-28.0.0.aar\f44cfa2d0b2fd763c35d74250c224c22\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\support-core-ui-28.0.0.aar\f44cfa2d0b2fd763c35d74250c224c22\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\support-core-utils-28.0.0.aar\a7db7dc74982a27e9af11e18186909dc\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\support-core-utils-28.0.0.aar\a7db7dc74982a27e9af11e18186909dc\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-28.0.0.aar\b1b228f3b2ebd22aad7afa4f70d34076\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-28.0.0.aar\b1b228f3b2ebd22aad7afa4f70d34076\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\loader-28.0.0.aar\92f8d8fc4cf8d7c31c83630141cfd84a\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\loader-28.0.0.aar\92f8d8fc4cf8d7c31c83630141cfd84a\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\viewpager-28.0.0.aar\61deec5e3462d84be41a83abee305561\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\viewpager-28.0.0.aar\61deec5e3462d84be41a83abee305561\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\coordinatorlayout-28.0.0.aar\15bdf89cef6b64fc2a8513c3a6d718d9\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\coordinatorlayout-28.0.0.aar\15bdf89cef6b64fc2a8513c3a6d718d9\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\drawerlayout-28.0.0.aar\48885bda477e31cfed08e783acb6b448\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\drawerlayout-28.0.0.aar\48885bda477e31cfed08e783acb6b448\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\slidingpanelayout-28.0.0.aar\3a7a5fd563c2fec0c05e96699867c32c\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\slidingpanelayout-28.0.0.aar\3a7a5fd563c2fec0c05e96699867c32c\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\customview-28.0.0.aar\3585c3bd22bbbc7bb44075a594672abe\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\customview-28.0.0.aar\3585c3bd22bbbc7bb44075a594672abe\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\swiperefreshlayout-28.0.0.aar\a8861c6f8543fe75859abbb2d21e7944\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\swiperefreshlayout-28.0.0.aar\a8861c6f8543fe75859abbb2d21e7944\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\asynclayoutinflater-28.0.0.aar\f8330e31b844cfdbb61ba297e423105f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\asynclayoutinflater-28.0.0.aar\f8330e31b844cfdbb61ba297e423105f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\985b25de467ecfec99b423eb12bd1012\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\985b25de467ecfec99b423eb12bd1012\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\1520471ff2b2752d92efa5f605c3a462\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\1520471ff2b2752d92efa5f605c3a462\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\cursoradapter-28.0.0.aar\6570cd9b6d0b7cea7375658a022c60c3\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\cursoradapter-28.0.0.aar\6570cd9b6d0b7cea7375658a022c60c3\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:exifinterface:27.1.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\exifinterface-27.1.0.aar\273e6cc824425caa6298d8a13ae21bf1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:exifinterface:27.1.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\exifinterface-27.1.0.aar\273e6cc824425caa6298d8a13ae21bf1\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\98785cc5ed56447305a2871509302188\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\98785cc5ed56447305a2871509302188\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\documentfile-28.0.0.aar\1ea849c9f54c0b8901498a019f9db438\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\documentfile-28.0.0.aar\1ea849c9f54c0b8901498a019f9db438\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\localbroadcastmanager-28.0.0.aar\cf1867935dda2cb0b7eb46f7e9a6044a\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\localbroadcastmanager-28.0.0.aar\cf1867935dda2cb0b7eb46f7e9a6044a\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\print-28.0.0.aar\c3b0d91460d95ac36ddf16f03b249cdb\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\print-28.0.0.aar\c3b0d91460d95ac36ddf16f03b249cdb\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.1.aar\8dd0424c52009e835cf33102b2992acc\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.1.aar\8dd0424c52009e835cf33102b2992acc\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\interpolator-28.0.0.aar\1ee2c573e8f02608cd3ccf5291a42474\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\interpolator-28.0.0.aar\1ee2c573e8f02608cd3ccf5291a42474\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\livedata-1.1.1.aar\0381e61440585c3ff6e4afbe8141331d\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\livedata-1.1.1.aar\0381e61440585c3ff6e4afbe8141331d\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.1.aar\0063f06661dd8cdbe46a33c3954f37f5\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.1.aar\0063f06661dd8cdbe46a33c3954f37f5\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\785ff1067bff95fbf97b5ed4909408c8\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\785ff1067bff95fbf97b5ed4909408c8\AndroidManifest.xml:20:5-44
+INJECTED from O:\GitHub\Project204321\MainChat\app\src\main\AndroidManifest.xml
+INJECTED from O:\GitHub\Project204321\MainChat\app\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from O:\GitHub\Project204321\MainChat\app\src\main\AndroidManifest.xml
+		ADDED from O:\GitHub\Project204321\MainChat\app\src\main\AndroidManifest.xml
+		INJECTED from O:\GitHub\Project204321\MainChat\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from O:\GitHub\Project204321\MainChat\app\src\main\AndroidManifest.xml
+		ADDED from O:\GitHub\Project204321\MainChat\app\src\main\AndroidManifest.xml
+		INJECTED from O:\GitHub\Project204321\MainChat\app\src\main\AndroidManifest.xml
+provider#com.squareup.picasso.PicassoProvider
+ADDED from [com.squareup.picasso:picasso:2.71828] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\picasso-2.71828.aar\3f601923b23c88d7ba86bd4cd5d0ed40\AndroidManifest.xml:8:9-11:40
+	android:authorities
+		ADDED from [com.squareup.picasso:picasso:2.71828] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\picasso-2.71828.aar\3f601923b23c88d7ba86bd4cd5d0ed40\AndroidManifest.xml:10:13-72
+	android:exported
+		ADDED from [com.squareup.picasso:picasso:2.71828] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\picasso-2.71828.aar\3f601923b23c88d7ba86bd4cd5d0ed40\AndroidManifest.xml:11:13-37
+	android:name
+		ADDED from [com.squareup.picasso:picasso:2.71828] C:\Users\HawksSalatan\.gradle\caches\transforms-1\files-1.1\picasso-2.71828.aar\3f601923b23c88d7ba86bd4cd5d0ed40\AndroidManifest.xml:9:13-64
