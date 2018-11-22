@@ -24,7 +24,7 @@ class CourseAdapter(val courseList: ArrayList<Course>, context: Context, private
 
     private var courseID: String? = null
 
-    val deleteAdress: String = "http://10.80.101.163/project204321/delete_course.php"
+    val deleteAdress: String = "http://192.168.0.102/project204321/delete_course.php"
 
     //มีหน้าที่เพื่อให้เราสร้าง view ต่างๆแล้วเก็บไว้ใน ViewHolder อีกที
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

@@ -49,6 +49,7 @@
             android:theme="@style/Theme.Sliding.Light"/>
         <activity
             android:name=".FeatureSchedule.ScheduleActivity" />
+        <activity android:name=".FeatureSchedule.fragment.Teach_input_form_activity"/>
         <activity
             android:name=".FeatureSchedule.timetable.timetable" />
         <activity android:name=".FeatureCourse.Editprofile" />

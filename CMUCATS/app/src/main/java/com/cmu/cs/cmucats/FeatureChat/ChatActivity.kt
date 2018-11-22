@@ -31,8 +31,8 @@ class ChatActivity : NavigationActivity() {
 
     var Gid:String=""
 
-    val addUrl: String = "http://10.80.101.163/Project204321/insert.php" // connect with ???
-    val selectUrl = "http://10.80.101.163/Project204321/select.php"
+    val addUrl: String = "http://192.168.0.102/Project204321/insert.php" // connect with ???
+    val selectUrl = "http://192.168.0.102/Project204321/select.php"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

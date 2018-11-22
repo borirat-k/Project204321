@@ -11,8 +11,8 @@ import java.net.MalformedURLException
 import java.net.URL
 import java.net.URLEncoder
 
-class Insert_SelectIn (var context: Context, private var phpUrl: String, var semester:String, var Cid:String,var user_id:Int) : AsyncTask<Void, Void, String>() {
-    private lateinit var mView: CatLoadingView
+class Insert_SelectIn (var context: Context, private var phpUrl: String, var semester:String?, var Cid:String,var user_id:Int) : AsyncTask<Void, Void, String>() {
+    //private lateinit var mView: CatLoadingView
 
     private fun connect(phpUrl: String): Any {
         try {
@@ -65,7 +65,7 @@ class Insert_SelectIn (var context: Context, private var phpUrl: String, var sem
 
     override fun onPostExecute(jsonData: String) {
         super.onPostExecute(jsonData)
-        mView.dismiss()
+       // mView.dismiss()
         if (jsonData!!.startsWith("URL ERROR")) {
             val error = jsonData
             Toast.makeText(context, error, Toast.LENGTH_SHORT).show()
@@ -85,7 +85,7 @@ class Insert_SelectIn (var context: Context, private var phpUrl: String, var sem
 
     override fun onPreExecute() {
         super.onPreExecute()
-        mView = CatLoadingView()
-        mView.show((context as FragmentActivity).supportFragmentManager,"")
+        //mView = CatLoadingView()
+        //mView.show((context as FragmentActivity).supportFragmentManager,"")
     }
 }

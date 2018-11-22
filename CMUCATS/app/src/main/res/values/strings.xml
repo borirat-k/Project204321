@@ -9,4 +9,6 @@
     <string name="assignment_name">Assignment Name or Exam Name*</string>
     <string name="assignment_max_score">Max Score*</string>
     <string name="assignment_deadline">Deadline*</string>
+    <string-array name='semester_list'>
+    </string-array>>
 </resources>
