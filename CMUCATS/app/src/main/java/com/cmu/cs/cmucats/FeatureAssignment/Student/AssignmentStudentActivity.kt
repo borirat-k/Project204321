@@ -22,7 +22,7 @@ class AssignmentStudentActivity : NavigationActivity() {
     val FLAG_ASSIGNMENT = "student"
 
 //    var urlAdress: String = "http://10.0.2.2/Project204321/select_assign_stu.php"
-    var urlAdress: String = "http://10.80.101.163/Project204321/select_assign_stu.php"
+    var urlAdress: String = "http://192.168.1.110/Project204321/select_assign_stu.php"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
