@@ -40,7 +40,7 @@ class Teach_input_form_activity : AppCompatActivity() {
         all_form_course = intent.getIntExtra("all_form_course", 0)
         current_state = intent.getIntExtra("current_state", 0)
         semester = intent.getStringExtra("semester")
-        if(current_state!!>0){
+        if (current_state!! > 0) {
             old_course_L = intent.getStringArrayListExtra("old_course")
         }
 //        DownLoadSubject(this,TAG_URI_SELECT_SUBJECT_DETAIL,user_id,semester!!).execute()
@@ -77,64 +77,34 @@ class Teach_input_form_activity : AppCompatActivity() {
 
         }
 
-        if (current_state!! > 0) {
-            if (position_cid!! in old_course_L) {
-                Toast.makeText(this, "course is selected", Toast.LENGTH_SHORT).show()
+
+
+        ok_btn.setOnClickListener {
+            Insert_SelectIn(this, TAG_URI_PHP_INSERT_Se, semester, position_cid!!, user_id).execute()
+            old_course_L.add(position_cid!!)
+            if (current_state!! < all_form_course!! - 1) {
+
+                val intent = Intent(this, Teach_input_form_activity::class.java)
+                intent.putExtra("all_form_course", all_form_course!!)
+                current_state = current_state!! + 1
+                intent.putExtra("all_form_course", current_state!!)
+                intent.putExtra("semester", semester)
+                intent.putExtra("old_course", old_course_L)
+                startActivity(intent)
+                var c = CourseScheduleInsert("", position_cid, ParserSubjectDetail.coursedetailL[index].startTime, ParserSubjectDetail.coursedetailL[index].stopTime, ParserSubjectDetail.coursedetailL[index].firstDay, ParserSubjectDetail.coursedetailL[index].secondDay)
+                Teach_schedule_fragment.course_ary.add(c)
+                finish()
+                Teach_schedule_fragment.idCourseList.removeAt(index)
             } else {
-                ok_btn.setOnClickListener {
-                    Insert_SelectIn(this, TAG_URI_PHP_INSERT_Se, semester, position_cid!!, user_id).execute()
-                    old_course_L.add(position_cid!!)
-                    if (current_state!! < all_form_course!! - 1) {
-
-                        val intent = Intent(this, Teach_input_form_activity::class.java)
-                        intent.putExtra("all_form_course", all_form_course!!)
-                        current_state = current_state!! + 1
-                        intent.putExtra("all_form_course", current_state!!)
-                        intent.putExtra("semester", semester)
-                        intent.putExtra("old_course", old_course_L)
-                        startActivity(intent)
-                        var c = CourseScheduleInsert("", position_cid, ParserSubjectDetail.coursedetailL[index].startTime, ParserSubjectDetail.coursedetailL[index].stopTime, ParserSubjectDetail.coursedetailL[index].firstDay, ParserSubjectDetail.coursedetailL[index].secondDay)
-                        Teach_schedule_fragment.course_ary.add(c)
-                        finish()
-                    } else {
-                        var c = CourseScheduleInsert("", position_cid, ParserSubjectDetail.coursedetailL[index].startTime, ParserSubjectDetail.coursedetailL[index].stopTime, ParserSubjectDetail.coursedetailL[index].firstDay, ParserSubjectDetail.coursedetailL[index].secondDay)
-                        Teach_schedule_fragment.course_ary.add(c)
-                        val intent = Intent(this, timetable::class.java)
-                        startActivity(intent)
-                        finish()
-                        Teach_schedule_fragment.idCourseList.clear()
-                    }
-                    ParserSubjectDetail.coursedetailL.clear()
-
-                }
+                var c = CourseScheduleInsert("", position_cid, ParserSubjectDetail.coursedetailL[index].startTime, ParserSubjectDetail.coursedetailL[index].stopTime, ParserSubjectDetail.coursedetailL[index].firstDay, ParserSubjectDetail.coursedetailL[index].secondDay)
+                Teach_schedule_fragment.course_ary.add(c)
+                val intent = Intent(this, timetable::class.java)
+                startActivity(intent)
+                finish()
+                Teach_schedule_fragment.idCourseList.clear()
             }
-        } else {
+            ParserSubjectDetail.coursedetailL.clear()
 
-            ok_btn.setOnClickListener {
-                Insert_SelectIn(this, TAG_URI_PHP_INSERT_Se, semester, position_cid!!, user_id).execute()
-                old_course_L.add(position_cid!!)
-                if (current_state!! < all_form_course!! - 1) {
-
-                    val intent = Intent(this, Teach_input_form_activity::class.java)
-                    intent.putExtra("all_form_course", all_form_course!!)
-                    current_state = current_state!! + 1
-                    intent.putExtra("all_form_course", current_state!!)
-                    intent.putExtra("semester", semester)
-                    intent.putExtra("old_course", old_course_L)
-                    startActivity(intent)
-                    var c = CourseScheduleInsert("", position_cid, ParserSubjectDetail.coursedetailL[index].startTime, ParserSubjectDetail.coursedetailL[index].stopTime, ParserSubjectDetail.coursedetailL[index].firstDay, ParserSubjectDetail.coursedetailL[index].secondDay)
-                    Teach_schedule_fragment.course_ary.add(c)
-                    finish()
-                } else {
-                    var c = CourseScheduleInsert("", position_cid, ParserSubjectDetail.coursedetailL[index].startTime, ParserSubjectDetail.coursedetailL[index].stopTime, ParserSubjectDetail.coursedetailL[index].firstDay, ParserSubjectDetail.coursedetailL[index].secondDay)
-                    Teach_schedule_fragment.course_ary.add(c)
-                    val intent = Intent(this, timetable::class.java)
-                    startActivity(intent)
-                    finish()
-                    Teach_schedule_fragment.idCourseList.clear()
-                }
-                ParserSubjectDetail.coursedetailL.clear()
-            }
 
         }
     }

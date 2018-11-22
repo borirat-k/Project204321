@@ -30,8 +30,9 @@ class ParserSemester(var context: Context,var jsonData: String) : AsyncTask<Void
 
             for (i in 0 until ja.length()) {
                 jo = ja.getJSONObject(i)
-                val semester = jo.getString("semester")
+                var semester = jo.getString("semester")
                 val count_course = jo.getInt("count_course")
+
 
 
                 Teach_schedule_fragment.semester_list.add(semester)

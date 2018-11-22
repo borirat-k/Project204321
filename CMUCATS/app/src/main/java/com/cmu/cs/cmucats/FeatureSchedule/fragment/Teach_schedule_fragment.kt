@@ -19,6 +19,7 @@ import kotlinx.android.synthetic.main.teach_schedule_fragment.view.*
 import com.cmu.cs.cmucats.FeatureSchedule.timetable.timetable
 import kotlinx.android.synthetic.main.alert_dialog.*
 import kotlinx.android.synthetic.main.alert_semester_form.view.*
+import java.util.*
 
 
 class Teach_schedule_fragment : Fragment(){
@@ -45,9 +46,10 @@ class Teach_schedule_fragment : Fragment(){
 
     var user_id = 3
 
-    var check_semester = -1
+    var check_semester_position = 0
+    val current_year = Calendar.getInstance().get(Calendar.YEAR)+543
+    val N_current_year = current_year + 1
 
-    var check_subject = 1
 
 
     var all_form_course = 0
@@ -86,9 +88,16 @@ class Teach_schedule_fragment : Fragment(){
             builder.setPositiveButton("Create", { dialog: DialogInterface, i: Int -> })
             builder.setNegativeButton("Cancel", { dialog: DialogInterface, i: Int -> })
 
+            val semesterLengt = semester_list.size
+
+
+
+            val current_semester = semester_list.filter{i-> i.equals("1/+$current_year") || i.equals("2/$current_year")||i.equals("1/$N_current_year")||i.equals("2/$N_current_year")}
+
+
 
             val dropdown = view.findViewById<Spinner>(R.id.dropDown_semester)
-            val arrayAdapter = ArrayAdapter(context,android.R.layout.simple_spinner_item, Teach_schedule_fragment.semester_list)
+            val arrayAdapter = ArrayAdapter(context,android.R.layout.simple_spinner_item,current_semester)
             arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             dropdown.adapter = arrayAdapter
             dropdown.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
@@ -100,6 +109,7 @@ class Teach_schedule_fragment : Fragment(){
                     Toast.makeText(view.context,"select ${parent.getItemAtPosition(position).toString()} ",Toast.LENGTH_SHORT).show()
                     all_form_course = countCourse_list[position]
                     semester = semester_list[position]
+                    check_semester_position = position
                 }
 
             }
@@ -109,6 +119,7 @@ class Teach_schedule_fragment : Fragment(){
 
             //when clik positive button of alert dialog
             customDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener { it ->
+                semester_list.removeAt(check_semester_position)
                 Insert_Tschedule(view.context,TAG_URI_PHP_INSERT_T,user_id,semester).execute()
                 DownLoadSubject(view.context,TAG_URI_SELECT_SUBJECT_DETAIL,user_id,semester).execute()
                 customDialog.dismiss()
