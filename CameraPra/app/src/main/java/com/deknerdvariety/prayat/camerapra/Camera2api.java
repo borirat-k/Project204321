@@ -1,6 +1,8 @@
 package com.deknerdvariety.prayat.camerapra;
 
 import android.Manifest;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.ImageFormat;
@@ -32,6 +34,8 @@ import android.util.SparseIntArray;
 import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.Chronometer;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -50,6 +54,10 @@ import java.util.Date;
 import java.util.List;
 
 public class Camera2api extends AppCompatActivity {
+    ObjectAnimator animator;
+    View scannerLayout;
+    View scannerBar;
+
     private static final int  REQUEST_WRITE_EXTERNAL_STORAGE_PERMISSION_RESULT = 1;//11
     private static final int REQUEST_CAMERA_PERMISSION_RESULT =0;//8
 
@@ -57,6 +65,8 @@ public class Camera2api extends AppCompatActivity {
     private static final int STATE_PREVIEW = 0;
     private static final int STATE_WAIT_LOCK = 1;
     private int mCaptureState = STATE_PREVIEW;
+
+    private boolean check = false;
 
     //1
     private TextureView mtextureView;
@@ -210,6 +220,12 @@ public class Camera2api extends AppCompatActivity {
             byte[] bytes = new byte[byteBuffer.remaining()];
             byteBuffer.get(bytes);
 
+            System.out.println("dddddddddddddddddddddddddddddddd");
+
+            check = true;
+
+
+
             FileOutputStream fos = null;
             try {
                 fos = new FileOutputStream(mImageFileName);
@@ -258,11 +274,53 @@ public class Camera2api extends AppCompatActivity {
         mChronometer = (Chronometer) findViewById(R.id.mChronometer);
         mtextureView = (TextureView)findViewById(R.id.Textureview1);
 
+        scannerLayout = findViewById(R.id.scannerLayout);
+        scannerBar = findViewById(R.id.scannerBar);
+
+        animator = null;
+
+        ViewTreeObserver vto = scannerLayout.getViewTreeObserver();
+
+        vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+
+                scannerLayout.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
+                    scannerLayout.getViewTreeObserver().
+                            removeGlobalOnLayoutListener(this);
+
+                } else {
+                    scannerLayout.getViewTreeObserver().
+                            removeOnGlobalLayoutListener(this);
+                }
+
+                float destination = (float)(scannerLayout.getY() +
+                        scannerLayout.getHeight()+130);
+
+                animator = ObjectAnimator.ofFloat(scannerBar, "translationY",
+                        scannerLayout.getY(),
+                        destination);
+
+                animator.setRepeatMode(ValueAnimator.REVERSE);
+                animator.setRepeatCount(ValueAnimator.INFINITE);
+                animator.setInterpolator(new AccelerateDecelerateInterpolator());
+                animator.setDuration(3000);
+                animator.start();
+
+            }
+        });
+
         mStillImageButton = (ImageButton)findViewById(R.id.Capture_camera_btn);
         mStillImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 lockFocus();
+                if(check){
+                    finish();
+                    check = false;
+                }
+
                 //Toast.makeText(getApplicationContext(),"capture!!!",Toast.LENGTH_SHORT).show();
             }
         });
