@@ -3,7 +3,9 @@ package com.deknerdvariety.prayat.camerapra;
 import android.Manifest;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.ImageFormat;
 import android.graphics.SurfaceTexture;
@@ -24,6 +26,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.HandlerThread;
+import android.os.Looper;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -67,6 +70,7 @@ public class Camera2api extends AppCompatActivity {
     private int mCaptureState = STATE_PREVIEW;
 
     private boolean check = false;
+    private byte []byte_back;
 
     //1
     private TextureView mtextureView;
@@ -220,28 +224,38 @@ public class Camera2api extends AppCompatActivity {
             byte[] bytes = new byte[byteBuffer.remaining()];
             byteBuffer.get(bytes);
 
-            System.out.println("dddddddddddddddddddddddddddddddd");
+            mImage.close();
 
             check = true;
+            byte_back = bytes;
+            //startActivityFromMainThread();
+
+//            if(check){
+//                Intent intent = new Intent(,PreviewImage.class);
+//                //intent.putExtra("data", bytes);
+//                intent.putExtra("data",bytes);
+//                startActivity(intent);
+//            }
 
 
 
-            FileOutputStream fos = null;
-            try {
-                fos = new FileOutputStream(mImageFileName);
-                fos.write(bytes);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }finally {
-                mImage.close();
-                if(fos != null){
-                    try {
-                        fos.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
+
+//            FileOutputStream fos = null;
+//            try {
+//                fos = new FileOutputStream(mImageFileName);
+//                fos.write(bytes);
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }finally {
+//                mImage.close();
+//                if(fos != null){
+//                    try {
+//                        fos.close();
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            }
         }
     }
 
@@ -276,52 +290,15 @@ public class Camera2api extends AppCompatActivity {
 
         scannerLayout = findViewById(R.id.scannerLayout);
         scannerBar = findViewById(R.id.scannerBar);
-
-        animator = null;
-
-        ViewTreeObserver vto = scannerLayout.getViewTreeObserver();
-
-        vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-
-                scannerLayout.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
-                    scannerLayout.getViewTreeObserver().
-                            removeGlobalOnLayoutListener(this);
-
-                } else {
-                    scannerLayout.getViewTreeObserver().
-                            removeOnGlobalLayoutListener(this);
-                }
-
-                float destination = (float)(scannerLayout.getY() +
-                        scannerLayout.getHeight()+130);
-
-                animator = ObjectAnimator.ofFloat(scannerBar, "translationY",
-                        scannerLayout.getY(),
-                        destination);
-
-                animator.setRepeatMode(ValueAnimator.REVERSE);
-                animator.setRepeatCount(ValueAnimator.INFINITE);
-                animator.setInterpolator(new AccelerateDecelerateInterpolator());
-                animator.setDuration(3000);
-                animator.start();
-
-            }
-        });
+        CreateViewfinder();
 
         mStillImageButton = (ImageButton)findViewById(R.id.Capture_camera_btn);
         mStillImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 lockFocus();
-                if(check){
-                    finish();
-                    check = false;
-                }
-
                 //Toast.makeText(getApplicationContext(),"capture!!!",Toast.LENGTH_SHORT).show();
+                startActivityFromMainThread();
             }
         });
         //10
@@ -356,6 +333,41 @@ public class Camera2api extends AppCompatActivity {
         else{
             mtextureView.setSurfaceTextureListener(mSurfaceTextureListener);
         }
+    }
+    protected void CreateViewfinder(){
+        animator = null;
+
+        ViewTreeObserver vto = scannerLayout.getViewTreeObserver();
+
+        vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+
+                scannerLayout.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
+                    scannerLayout.getViewTreeObserver().
+                            removeGlobalOnLayoutListener(this);
+
+                } else {
+                    scannerLayout.getViewTreeObserver().
+                            removeOnGlobalLayoutListener(this);
+                }
+
+                float destination = (float)(scannerLayout.getY() +
+                        scannerLayout.getHeight()+130);
+
+                animator = ObjectAnimator.ofFloat(scannerBar, "translationY",
+                        scannerLayout.getY(),
+                        destination);
+
+                animator.setRepeatMode(ValueAnimator.REVERSE);
+                animator.setRepeatCount(ValueAnimator.INFINITE);
+                animator.setInterpolator(new AccelerateDecelerateInterpolator());
+                animator.setDuration(3000);
+                animator.start();
+
+            }
+        });
     }
     //8
     @Override
@@ -494,8 +506,8 @@ public class Camera2api extends AppCompatActivity {
                                              @NonNull CaptureRequest request, long timestamp, long frameNumber) {
                     super.onCaptureStarted(session, request, timestamp, frameNumber);
                     try {
-                        createImageFileName();
-                    } catch (IOException e) {
+                      //  createImageFileName();
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
@@ -556,8 +568,8 @@ public class Camera2api extends AppCompatActivity {
                     cameraManager.openCamera(mCameraId, mCameraDeviceStatecallback, mBackgroundHandler);
                 } else {
                     if(shouldShowRequestPermissionRationale(android.Manifest.permission.CAMERA)) {
-                        Toast.makeText(this,
-                                "Video app required access to camera", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(this,
+//                                "Video app required access to camera", Toast.LENGTH_SHORT).show();
                     }
                     requestPermissions(new String[] {android.Manifest.permission.CAMERA}, REQUEST_CAMERA_PERMISSION_RESULT);
                 }
@@ -609,6 +621,27 @@ public class Camera2api extends AppCompatActivity {
         } else {
             return choices[0];
         }
+    }
+
+    public void startActivityFromMainThread(){
+        Handler handler = new Handler(Looper.getMainLooper());
+
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                if(check){
+                    Intent intent = new Intent (Camera2api.this, PreviewImage.class);
+                    intent.putExtra("data",byte_back);
+                    ((Activity)Camera2api.this).startActivity(intent);
+                    finish();
+                }
+            }
+        });
     }
 
     //11

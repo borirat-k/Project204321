@@ -2,4 +2,6 @@
     <string name="app_name">CameraPra</string>
     <string name="video_button">Video Record button</string>
     <string name="camera_button">Camera Capture button</string>
+    <string name="check_button">sendpicture to server button</string>
+    <string name="preview">Preview picture</string>
 </resources>

@@ -1,0 +1,26 @@
+1.use Fotoaparat
+-must add 
+ packagingOptions {
+        exclude 'META-INF/proguard/androidx-annotations.pro'
+    }
+ in your build.gradle(app) because this library has a androidx
+
+2.Bitmap too large to be uploaded into a texture (4160x3120, max=4096x4096)
+this is make imageView not show 
+solve
+- decrease scale
+https://stackoverflow.com/questions/4837715/how-to-resize-a-bitmap-in-android
+https://stackoverflow.com/questions/10271020/bitmap-too-large-to-be-uploaded-into-a-texture
+
+3.between activity if you send data over 1 mb that error 
+ if data is picture :
+	save in some where then load in next activity 
+https://stackoverflow.com/questions/33182309/passing-bitmap-to-another-activity-ends-in-runtimeexception/33182485
+
+4.when you show image with Imageview or other
+Most phone cameras are landscape, meaning if you take the photo in portrait,
+the resulting photos will be rotated 90 degrees. 
+In this case, the camera software should populate the Exif data with 
+the orientation that the photo should be viewed in.
+solve
+- https://stackoverflow.com/questions/14066038/why-does-an-image-captured-using-camera-intent-gets-rotated-on-some-devices-on-a
